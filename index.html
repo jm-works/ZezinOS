@@ -5,16 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZezinOS</title>
+    <link rel="icon" href="./public/icons/logo.svg">
 
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/system.css">
     <link rel="stylesheet" href="./src/styles/taskbar.css">
+    <link rel="stylesheet" href="./src/styles/desktop.css">
 </head>
 
 <body>
+    <div class="desktop-area">
+        <div class="desktop-icon" tabindex="0" ondblclick="alert('Vasco Da Gama')">
+            <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
+            <span>Sobre Mim</span>
+        </div>
+    </div>
     <div class="taskbar">
         <button class="start-button">
-            <img src="./public/icons/Logo.svg" alt="" class="start-icon">
+            <img src="./public/icons/logo.svg" alt="" class="start-icon">
             <span class="start-text">Start</span>
         </button>
 

@@ -1,0 +1,44 @@
+.desktop-area {
+    width: 100%;
+    height: calc(100vh - 28px);
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.desktop-icon img {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 5px;
+}
+
+.desktop-icon span {
+    color: var(--text-inverted);
+    font-size: 13px;
+    font-family: var(--system-font);
+    padding: 2px;
+
+    border: 1px dotted transparent;
+
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.desktop-icon:active span,
+.desktop-icon:focus span {
+    background-color: var(--win-blue);
+    border: 1px dotted #ffff00;
+    text-shadow: none;
+}
