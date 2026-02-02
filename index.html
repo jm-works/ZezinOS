@@ -11,15 +11,35 @@
     <link rel="stylesheet" href="./src/styles/system.css">
     <link rel="stylesheet" href="./src/styles/taskbar.css">
     <link rel="stylesheet" href="./src/styles/desktop.css">
+    <link rel="stylesheet" href="./src/styles/window.css">
 </head>
 
 <body>
     <div class="desktop-area">
-        <div class="desktop-icon" tabindex="0" ondblclick="alert('Vasco Da Gama')">
+        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
             <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
             <span>Sobre Mim</span>
         </div>
     </div>
+
+    <div id="window-about" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">Sobre Mim</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeWindow('window-about')">X</button>
+            </div>
+        </div>
+
+        <div class="window-body">
+            <h3 style="margin-bottom: 10px;">Quem sou eu?</h3>
+            <p>Olá! Me chamo José Matheus e sou estudante de Ciência da Computação na Universidade Tiradentes - UNIT (4º período).</p>
+            <br>
+            <p><strong>Estudando:</strong> Python, HTML/CSS/JavaScript e Java.</p>
+            <p><strong>Hobbies:</strong> Design e Jogos.</p>
+            <p><strong>Mais projetos & contatos:</strong> <a href="https://github.com/jm-works">jm-works</a></p>
+        </div>
+    </div>
+
     <div class="taskbar">
         <button class="start-button">
             <img src="./public/icons/logo.svg" alt="" class="start-icon">

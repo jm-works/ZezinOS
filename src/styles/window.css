@@ -1,0 +1,73 @@
+.window {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 400px;
+    background-color: var(--win-gray);
+
+    box-shadow: 
+        inset 1px 1px var(--border-light),
+        inset -1px -1px 0px var(--border-darkest),
+        inset -2px -2px 0px var(--border-dark);
+
+    display: none;
+    z-index: 100;
+}
+
+.window.open {
+    display: flex;
+}
+
+.title-bar {
+    background: var(--win-blue);
+    padding: 3px 2px 3px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.title-bar-text {
+    color: var(--text-inverted);
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-left: 2px;
+}
+
+.title-bar-controls button {
+    width: 16px;
+    height: 14px;
+    background-color: var(--win-gray);
+    border: none;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 10px;
+    box-shadow: 
+        inset 1px 1px var(--border-light),
+        inset -1px -1px var(--border-darkest);
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.title-bar-controls button:active {
+    box-shadow: 
+        inset 1px 1px var(--border-darkest),
+        inset -1px -1px var(--border-light);
+    padding-top: 1px;
+}
+
+.window-body {
+    margin: 2px;
+    background-color: #ffffff; 
+    color: var(--text-main);
+    border: 2px solid;
+    border-color: 
+        var(--border-dark), 
+        var(--border-light), 
+        var(--border-light), 
+        var(--border-dark);
+    padding: 15px;
+    height: 100%;
+    overflow-y: auto;
+}
