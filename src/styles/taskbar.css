@@ -1,0 +1,64 @@
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background-color: var(--win-gray);
+
+    border-top: 2px solid var(--border-light);
+
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    z-index: 9999;
+}
+
+.start-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+    margin-right: 4px;
+    padding: 0 6px;
+
+    font-family: var(--system-font);
+    font-weight: bold;
+    font-size: 11px;
+
+    background-color: var(--win-gray);
+    border: none;
+
+    box-shadow: 
+        inset 1px 1px var(--border-light),
+        inset -1px -1px var(--border-darkest),
+        1px 1px 0px var(--border-darkest);
+
+    cursor: pointer;
+}
+
+.start-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.start-button:active {
+    box-shadow: 
+        inset 1px 1px var(--border-darkest),
+        inset -1px -1px var(--border-light);
+    padding-top: 2px;
+}
+
+.tray-area {
+    margin-left: auto;
+    background-color: var(--win-gray);
+
+    border-left: 1px solid var(--border-dark);
+    border-top: 1px solid var(--border-dark);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+
+    padding: 2px 6px;
+    font-size: 11px;
+}
