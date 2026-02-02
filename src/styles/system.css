@@ -1,0 +1,19 @@
+:root {
+    /* Fundo */
+    --win-gray: #c0c0c0;
+    --win-desktop: #008080;
+    --win-blue: #000080;
+
+    /* Texto */
+    --text-main: #000000;
+    --text-inverted: #ffffff;
+    --text-disabled: #808080;
+
+    /* Efeito 3D */
+    --border-light: #ffffff;
+    --border-dark: #808080;
+    --border-darkest: #000000;
+
+    /* Fontes */
+    --system-font: 'Segoe UI', sans-serif;
+}
