@@ -14,6 +14,55 @@
     z-index: 9999;
 }
 
+.tasks-area {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+    padding-left: 4px;
+    overflow: hidden;
+}
+
+.task-button {
+    height: 22px;
+    min-width: 100px;
+    max-width: 160px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 5px;
+
+    background-color: var(--win-gray);
+    font-family: var(--system-font);
+    font-size: 11px;
+
+    border: none;
+    box-shadow: 
+        inset 1px 1px var(--border-light),
+        inset -1px -1px var(--border-darkest),
+        1px 1px 0px var(--border-darkest);
+
+    cursor: pointer;
+}
+
+.task-button.active {
+    background-color: #eeeeee; 
+    
+    box-shadow: 
+        inset 1px 1px var(--border-darkest),
+        inset -1px -1px var(--border-light);
+        
+    padding-top: 2px; 
+    padding-bottom: 0;
+    font-weight: bold;
+}
+
+.task-button span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .start-button {
     display: flex;
     align-items: center;

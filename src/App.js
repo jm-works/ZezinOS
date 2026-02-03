@@ -43,7 +43,7 @@ document.addEventListener('click', (event) => {
         const openWindows = document.querySelectorAll('.window.open');
         
         openWindows.forEach(window => {
-            window.classList.remove('open');
+            closeWindow(window.id);
         });
     }
 });
@@ -98,6 +98,62 @@ function initSelectionBox() {
         }
     })
 
+}
+
+function openWindow(windowId) {
+    const windowElement = document.getElementById(windowId);
+    const taskbarArea = document.querySelector('.tasks-area');
+
+    if(windowElement) {
+        windowElement.classList.add('open');
+
+        const existingButton = document.getElementById(`btn-${windowId}`);
+
+        if (!existingButton) {
+            createTaskbarButton(windowId, windowElement, taskbarArea);
+        }
+    }
+}
+
+function createTaskbarButton(windowId, windowElement, taskbarArea) {
+    const titleText = windowElement.querySelector('.title-bar-text').textContent;
+
+    const button = document.createElement('button');
+
+    button.className = 'task-button active';
+    button.id = `btn-${windowId}`;
+
+    button.innerHTML = `
+        <img src="./public/icons/sobreMim.svg" width="16" height="16" alt=""> 
+        <span>${titleText}</span>
+    `;
+
+    button.onclick = () => {
+        if (windowElement.classList.contains('open')) {
+            if (windowElement.classList.contains('active')) {
+                windowElement.classList.remove('open');
+                button.classList.remove('active')
+            } else {
+                button.classList.add('active')
+            }
+        } else {
+            windowElement.classList.add('open');
+            button.classList.add('active');
+        }
+    };
+
+    taskbarArea.appendChild(button);
+}
+
+function closeWindow(windowId) {
+    const windowElement = document.getElementById(windowId);
+    if (windowElement) {
+        windowElement.classList.remove('open');
+        const taskButton = document.getElementById(`btn-${windowId}`);
+        if (taskButton) {
+            taskButton.remove();
+        }
+    }
 }
 
 window.openWindow = openWindow;
