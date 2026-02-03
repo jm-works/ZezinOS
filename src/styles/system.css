@@ -16,4 +16,8 @@
 
     /* Fontes */
     --system-font: 'Segoe UI', sans-serif;
+
+    /* Cores extras */
+    --win-selection-box: rgba(0, 120, 215, 0.3);
+    --win-selection-border: rgba(0, 50, 150, 0.6);
 }

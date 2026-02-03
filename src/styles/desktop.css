@@ -8,6 +8,9 @@
     align-items: flex-start;
     gap: 20px;
     flex-wrap: wrap;
+
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .desktop-icon {
@@ -37,8 +40,18 @@
 }
 
 .desktop-icon:active span,
-.desktop-icon:focus span {
+.desktop-icon:focus span,
+.desktop-icon.selection span {
     background-color: var(--win-blue);
     border: 1px dotted #ffff00;
     text-shadow: none;
+}
+
+#selection-box {
+    position: absolute;
+    background-color: var(--win-selection-box);
+    border: 1px solid var(--win-selection-border);
+    display: none;
+    z-index: 50;
+    pointer-events: none;
 }
