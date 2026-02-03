@@ -2,7 +2,12 @@ export function createTaskbarButton(windowId, windowElement) {
     const taskbarArea = document.querySelector('.tasks-area');
     const titleText = windowElement.querySelector('.title-bar-text').textContent;
     
-    if (document.getElementById(`btn-${windowId}`)) return;
+    const existingButton = document.getElementById(`btn-${windowId}`);
+    
+    if (existingButton) {
+        existingButton.classList.add('active'); 
+        return;
+    }
 
     const button = document.createElement('button');
     button.className = 'task-button active';
