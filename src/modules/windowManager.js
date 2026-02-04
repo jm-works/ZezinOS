@@ -19,6 +19,19 @@ export function closeWindow(windowId) {
     }
 }
 
+export function minimizeWindow(windowId) {
+    const windowElement = document.getElementById(windowId);
+    const taskButton = document.getElementById(`btn-${windowId}`);
+
+    if (windowElement) {
+        windowElement.classList.remove('open');
+    }
+
+    if (taskButton) {
+        taskButton.classList.remove('active');
+    }
+}
+
 export function initWindowListener() {
     document.addEventListener('click', (event) => {
         const clickedInsideWindow = event.target.closest('.window');
