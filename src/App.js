@@ -5,9 +5,11 @@ import { initTerminal } from './modules/terminal.js'
 import { initDraggableWindows } from './modules/drag.js';
 import { renderAbout } from './programs/about.js';
 import { renderTerminal } from './programs/terminal.js';
+import { renderPatchNotes } from './programs/patchnotes.js';
 
 renderAbout();
 renderTerminal();
+renderPatchNotes();
 
 startClock();
 initSelectionBox();

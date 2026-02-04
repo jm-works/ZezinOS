@@ -1,3 +1,5 @@
+import { bringToFront } from './windowManager.js';
+
 export function initDraggableWindows() {
     let isDragging = false;
     let currentWindow = null;
@@ -41,10 +43,4 @@ export function initDraggableWindows() {
         isDragging = false;
         currentWindow = null;
     });
-}
-
-function bringToFront(windowElement) {
-    const allWindows = document.querySelectorAll('.window');
-    allWindows.forEach(win => win.style.zIndex = '100');
-    windowElement.style.zIndex = '200';
 }

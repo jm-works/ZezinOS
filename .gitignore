@@ -1,0 +1,14 @@
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs e Erros
+*.log
+
+# Pastas de IDE (VS Code, etc)
+.vscode/
+.idea/
+
+# Node modules
+node_modules/

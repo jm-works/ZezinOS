@@ -1,5 +1,12 @@
 import { createTaskbarButton, removeTaskbarButton } from './taskbar.js';
 
+let zIndexCounter = 100;
+
+export function bringToFront(windowElement) {
+    zIndexCounter++;
+    windowElement.style.zIndex = zIndexCounter;
+}
+
 export function openWindow(windowId) {
     const windowElement = document.getElementById(windowId);
 
@@ -52,10 +59,9 @@ export function initWindowListener() {
     });
 
     document.addEventListener('mousedown', (e) => {
-    const clickedWindow = e.target.closest('.window');
-    if (clickedWindow) {
-        document.querySelectorAll('.window').forEach(w => w.style.zIndex = '100');
-        clickedWindow.style.zIndex = '200';
-    }
-});
+        const clickedWindow = e.target.closest('.window');
+        if (clickedWindow) {
+            bringToFront(clickedWindow);
+        }
+    });
 }

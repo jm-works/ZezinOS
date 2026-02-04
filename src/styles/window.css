@@ -105,3 +105,13 @@
 .menu-item::first-letter {
     text-decoration: underline;
 }
+
+#window-patchnotes {
+    width: 500px;
+    height: 500px;
+}
+
+#window-patchnotes .window-body {
+    overflow-y: scroll; 
+    background-color: var(--win-white);
+}
