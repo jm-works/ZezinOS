@@ -3,6 +3,8 @@
     --win-gray: #c0c0c0;
     --win-desktop: #008080;
     --win-blue: #000080;
+    --win-black: #000000;
+    --win-white: #ffffff;
 
     /* Texto */
     --text-main: #000000;
@@ -16,6 +18,8 @@
 
     /* Fontes */
     --system-font: 'Segoe UI', sans-serif;
+    --cmd-font: 'Courier New', Courier, monospace;
+    --cmd-input: inherit;
 
     /* Cores extras */
     --win-selection-box: rgba(0, 120, 215, 0.3);

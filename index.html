@@ -12,22 +12,41 @@
     <link rel="stylesheet" href="./src/styles/taskbar.css">
     <link rel="stylesheet" href="./src/styles/desktop.css">
     <link rel="stylesheet" href="./src/styles/window.css">
+    <link rel="stylesheet" href="./src/styles/terminal.css">
 </head>
 
 <body>
+    <!-- Sobre Mim -->
     <div class="desktop-area">
+        <!-- SobreMim -->
         <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
             <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
             <span>Sobre Mim</span>
         </div>
+
+        <!-- Terminal -->
+        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-terminal')">
+            <img src="./public/icons/logo.svg" alt="Terminal">
+            <span>ZEZIN-DOS</span>
+        </div>
     </div>
 
+    <!-- Sobre Mim -->
     <div id="window-about" class="window">
         <div class="title-bar">
             <div class="title-bar-text">Sobre Mim</div>
             <div class="title-bar-controls">
+                <button aria-label="Minimize">_</button>
+                <button aria-label="Maximize">□</button>
                 <button aria-label="Close" onclick="closeWindow('window-about')">X</button>
             </div>
+        </div>
+
+        <div class="menu-bar">
+            <div class="menu-item">Arquivo</div>
+            <div class="menu-item">Editar</div>
+            <div class="menu-item">Pesquisar</div>
+            <div class="menu-item">Ajuda</div>
         </div>
 
         <div class="window-body">
@@ -37,6 +56,47 @@
             <p><strong>Estudando:</strong> Python, HTML/CSS/JavaScript e Java.</p>
             <p><strong>Hobbies:</strong> Design e Jogos.</p>
             <p><strong>Mais projetos & contatos:</strong> <a href="https://github.com/jm-works" target="_blank">jm-works</a></p>
+        </div>
+    </div>
+
+    <!-- Terminal -->
+    <div id="window-terminal" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">ZEZIN-DOS Prompt</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize">_</button>
+                <button aria-label="Maximize">□</button>
+                <button aria-label="Close" onclick="closeWindow('window-terminal')">X</button>
+            </div>
+        </div>
+
+        <div class="window-toolbar">
+            <select class="toolbar-select">
+                <option>Auto</option>
+                <option>4 x 6</option>
+                <option>6 x 8</option>
+                <option>8 x 12</option>
+            </select>
+
+            <div class="toolbar-separator"></div>
+
+            <button class="toolbar-btn" title="Mark">⬚</button> <button class="toolbar-btn" title="Copy">❐</button> <button class="toolbar-btn" title="Paste">📋</button> <button class="toolbar-btn" title="Full Screen">⤢</button>
+            <div class="toolbar-separator"></div>
+
+            <button class="toolbar-btn" title="Properties">⚙</button> <button class="toolbar-btn" title="Background">A</button>
+        </div>
+
+        <div class="window-body" onclick="document.getElementById('cmd-input').focus()">
+            <div class="terminal-output" id="terminal-output">
+                <div>JM-WORKS(R) ZezinOS</div>
+                <div>(C) Copyright JM-WORKS Corp 1981-1998.</div>
+                <br>
+            </div>
+
+            <div class="input-line">
+                <span class="prompt-label">C:\Users\Zezin&gt;</span>
+                <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false">
+            </div>
         </div>
     </div>
 

@@ -6,6 +6,8 @@ export function openWindow(windowId) {
     if (windowElement) {
         windowElement.classList.add('open');
         createTaskbarButton(windowId, windowElement);
+
+        bringToFront(windowElement);
     }
 }
 
@@ -25,7 +27,22 @@ export function initWindowListener() {
 
         if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar) {
             const openWindows = document.querySelectorAll('.window.open');
-            openWindows.forEach(win => closeWindow(win.id));
+            
+            openWindows.forEach(win => {
+                win.classList.remove('open');
+                const taskButton = document.getElementById(`btn-${win.id}`);
+                if (taskButton) {
+                    taskButton.classList.remove('active')
+                }
+            })
         }
     });
+
+    document.addEventListener('mousedown', (e) => {
+    const clickedWindow = e.target.closest('.window');
+    if (clickedWindow) {
+        document.querySelectorAll('.window').forEach(w => w.style.zIndex = '100');
+        clickedWindow.style.zIndex = '200';
+    }
+});
 }

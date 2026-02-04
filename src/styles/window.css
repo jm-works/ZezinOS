@@ -1,7 +1,8 @@
 .window {
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
     background-color: var(--win-gray);
 
@@ -9,6 +10,10 @@
         inset 1px 1px var(--border-light),
         inset -1px -1px 0px var(--border-darkest),
         inset -2px -2px 0px var(--border-dark);
+
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
 
     display: none;
     z-index: 100;
@@ -25,6 +30,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2px;
+
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .title-bar-text {
@@ -59,7 +67,7 @@
 
 .window-body {
     margin: 2px;
-    background-color: #ffffff; 
+    background-color: var(--win-white); 
     color: var(--text-main);
     border: 2px solid;
     border-color: 
@@ -70,4 +78,30 @@
     padding: 15px;
     height: 100%;
     overflow-y: auto;
+}
+
+.menu-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--win-gray);
+    padding: 1px 0;
+    margin-top: -1px; 
+    margin-bottom: 2px;
+}
+
+.menu-item {
+    padding: 2px 6px;
+    font-size: 11px;
+    color: var(--text-main);
+    cursor: default;
+    font-family: var(--system-font);
+}
+
+.menu-item:hover {
+    background-color: var(--win-blue);
+    color: var(--text-inverted);
+}
+
+.menu-item::first-letter {
+    text-decoration: underline;
 }

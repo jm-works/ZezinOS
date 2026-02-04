@@ -1,0 +1,109 @@
+#window-terminal .window-body {
+    background-color: var(--win-black);
+    color: var(--win-gray);
+    font-family: var(--cmd-font);
+    font-size: 14px;
+    padding: 2px 5px;
+    display: flex;
+    flex-direction: column;
+    cursor: text;
+    
+    border: none; 
+    border-top: 2px solid var(--border-dark);
+    border-left: 2px solid var(--border-dark);
+    border-right: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    
+    margin: 0 2px 2px 2px;
+    height: 100%;
+}
+
+#window-terminal {
+    width: 600px;
+    height: 400px;
+}
+
+.window-toolbar {
+    background-color: var(--win-gray);
+    padding: 3px 4px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 30px;
+    border-bottom: 1px solid var(--border-light); 
+    margin-bottom: 1px;
+}
+
+.toolbar-select {
+    font-size: 11px;
+    height: 20px;
+    width: 60px;
+    border: 2px solid;
+    border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.toolbar-btn {
+    width: 22px;
+    height: 20px;
+    background-color: var(--win-gray);
+    border: none;
+    
+    box-shadow: 
+        inset 1px 1px var(--border-light),
+        inset -1px -1px var(--border-darkest),
+        1px 1px 0px var(--border-darkest);
+        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.toolbar-btn:active {
+    box-shadow: 
+        inset 1px 1px var(--border-darkest),
+        inset -1px -1px var(--border-light);
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+.toolbar-separator {
+    width: 2px;
+    height: 15px;
+    margin: 0 2px;
+    border-left: 1px solid var(--border-dark);
+    border-right: 1px solid var(--border-light);
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt-label {
+    margin-right: 0px;
+    color: var(--win-gray);
+}
+
+.cmd-input {
+    background: transparent;
+    border: none;
+    color: var(--text-inverted);
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+    caret-color: var(--text-inverted);
+}
+
+#window-terminal .window-body::-webkit-scrollbar {
+    width: 16px;
+    background: var(--win-gray);
+}
+#window-terminal .window-body::-webkit-scrollbar-thumb {
+    background: var(--win-gray);
+    border: 2px solid;
+    border-color: var(--border-light) var(--border-darkest) var(--border-darkest) var(--border-light);
+}
