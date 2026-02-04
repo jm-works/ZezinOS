@@ -9,7 +9,7 @@ const commands = {
     CLS      - Limpa a tela
     DATE     - Mostra a data atual
     GITHUB   - Abre meu GitHub
-    SURPRESA     - Digite e descubra
+    SURPRESA - Digite e descubra
     EXIT     - Fecha o terminal
     HELP     - Mostra essa lista
         `;
