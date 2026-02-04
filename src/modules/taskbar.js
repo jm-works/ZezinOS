@@ -1,7 +1,11 @@
 export function createTaskbarButton(windowId, windowElement) {
     const taskbarArea = document.querySelector('.tasks-area');
     const titleText = windowElement.querySelector('.title-bar-text').textContent;
-    
+    const appIcons = {
+        'window-about': './public/icons/sobreMim.svg',
+        'window-terminal': './public/icons/zenzinDOS.svg'
+    };
+    const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);
     
     if (existingButton) {
@@ -14,7 +18,7 @@ export function createTaskbarButton(windowId, windowElement) {
     button.id = `btn-${windowId}`;
 
     button.innerHTML = `
-        <img src="./public/icons/sobreMim.svg" width="16" height="16" alt=""> 
+        <img src="${iconPath}" width="16" height="16" alt=""> 
         <span>${titleText}</span>
     `;
 
@@ -28,6 +32,9 @@ export function createTaskbarButton(windowId, windowElement) {
         } else {
             windowElement.classList.add('open');
             button.classList.add('active');
+            const allWindows = document.querySelectorAll('.window');
+            allWindows.forEach(win => win.style.zIndex = '100');
+            windowElement.style.zIndex = '200';
         }
     };
 

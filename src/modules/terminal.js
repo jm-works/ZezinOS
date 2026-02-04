@@ -9,6 +9,7 @@ const commands = {
     CLS      - Limpa a tela
     DATE     - Mostra a data atual
     GITHUB   - Abre meu GitHub
+    SURPRESA     - Digite e descubra
     EXIT     - Fecha o terminal
     HELP     - Mostra essa lista
         `;
@@ -31,6 +32,10 @@ const commands = {
     'github': () => {
         window.open('https://github.com/jm-works', '_blank');
         return "Abrindo GitHub no navegador...";
+    },
+    'surpresa': () => {
+        window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
+        return "Abrindo a Surpresa no navegador";
     },
     'exit': () => {
         closeWindow('window-terminal');
