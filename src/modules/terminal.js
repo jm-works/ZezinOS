@@ -1,23 +1,40 @@
 import { openWindow, closeWindow } from './windowManager.js';
 
 const commands = {
+    // Atalhos
     'help': () => {
         return `
     Comandos disponíveis:
     ---------------------
-    ABOUT    - Abre a janela Sobre Mim
-    CLS      - Limpa a tela
-    DATE     - Mostra a data atual
-    GITHUB   - Abre meu GitHub
-    SURPRESA - Digite e descubra
-    EXIT     - Fecha o terminal
-    HELP     - Mostra essa lista
+    PROGRAMS  - Abre a lista de programas
+    CLS       - Limpa a tela
+    DATE      - Mostra a data atual
+    GITHUB    - Abre meu GitHub
+    SURPRISE  - Digite e descubra
+    EXIT      - Fecha o terminal
+    HELP      - Mostra essa lista
         `;
     },
+    'programs': () => {
+        return `
+    Comandos disponíveis:
+    ---------------------
+    ABOUT  - Abrir 'Sobre Mim'
+    NOTES  - Abrir 'Patch Notes'
+        `;
+    },
+
+    // Programas
     'about': () => {
         openWindow('window-about');
-        return "Abrindo janela Sobre Mim...";
+        return "Abrindo janela 'Sobre Mim'...";
     },
+    'notes': () => {
+        openWindow('window-patchnotes');
+        return "Abrindo janela 'Patch Notes'...";
+    },
+
+    // Comandos Gerais
     'cls': () => {
         document.getElementById('terminal-output').innerHTML = '';
         return null;
@@ -33,9 +50,9 @@ const commands = {
         window.open('https://github.com/jm-works', '_blank');
         return "Abrindo GitHub no navegador...";
     },
-    'surpresa': () => {
+    'surprise': () => {
         window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
-        return "Abrindo a Surpresa no navegador";
+        return "Abrindo a sua surpresa no navegador...";
     },
     'exit': () => {
         closeWindow('window-terminal');
