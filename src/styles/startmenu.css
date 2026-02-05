@@ -1,0 +1,126 @@
+.start-menu {
+    position: fixed;
+    bottom: 30px;
+    left: 2px;
+    width: 250px;
+    background-color: var(--win-gray);
+    
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-darkest);
+    border-bottom: 2px solid var(--border-darkest);
+    box-shadow: 1px 1px 0px #000;
+
+    display: flex;
+    z-index: 9998;
+    display: none;
+}
+
+.start-menu.active {
+    display: flex;
+}
+
+.sidebar {
+    width: 25px;
+    background: linear-gradient(to bottom, #000080, #1084d0);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.sidebar-text {
+    color: white;
+    font-family: var(--system-font);
+    font-size: 16px;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.menu-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.start-menu .menu-item { 
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    gap: 10px;
+    cursor: pointer;
+    font-family: var(--system-font);
+    font-size: 12px;
+    color: var(--text-main);
+}
+
+.start-menu .menu-item:hover {
+    background-color: var(--win-blue);
+    color: var(--text-inverted);
+}
+
+.start-menu .menu-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.start-menu .menu-separator {
+    height: 2px;
+    margin: 3px 2px;
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.start-menu .has-submenu {
+    position: relative;
+    overflow: visible; 
+}
+
+.start-menu .menu-arrow {
+    font-size: 8px;
+    margin-left: auto;
+    color: var(--text-main);
+}
+.start-menu .has-submenu:hover .menu-arrow {
+    color: var(--text-inverted);
+}
+
+.start-menu .submenu {
+    display: none;
+    position: absolute;
+    
+    left: 100%;
+    top: -4px; 
+    
+    width: 200px;
+    background-color: var(--win-gray);
+    
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-darkest);
+    border-bottom: 2px solid var(--border-darkest);
+    box-shadow: 1px 1px 0px #000;
+    
+    padding: 2px;
+    z-index: 9999;
+}
+
+.start-menu .has-submenu:hover .submenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.start-menu .submenu .menu-item {
+    padding: 6px 10px;
+    min-height: 22px;
+    font-size: 11px;
+}
+
+.start-menu .submenu .menu-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}

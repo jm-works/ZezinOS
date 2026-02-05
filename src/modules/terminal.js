@@ -50,17 +50,37 @@ const commands = {
         window.open('https://github.com/jm-works', '_blank');
         return "Abrindo GitHub no navegador...";
     },
-    'surprise': () => {
-        window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
-        return "Abrindo a sua surpresa no navegador...";
-    },
     'exit': () => {
         closeWindow('window-terminal');
         return null;
     },
+
+    // Segredos
     'vasco': () => {
         return "GIGANTE DA COLINA!";
-    }
+    },
+    'surprise': () => {
+        window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
+        return "Abrindo a sua surpresa no navegador...";
+    },
+    'neofetch': () => {
+        const width = window.screen.width;
+        const height = window.screen.height;
+        const uptime = Math.floor(performance.now() / 60000);
+        const browser = navigator.userAgent.includes("Chrome") ? "Chrome" : "Web Browser";
+        return `
+ ⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕   ZEZIN@ZezinOS
+ ⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕   -------------
+ ⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱   OS: ZezinOS (Web Edition)
+ ⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀   Host: ${browser}
+ ⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗   Uptime: ${uptime} mins
+ ⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕   Resolution: ${width}x${height}
+ ⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵   Shell: ZEZIN-DOS
+ ⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   Theme: ZezinOS 98 SE
+ ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿   CPU: Intel Celeron 266
+ ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁   GPU: ASCII Graphics Adapter
+        `;
+    },
 };
 
 export function initTerminal() {

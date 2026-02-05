@@ -5,6 +5,7 @@ import { initDraggableWindows } from './modules/drag.js';
 import { renderAbout } from './programs/about.js';
 import { renderTerminal } from './programs/terminal.js';
 import { renderPatchNotes } from './programs/patchnotes.js';
+import { initStartMenu } from './modules/startMenu.js';
 
 renderAbout();
 renderTerminal();
@@ -14,6 +15,7 @@ startClock();
 initSelectionBox();
 initWindowListener();
 initDraggableWindows();
+initStartMenu();
 
 window.openWindow = openWindow;
 window.closeWindow = closeWindow;
