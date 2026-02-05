@@ -2,11 +2,13 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
-        version: "v0.4.0",
+        version: "v0.5.0",
         date: "05/02/2026",
         changes: [
             "Adicionado a feature do Menu Iniciar (Start Menu).",
-            'Corrigido espaçamento do desktop.'
+            "Adicionado a feature de selecionar wallpaper",
+            'Corrigido espaçamento do desktop.',
+            'Comando "neofetch" adicionado ao ZEZIN-DOS.'
         ]
     },
     {

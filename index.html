@@ -14,9 +14,12 @@
     <link rel="stylesheet" href="./src/styles/window.css">
     <link rel="stylesheet" href="./src/styles/terminal.css">
     <link rel="stylesheet" href="./src/styles/startmenu.css">
+    <link rel="stylesheet" href="./src/styles/wallpaper.css">
 </head>
 
 <body>
+
+    <!-- Desktop Icons -->
     <div class="desktop-area">
         <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
             <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
@@ -34,6 +37,51 @@
         </div>
     </div>
 
+    <!-- Area para o wallpaper -->
+    <div class="window" id="window-wallpaper" style="width: 380px;">
+        <div class="title-bar">
+            <div class="title-bar-text">Propriedades de Vídeo</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="minimizeWindow('window-wallpaper')">_</button>
+                <button aria-label="Maximize">□</button>
+                <button aria-label="Close" onclick="closeWindow('window-wallpaper')">X</button>
+            </div>
+        </div>
+
+        <div class="window-body" style="overflow: hidden;">
+            <div class="monitor-container">
+                <div class="monitor-bezel">
+                    <div class="monitor-screen">
+                        <div id="wallpaper-preview-screen" class="preview-content"></div>
+                    </div>
+                    <div class="monitor-logo">ZEZIN</div>
+                    <div class="monitor-controls">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="monitor-stand"></div>
+                <div class="monitor-base"></div>
+            </div>
+
+            <div class="wallpaper-controls-area">
+                <fieldset>
+                    <legend>Papel de Parede</legend>
+                    <div class="wp-selection-row">
+                        <ul class="wp-list" id="wallpaper-list">
+                        </ul>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="window-actions" style="justify-content: flex-end; margin-top: 10px; display: flex; gap: 5px;">
+                <button class="win-btn" onclick="applyWallpaper()">Aplicar</button>
+                <button class="win-btn" onclick="closeWindow('window-wallpaper')">OK</button>
+                <button class="win-btn" onclick="closeWindow('window-wallpaper')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Iniciar -->
     <div class="start-menu" id="start-menu">
         <div class="sidebar">
             <span class="sidebar-text"><strong>Zezin</strong>OS 98</span>
@@ -76,6 +124,10 @@
             </div>
             <div class="menu-separator"></div>
 
+            <div class="menu-item" onclick="openWindow('window-wallpaper'); toggleStartMenu()">
+                <img src="./public/icons/wallpaper.ico" class="menu-icon"> <span>Propriedades de Vídeo</span>
+            </div>
+
             <div class="menu-item" onclick="location.reload()">
                 <img src="./public/icons/restart.ico" class="menu-icon">
                 <span>Reiniciar Sistema...</span>
@@ -83,6 +135,7 @@
         </div>
     </div>
 
+    <!-- Barra de Tarefa -->
     <div class="taskbar">
         <button class="start-button">
             <img src="./public/icons/logo.svg" alt="" class="start-icon">

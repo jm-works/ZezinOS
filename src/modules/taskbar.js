@@ -6,7 +6,8 @@ export function createTaskbarButton(windowId, windowElement) {
     const appIcons = {
         'window-about': './public/icons/sobreMim.svg',
         'window-terminal': './public/icons/zenzinDOS.svg',
-        'window-patchnotes': './public/icons/patchnotes.svg'
+        'window-patchnotes': './public/icons/patchnotes.svg',
+        'window-wallpaper': './public/icons/wallpaper.ico'
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);
