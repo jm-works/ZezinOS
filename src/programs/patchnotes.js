@@ -2,6 +2,14 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.4.0",
+        date: "05/02/2026",
+        changes: [
+            "Adicionado a feature do Menu Iniciar (Start Menu).",
+            'Corrigido espaçamento do desktop.'
+        ]
+    },
+    {
         version: "v0.3.0",
         date: "04/02/2026",
         changes: [
