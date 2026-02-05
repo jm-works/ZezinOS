@@ -1,3 +1,5 @@
+import { createWindow } from '../modules/windowFactory.js';
+
 const wallpapers = [
     { 
         id: 'win98', 
@@ -63,15 +65,59 @@ const wallpapers = [
         id: 'eyes', 
         name: 'Look at my eyes', 
         style: 'background-image: url("https://wallpapercave.com/wp/wp6274450.jpg"); background-size: cover;' 
-    },
+    }
 ];
 
 let selectedWallpaperStyle = wallpapers[0].style;
 
 export function renderWallpaper() {
+    createWindow({
+        id: 'window-wallpaper',
+        title: 'Propriedades de Vídeo',
+        isCentered: true,
+        content: `
+            <div class="monitor-container">
+                <div class="monitor-bezel">
+                    <div class="monitor-screen">
+                        <div id="wallpaper-preview-screen" class="preview-content"></div>
+                    </div>
+                    <div class="monitor-logo">JM-WORKS</div>
+                    <div class="monitor-controls">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="monitor-stand"></div>
+                <div class="monitor-base"></div>
+            </div>
+
+            <div class="wallpaper-controls-area">
+                <fieldset>
+                    <legend>Papel de Parede</legend>
+                    <div class="wp-selection-row">
+                        <ul class="wp-list" id="wallpaper-list">
+                        </ul>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="window-actions" style="justify-content: flex-end; margin-top: 10px; display: flex; gap: 5px;">
+                <button class="win-btn" onclick="applyWallpaper()">Aplicar</button>
+                <button class="win-btn" onclick="closeWindow('window-wallpaper')">OK</button>
+                <button class="win-btn" onclick="closeWindow('window-wallpaper')">Cancelar</button>
+            </div>
+        `
+    });
+
+    const win = document.getElementById('window-wallpaper');
+    if (win) {
+        win.style.width = '380px';
+    }
+
     const listElement = document.getElementById('wallpaper-list');
     const previewScreen = document.getElementById('wallpaper-preview-screen');
     
+    updatePreview(previewScreen, selectedWallpaperStyle);
+
     listElement.innerHTML = '';
 
     wallpapers.forEach((wp, index) => {
@@ -79,7 +125,7 @@ export function renderWallpaper() {
         li.innerText = wp.name;
         li.dataset.style = wp.style;
         
-        if (index === 0) li.classList.add('selected');
+        if (wp.style === selectedWallpaperStyle) li.classList.add('selected');
 
         li.onclick = () => {
             document.querySelectorAll('.wp-list li').forEach(item => item.classList.remove('selected'));
@@ -102,6 +148,7 @@ export function renderWallpaper() {
 }
 
 function updatePreview(element, styleString) {
+    if(!element) return;
     element.style = '';
-    element.style.cssText = styleString;
+    element.style.cssText = styleString + ' background-position: center center;';
 }
