@@ -8,7 +8,7 @@ export function initStartMenu() {
     };
 
     startButton.addEventListener('click', (e) => {
-        e.stopPropagation(); // Não deixa o clique passar para o document
+        e.stopPropagation();
         window.toggleStartMenu();
     });
 
