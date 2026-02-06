@@ -6,6 +6,7 @@ const updates = [
         date: "06/02/2026",
         changes: [
             "Adicionado a feature de Media Player (Clique em 'Arquivo' e poderá pesquisar alguma música no SoundCloud).",
+            "Obs: Caso o player não carregue nenhuma imagem ou nome, espere um pouco e aperte F5, infelizmente é uma limitação da API, o máximo que pude fazer foi tentar contornar isso no código, mas ainda está imperfeito. Caso seja resolvido, essa observação não existirá nos próximos Patch Notes."
         ]
     },
     {

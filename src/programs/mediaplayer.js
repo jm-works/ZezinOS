@@ -246,7 +246,7 @@ function updateMetadata(retryCount = 0) {
             }
         }
 
-        if (retryCount < 20) {
+        if (retryCount < 30) {
             setTimeout(() => {
                 updateMetadata(retryCount + 1);
             }, 500); 
