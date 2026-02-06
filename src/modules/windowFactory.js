@@ -1,8 +1,12 @@
-export function createWindow({ id, title, content, menuBar = '', toolBar = '', isCentered = false }) {
+export function createWindow({ id, title, content, menuBar = '', toolBar = '', isCentered = false, skipTaskbar = false }) {
     if (document.getElementById(id)) return;
 
     const windowDiv = document.createElement('div');
     windowDiv.id = id;
+    
+    if (skipTaskbar) {
+        windowDiv.dataset.skipTaskbar = "true";
+    }
     
     windowDiv.className = `window ${isCentered ? 'centered' : ''}`;
     

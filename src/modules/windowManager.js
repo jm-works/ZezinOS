@@ -5,6 +5,15 @@ let zIndexCounter = 100;
 export function bringToFront(windowElement) {
     zIndexCounter++;
     windowElement.style.zIndex = zIndexCounter;
+
+    if (windowElement.id === 'window-mediaplayer') {
+        const dialog = document.getElementById('window-url-dialog');
+        
+        if (dialog && dialog.classList.contains('open')) {
+            zIndexCounter++;
+            dialog.style.zIndex = zIndexCounter;
+        }
+    }
 }
 
 export function openWindow(windowId) {
@@ -12,7 +21,9 @@ export function openWindow(windowId) {
 
     if (windowElement) {
         windowElement.classList.add('open');
-        createTaskbarButton(windowId, windowElement);
+        if (windowElement.dataset.skipTaskbar !== "true") {
+            createTaskbarButton(windowId, windowElement);
+        }
 
         bringToFront(windowElement);
     }
@@ -22,7 +33,10 @@ export function closeWindow(windowId) {
     const windowElement = document.getElementById(windowId);
     if (windowElement) {
         windowElement.classList.remove('open');
-        removeTaskbarButton(windowId);
+    
+        if (windowElement.dataset.skipTaskbar !== "true") {
+            removeTaskbarButton(windowId);
+        }
     }
 }
 
@@ -49,12 +63,14 @@ export function initWindowListener() {
             const openWindows = document.querySelectorAll('.window.open');
             
             openWindows.forEach(win => {
-                win.classList.remove('open');
-                const taskButton = document.getElementById(`btn-${win.id}`);
-                if (taskButton) {
-                    taskButton.classList.remove('active')
+                if (win.dataset.skipTaskbar !== "true") {
+                    win.classList.remove('open');
+                    const taskButton = document.getElementById(`btn-${win.id}`);
+                    if (taskButton) {
+                        taskButton.classList.remove('active');
+                    }
                 }
-            })
+            });
         }
     });
 

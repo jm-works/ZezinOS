@@ -8,15 +8,20 @@ import { renderTerminal } from './programs/terminal.js';
 import { renderPatchNotes } from './programs/patchnotes.js';
 import { initStartMenu } from './modules/startMenu.js';
 import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
+import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 
 // 'Setar' um wallpaper inicial
 setWallpaper('eyes');
+
+// Setar playlist do Midia Player
+setMedia('https://soundcloud.com/rizzya-haese-40403621/sets/the-best-of-city-pop-o');
 
 // Renderizar Janelas
 renderAbout();
 renderTerminal();
 renderPatchNotes();
 renderWallpaper();
+renderMediaPlayer();
 
 // Iniciar Metodos
 startClock();
