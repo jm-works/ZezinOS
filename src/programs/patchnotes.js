@@ -1,6 +1,13 @@
 import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
+        {
+        version: "v0.6.0",
+        date: "06/02/2026",
+        changes: [
+            "Adicionado a feature de Media Player (Clique em 'Arquivo' e poderá pesquisar alguma música no SoundCloud).",
+        ]
+    },
     {
         version: "v0.5.0",
         date: "05/02/2026",

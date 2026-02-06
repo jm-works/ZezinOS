@@ -190,6 +190,8 @@
 }
 
 .url-input-label {
+    font-family: var(--system-font);
+    font-weight: 400;
     margin-bottom: 5px;
     color: #000;
 }
