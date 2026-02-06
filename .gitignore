@@ -12,3 +12,6 @@ Desktop.ini
 
 # Node modules
 node_modules/
+
+# Anotacoes
+*.txt
