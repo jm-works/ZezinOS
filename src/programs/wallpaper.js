@@ -70,6 +70,21 @@ const wallpapers = [
 
 let selectedWallpaperStyle = wallpapers[0].style;
 
+export function setWallpaper(id) {
+    const wp = wallpapers.find(w => w.id === id);
+    if (wp) {
+        selectedWallpaperStyle = wp.style;
+        
+        const desktop = document.querySelector('.desktop-area');
+        if (desktop) {
+            desktop.style = ''; 
+            desktop.style.cssText = wp.style + ' background-position: center center;';
+        }
+    } else {
+        console.warn(`Wallpaper '${id}' não encontrado!`);
+    }
+}
+
 export function renderWallpaper() {
     createWindow({
         id: 'window-wallpaper',
