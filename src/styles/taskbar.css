@@ -46,7 +46,7 @@
 }
 
 .task-button.active {
-    background-color: #eeeeee; 
+    background-color: var(--task-active); 
     
     box-shadow: 
         inset 1px 1px var(--border-darkest),

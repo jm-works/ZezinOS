@@ -1,8 +1,11 @@
 :root {
     /* Fundo */
     --win-gray: #c0c0c0;
+    --win-gray-light: #dfdfdf;
+    --win-gray-dark: #404040;
     --win-desktop: #008080;
     --win-blue: #000080;
+    --win-aqua: #1084d0;
     --win-black: #000000;
     --win-white: #ffffff;
 
@@ -15,6 +18,10 @@
     --border-light: #ffffff;
     --border-dark: #808080;
     --border-darkest: #000000;
+    --border-yellow: #ffff00;
+
+    /* Taskbar */
+    --task-active: #eeeeee;
 
     /* Fontes */
     --system-font: 'Segoe UI', sans-serif;

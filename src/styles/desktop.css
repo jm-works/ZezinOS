@@ -36,14 +36,14 @@
 
     border: 1px dotted transparent;
 
-    text-shadow: 1px 1px 1px #000000;
+    text-shadow: 1px 1px 1px var(--border-darkest);
 }
 
 .desktop-icon:active span,
 .desktop-icon:focus span,
 .desktop-icon.selection span {
     background-color: var(--win-blue);
-    border: 1px dotted #ffff00;
+    border: 1px dotted var(--border-yellow);
     text-shadow: none;
 }
 
