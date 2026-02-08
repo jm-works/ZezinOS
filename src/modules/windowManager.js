@@ -31,9 +31,32 @@ export function openWindow(windowId) {
 
 export function closeWindow(windowId) {
     const windowElement = document.getElementById(windowId);
+    
     if (windowElement) {
         windowElement.classList.remove('open');
     
+        windowElement.style.top = '';
+        windowElement.style.left = '';
+        windowElement.style.margin = '';
+        windowElement.style.transform = '';
+
+        if (windowId === 'window-terminal') {
+            const output = windowElement.querySelector('#terminal-output');
+            const input = windowElement.querySelector('#cmd-input');
+
+            if (output) {
+                output.innerHTML = `
+            <div>JM-WORKS(R) ZezinOS</div>
+            <div>(C) Copyright JM-WORKS Corp 1981-1998.</div>
+            <br>
+                `;
+            }
+            
+            if (input) {
+                input.value = '';
+            }
+        }
+
         if (windowElement.dataset.skipTaskbar !== "true") {
             removeTaskbarButton(windowId);
         }
