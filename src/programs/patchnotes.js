@@ -6,6 +6,8 @@ const updates = [
         date: "08/02/2026",
         changes: [
             "Adicionado a feature de filtro na aba de 'Propriedades de Video'.",
+            "Atualizado a lógica das janelas.",
+            "Correção de pequenos erros."
         ]
     },
     {
