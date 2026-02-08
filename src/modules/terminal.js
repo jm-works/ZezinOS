@@ -21,6 +21,8 @@ const commands = {
     ---------------------
     ABOUT  - Abrir 'Sobre Mim'
     NOTES  - Abrir 'Patch Notes'
+    MEDIA  - Abrir 'Media Player'
+    VIDEO  - Abri 'Propriedades de Video'
         `;
     },
 
@@ -32,6 +34,14 @@ const commands = {
     'notes': () => {
         openWindow('window-patchnotes');
         return "Abrindo janela 'Patch Notes'...";
+    },
+    'media': () => {
+        openWindow('window-mediaplayer');
+        return "Abrindo janela 'Media Player'...";
+    },
+    'video': () => {
+        openWindow('window-wallpaper');
+        return "Abrindo janela 'Propriedades de Video'...";
     },
 
     // Comandos Gerais
@@ -57,7 +67,22 @@ const commands = {
 
     // Segredos
     'vasco': () => {
-        return "GIGANTE DA COLINA!";
+        return `
+    Vamos todos cantar de coração
+    A Cruz de Malta é o meu pendão
+    Tu tens o nome do heroico português
+    Vasco da Gama, a tua fama assim se fez
+
+    Tua imensa torcida é bem feliz
+    Norte-Sul, Norte-Sul deste Brasil
+    Tua estrela, na terra a brilhar
+    Ilumina o mar
+
+    No atletismo és um braço
+    No remo és imortal
+    No futebol és o traço
+    De união Brasil-Portugal
+        `;
     },
     'surprise': () => {
         window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
@@ -80,6 +105,46 @@ const commands = {
  ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿   CPU: Intel Celeron 266
  ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁   GPU: ASCII Graphics Adapter
         `;
+    },
+    'sudo': () => {
+        const user = "Zezin";
+        return `
+    ${user} is not in the sudoers file. This incident will be reported.
+        `;
+    },
+    'crash': () => {
+        const bsod = document.createElement('div');
+        Object.assign(bsod.style, {
+            position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+            backgroundColor: '#0000AA', color: 'white', fontFamily: '"Courier New", monospace',
+            zIndex: '99999', display: 'flex', flexDirection: 'column',
+            justifyContent: 'center', alignItems: 'center', fontSize: '20px', fontWeight: 'bold'
+        });
+
+        bsod.innerHTML = `
+            <div style="text-align: center; max-width: 800px;">
+                <p style="background: white; color: #0000AA; display: inline-block; padding: 2px; margin-bottom: 20px;">ZezinOS</p>
+                <p>Ocorreu um erro fatal 0E em 0028:C0011E36 no VXD VMM(01) + 00010E36.</p>
+                <p>O aplicativo atual será encerrado.</p>
+                <br>
+                <p>* Pressione qualquer tecla para retornar ao ZezinOS.</p>
+                <p>* Pressione ALT+F4 para reiniciar o computador.</p>
+            </div>
+        `;
+        document.body.appendChild(bsod);
+
+        const removeBsod = () => {
+            bsod.remove();
+            document.removeEventListener('keydown', removeBsod);
+            document.removeEventListener('click', removeBsod);
+        };
+        
+        setTimeout(() => {
+            document.addEventListener('keydown', removeBsod);
+            document.addEventListener('click', removeBsod);
+        }, 500);
+
+        return "SYSTEM HALTED";
     },
 };
 

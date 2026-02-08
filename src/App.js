@@ -14,7 +14,7 @@ import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 setWallpaper('eyes');
 
 // Setar playlist do Midia Player
-setMedia('https://soundcloud.com/rizzya-haese-40403621/sets/the-best-of-city-pop-o');
+setMedia('https://soundcloud.com/cosmicfmoff/sets/nffonptya0ii');
 
 // Renderizar Janelas
 renderAbout();

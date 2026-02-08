@@ -1,12 +1,18 @@
 import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
-        {
+    {
+        version: "v0.7.0",
+        date: "08/02/2026",
+        changes: [
+            "Adicionado a feature de filtro na aba de 'Propriedades de Video'.",
+        ]
+    },
+    {
         version: "v0.6.0",
         date: "06/02/2026",
         changes: [
             "Adicionado a feature de Media Player (Clique em 'Arquivo' e poderá pesquisar alguma música no SoundCloud).",
-            "Obs: Caso o player não carregue nenhuma imagem ou nome, espere um pouco e aperte F5, infelizmente é uma limitação da API, o máximo que pude fazer foi tentar contornar isso no código, mas ainda está imperfeito. Caso seja resolvido, essa observação não existirá nos próximos Patch Notes."
         ]
     },
     {
