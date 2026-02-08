@@ -1,0 +1,113 @@
+.crt-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    pointer-events: none;
+    overflow: hidden; 
+}
+
+.crt-overlay.active {
+    display: block;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 0.92; }
+    100% { opacity: 0.95; }
+}
+
+@keyframes scanline-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+.crt-overlay.effect-vga {
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+        radial-gradient(circle at center, transparent 70%, rgba(0,0,0,0.2) 100%);
+    
+    background-size: 100% 3px, 100% 100%;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.crt-overlay.effect-trinitron {
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle, transparent 80%, rgba(0,0,0,0.15) 100%);
+    
+    background-size: 3px 100%, 100% 100%;
+    
+    backdrop-filter: contrast(1.05) saturate(1.05);
+    opacity: 1;
+    pointer-events: none;
+}
+
+.crt-overlay.effect-green {
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 50, 0, 0.3) 2px, rgba(0, 50, 0, 0.3) 3px),
+        radial-gradient(circle, transparent 50%, rgba(0, 20, 0, 0.6) 90%);
+    background-size: 100% 3px, 100% 100%;
+    backdrop-filter: sepia(100%) hue-rotate(90deg) saturate(300%) contrast(1.1);
+    opacity: 0.9;
+    animation: flicker 0.2s infinite; 
+}
+
+.crt-overlay.effect-amber {
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(60, 40, 0, 0.3) 2px, rgba(60, 40, 0, 0.3) 3px),
+        radial-gradient(circle, transparent 50%, rgba(40, 20, 0, 0.6) 90%);
+    backdrop-filter: sepia(100%) hue-rotate(-40deg) saturate(300%) contrast(1.1);
+    opacity: 0.9;
+    animation: flicker 0.2s infinite;
+}
+
+.crt-overlay.effect-tv {
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.4) 100%);
+    background-size: 100% 2px, 100% 100%;
+    opacity: 0.8; 
+    animation: flicker 0.15s infinite, scanline-scroll 10s linear infinite;
+}
+
+
+#wallpaper-preview-screen.crt-active::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#wallpaper-preview-screen.effect-vga::after {
+    background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
+    background-size: 100% 3px;
+    opacity: 1;
+}
+
+#wallpaper-preview-screen.effect-trinitron::after {
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 3px 100%;
+    opacity: 0.8;
+}
+
+#wallpaper-preview-screen.effect-green::after {
+    background: rgba(0, 255, 0, 0.15);
+    mix-blend-mode: hard-light;
+}
+
+#wallpaper-preview-screen.effect-amber::after {
+    background: rgba(255, 165, 0, 0.15);
+    mix-blend-mode: hard-light;
+}
+
+#wallpaper-preview-screen.effect-tv::after {
+    background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 50%);
+    background-size: 100% 2px;
+    opacity: 0.6;
+}
