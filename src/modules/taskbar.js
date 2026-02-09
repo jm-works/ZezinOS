@@ -8,7 +8,8 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-terminal': './public/icons/zenzinDOS.svg',
         'window-patchnotes': './public/icons/patchnotes.svg',
         'window-wallpaper': './public/icons/wallpaper.ico',
-        'window-mediaplayer': './public/icons/mediaplayer.svg'
+        'window-mediaplayer': './public/icons/mediaplayer.svg',
+        'window-waifuviewer': './public/icons/waifuviewer.svg'
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);

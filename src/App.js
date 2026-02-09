@@ -9,6 +9,7 @@ import { renderPatchNotes } from './programs/patchnotes.js';
 import { initStartMenu } from './modules/startMenu.js';
 import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
+import { renderWaifuViewer } from './programs/waifuviewer.js';
 
 // 'Setar' um wallpaper inicial
 setWallpaper('eyes');
@@ -22,6 +23,7 @@ renderTerminal();
 renderPatchNotes();
 renderWallpaper();
 renderMediaPlayer();
+renderWaifuViewer();
 
 // Iniciar Metodos
 startClock();

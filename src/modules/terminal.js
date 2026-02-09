@@ -22,7 +22,8 @@ const commands = {
     ABOUT  - Abrir 'Sobre Mim'
     NOTES  - Abrir 'Patch Notes'
     MEDIA  - Abrir 'Media Player'
-    VIDEO  - Abri 'Propriedades de Video'
+    VIDEO  - Abrir 'Propriedades de Video'
+    WAIFU  - Abrir 'Waifu Viewer'
         `;
     },
 
@@ -42,6 +43,10 @@ const commands = {
     'video': () => {
         openWindow('window-wallpaper');
         return "Abrindo janela 'Propriedades de Video'...";
+    },
+    'waifu': () => {
+        openWindow('window-waifumaker');
+        return "Abrindo janela 'Waifu Viewer'...";
     },
 
     // Comandos Gerais
