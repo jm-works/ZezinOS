@@ -59,29 +59,28 @@ const updates = [
 export function renderPatchNotes() {
     const contentHTML = updates.map(update => `
         <div class="patch-entry">
-            <h4 style="margin-bottom: 5px; color: var(--win-blue);">
-                ${update.version} <span style="color: #000; font-weight: normal;">- ${update.date}</span>
+            <h4 class="patch-version-title">
+                ${update.version} <span class="patch-date">- ${update.date}</span>
             </h4>
-            <ul style="list-style-type: square; margin-left: 20px; margin-bottom: 15px;">
-                ${update.changes.map(change => `<li style="margin-bottom: 2px;">${change}</li>`).join('')}
+            <ul class="patch-list">
+                ${update.changes.map(change => `<li>${change}</li>`).join('')}
             </ul>
-            <hr style="border: 0; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-light); margin-bottom: 15px;">
+            <hr class="patch-separator">
         </div>
     `).join('');
 
     const menuHTML = `
         <div class="menu-item">Arquivo</div>
         <div class="menu-item">Editar</div>
-        <div class="menu-item">Formatar</div>
-        <div class="menu-item">Exibir</div>
+        <div class="menu-item">Pesquisar</div>
         <div class="menu-item">Ajuda</div>
     `;
 
     createWindow({
         id: 'window-patchnotes',
-        title: 'Patch Notes - Bloco de Notas',
+        title: 'Patch Notes',
         menuBar: menuHTML,
-        content: `<div style="font-family: 'Courier New', monospace; font-size: 13px;">${contentHTML}</div>`,
+        content: `<div class="patch-notes-area">${contentHTML}</div>`,
         isCentered: true
     });
 }

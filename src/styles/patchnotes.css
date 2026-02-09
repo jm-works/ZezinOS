@@ -1,0 +1,120 @@
+#window-patchnotes .window-body {
+    background-color: var(--win-gray) !important;
+    display: flex;
+    flex-direction: column;
+    padding: 2px !important; 
+    overflow: hidden;
+}
+
+#window-patchnotes .menu-bar {
+    display: flex;
+    padding: 2px 0;
+    margin-bottom: 2px;
+    background-color: var(--win-gray);
+    font-family: var(--system-font);
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+#window-patchnotes .menu-item {
+    padding: 2px 6px;
+    cursor: default;
+    color: var(--text-main);
+}
+
+#window-patchnotes .window-body {
+    margin: 2px;
+    background-color: var(--win-white); 
+    color: var(--text-main);
+    border: 0px solid;
+    border-color: 
+        var(--border-dark), 
+        var(--border-light), 
+        var(--border-light), 
+        var(--border-dark);
+    padding: 15px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#window-patchnotes .menu-item:hover {
+    background-color: var(--win-blue);
+    color: var(--text-inverted);
+}
+
+#window-patchnotes .menu-item:first-letter {
+    text-decoration: underline;
+}
+
+.patch-notes-area {
+    flex: 1;
+    background-color: var(--win-white);
+    color: var(--text-main);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    padding: 4px;
+
+    border-top: 2px solid var(--border-dark);
+    border-left: 2px solid var(--border-dark);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    
+    overflow-y: auto;
+    user-select: text; 
+    cursor: text;
+}
+
+.patch-notes-area::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+.patch-notes-area::-webkit-scrollbar-track {
+    background-color: var(--win-gray-light); 
+}
+
+.patch-notes-area::-webkit-scrollbar-thumb {
+    background-color: var(--win-gray);
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
+    border-right: 1px solid var(--win-black);
+    border-bottom: 1px solid var(--win-black);
+    box-shadow: inset -1px -1px 0 var(--border-dark), inset 1px 1px 0 var(--win-gray-light);
+}
+
+.patch-notes-area::-webkit-scrollbar-corner {
+    background-color: var(--win-gray);
+}
+
+.patch-entry {
+    margin-bottom: 10px;
+}
+
+.patch-version-title {
+    margin: 0 0 5px 0;
+    color: var(--win-blue);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.patch-date {
+    color: var(--text-main);
+    font-weight: normal;
+}
+
+.patch-list {
+    list-style-type: square;
+    margin: 0 0 10px 20px;
+    padding: 0;
+}
+
+.patch-list li {
+    margin-bottom: 2px;
+}
+
+.patch-separator {
+    border: 0;
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--win-white);
+    margin: 10px 0;
+}

@@ -6,6 +6,7 @@
     height: 100%;
     font-family: var(--system-font);
     gap: 2px;
+    border: 0px solid
 }
 
 .wf-toolbar {
