@@ -57,6 +57,14 @@ export function closeWindow(windowId) {
             }
         }
 
+        if (windowId === 'window-calculator') {
+            const clearBtn = windowElement.querySelector('[data-action="clear"]');
+            
+            if (clearBtn) {
+                clearBtn.click();
+            }
+        }        
+
         if (windowElement.dataset.skipTaskbar !== "true") {
             removeTaskbarButton(windowId);
         }

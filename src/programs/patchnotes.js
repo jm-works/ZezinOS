@@ -2,6 +2,14 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.8.0",
+        date: "09/02/2026",
+        changes: [
+            "Adicionado calculadora.",
+            "Correção de pequenos erros."
+        ]
+    },
+    {
         version: "v0.7.0",
         date: "08/02/2026",
         changes: [

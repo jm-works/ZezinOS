@@ -10,6 +10,7 @@ import { initStartMenu } from './modules/startMenu.js';
 import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
+import { renderCalculator } from './programs/calculator.js';
 
 // 'Setar' um wallpaper inicial
 setWallpaper('eyes');
@@ -24,6 +25,7 @@ renderPatchNotes();
 renderWallpaper();
 renderMediaPlayer();
 renderWaifuViewer();
+renderCalculator();
 
 // Iniciar Metodos
 startClock();

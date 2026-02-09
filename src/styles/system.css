@@ -25,6 +25,7 @@
 
     /* Fontes */
     --system-font: 'Segoe UI', sans-serif;
+    --pixel-font: 'Courier New', monospace;
     --cmd-font: 'Courier New', Courier, monospace;
     --cmd-input: inherit;
 
@@ -32,3 +33,95 @@
     --win-selection-box: rgba(0, 120, 215, 0.3);
     --win-selection-border: rgba(0, 50, 150, 0.6);
 }
+
+/* Botões */
+.sunken-panel {
+    border-top: 2px solid var(--win-gray-dark);
+    border-left: 2px solid var(--win-gray-dark);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    background-color: var(--win-white);
+    color: var(--win-black);
+}
+
+.os-btn {
+    font-family: var(--system-font);
+    font-size: 11px;
+    color: #000;
+    background-color: var(--win-gray);
+    
+    min-width: 75px;
+    height: 23px;
+    padding: 0 12px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    outline: none;
+
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.os-btn:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+}
+
+.os-btn:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.os-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    font-family: var(--system-font);
+    font-size: 11px;
+    height: 22px; 
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    border-radius: 0;
+    padding: 2px 24px 2px 4px;
+    
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    
+    background-image: 
+        linear-gradient(45deg, transparent 50%, #000 50%),
+        linear-gradient(-45deg, transparent 50%, #000 50%),
+        linear-gradient(to bottom, #000, #000), 
+        linear-gradient(to bottom, #dfdfdf, #dfdfdf), 
+        linear-gradient(to right, #dfdfdf, #dfdfdf),
+        linear-gradient(to bottom, #404040, #404040), 
+        linear-gradient(to right, #404040, #404040),
+        linear-gradient(to bottom, #c0c0c0, #c0c0c0);
+
+    background-size: 
+        4px 4px, 4px 4px, 6px 2px,
+        18px 1px, 1px 20px, 18px 1px, 1px 20px,
+        18px 18px;
+
+    background-repeat: no-repeat;
+    
+    background-position:
+        calc(100% - 6px) 10px, calc(100% - 10px) 10px, calc(100% - 7px) 8px,
+        calc(100% - 2px) 2px, calc(100% - 19px) 2px, calc(100% - 2px) 19px, right 2px,
+        calc(100% - 2px) 2px;
+    
+    outline: none;
+}
+.os-select:active { background-color: #f0f0f0; }

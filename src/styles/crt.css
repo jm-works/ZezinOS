@@ -75,7 +75,6 @@
     animation: flicker 0.15s infinite, scanline-scroll 10s linear infinite;
 }
 
-
 #wallpaper-preview-screen.crt-active::after {
     content: "";
     position: absolute;

@@ -20,7 +20,7 @@
 .wmp-menu-item {
     padding: 2px 6px;
     cursor: default;
-    color: #000;
+    color: var(--win-black);
     position: relative;
 }
 .wmp-menu-item:first-letter { text-decoration: underline; }
@@ -40,11 +40,11 @@
 
 .wmp-screen-container {
     flex: 1;
-    background-color: #000;
-    border-top: 1px solid #808080;
-    border-left: 1px solid #808080;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    background-color: var(--win-black);
+    border-top: 1px solid var(--border-dark);
+    border-left: 1px solid var(--border-dark);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
     margin: 2px;
     position: relative;
     overflow: hidden;
@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #808080;
+    color: var(--text-disabled);
 }
 
 #wmp-artwork {
@@ -83,11 +83,11 @@
     width: 100%;
     height: 4px;
     background: var(--win-gray);
-    border-top: 1px solid #808080;
-    border-left: 1px solid #808080;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
-    box-shadow: inset 1px 1px 0 #000000;
+    border-top: 1px solid var(--border-dark);
+    border-left: 1px solid var(--border-dark);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
+    box-shadow: inset 1px 1px 0 var(--win-black);
 }
 
 .wmp-slider::-webkit-slider-thumb {
@@ -95,10 +95,10 @@
     height: 14px;
     width: 9px;
     background: var(--win-gray);
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
+    border-right: 1px solid var(--win-black);
+    border-bottom: 1px solid var(--win-black);
     margin-top: -6px; 
 }
 
@@ -120,11 +120,11 @@
     height: 24px;
     background: var(--win-gray);
     border: none;
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    box-shadow: 1px 1px 0 #808080; 
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
+    border-right: 1px solid var(--win-black);
+    border-bottom: 1px solid var(--win-black);
+    box-shadow: 1px 1px 0 var(--border-dark); 
     
     display: flex;
     align-items: center;
@@ -133,10 +133,10 @@
 }
 
 .wmp-btn:active {
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid var(--win-black);
+    border-left: 1px solid var(--win-black);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
     box-shadow: none;
     padding-top: 2px;
     padding-bottom: 0;
@@ -145,7 +145,7 @@
 .wmp-icon {
     width: 10px;
     height: 10px;
-    fill: #000;
+    fill: var(--win-black);
 }
 
 .wmp-statusbar {
@@ -158,14 +158,15 @@
 }
 
 .wmp-status-panel {
-    border-top: 1px solid #808080;
-    border-left: 1px solid #808080;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid var(--border-dark);
+    border-left: 1px solid var(--border-dark);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
     padding: 2px 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text-main);
 }
 
 .wmp-status-main { flex: 1; }
@@ -193,14 +194,17 @@
     font-family: var(--system-font);
     font-weight: 400;
     margin-bottom: 5px;
-    color: #000;
+    color: var(--win-black);
 }
 
 .url-input {
     height: 22px;
-    border: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080;
-    background: #fff;
+    border-top: 1px solid var(--border-dark);
+    border-left: 1px solid var(--border-dark);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
+    box-shadow: inset 1px 1px 0 var(--win-black);
+    background: var(--win-white);
     padding: 2px 4px;
     font-family: var(--system-font);
     width: 100%;
@@ -221,27 +225,27 @@
     font-family: var(--system-font);
     font-size: 11px;
     background-color: var(--win-gray);
-    color: #000;
+    color: var(--win-black);
     
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    box-shadow: 1px 1px 0 #808080;
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
+    border-right: 1px solid var(--win-black);
+    border-bottom: 1px solid var(--win-black);
+    box-shadow: 1px 1px 0 var(--border-dark);
     
     cursor: pointer;
 }
 
 .dialog-btn:active {
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid var(--win-black);
+    border-left: 1px solid var(--win-black);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
     box-shadow: none;
     transform: translate(1px, 1px);
 }
 
 .dialog-btn:focus {
-    outline: 1px dotted #000000;
+    outline: 1px dotted var(--win-black);
     outline-offset: -4px;
 }

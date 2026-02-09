@@ -24,6 +24,7 @@ const commands = {
     MEDIA  - Abrir 'Media Player'
     VIDEO  - Abrir 'Propriedades de Video'
     WAIFU  - Abrir 'Waifu Viewer'
+    CALC   - Abrir 'Calculadora'
         `;
     },
 
@@ -45,8 +46,12 @@ const commands = {
         return "Abrindo janela 'Propriedades de Video'...";
     },
     'waifu': () => {
-        openWindow('window-waifumaker');
+        openWindow('window-waifuviewer');
         return "Abrindo janela 'Waifu Viewer'...";
+    },
+    'calc': () => {
+        openWindow('window-calculator');
+        return "Abrindo janela 'Calculadora'...";
     },
 
     // Comandos Gerais

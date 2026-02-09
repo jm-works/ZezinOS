@@ -131,19 +131,19 @@ font-family: var(--system-font);
     cursor: default;
     outline: none;
 
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
+    border-right: 1px solid var(--win-black);
+    border-bottom: 1px solid var(--win-black);
     
     box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
 }
 
 .win-btn:active {
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid var(--win-black);
+    border-left: 1px solid var(--win-black);
+    border-right: 1px solid var(--win-white);
+    border-bottom: 1px solid var(--win-white);
     
     box-shadow: none;
     
