@@ -1,0 +1,143 @@
+#window-doom {
+    width: 800px !important;
+    height: 600px !important;
+    min-width: 800px !important;
+    min-height: 600px !important;
+    background-color: var(--win-gray) !important; 
+}
+
+#window-doom .window-body {
+    background-color: var(--win-gray) !important;
+    
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+
+    border: 0px;
+}
+
+#window-doom .menu-bar {
+    background-color: var(--win-gray);
+    border-bottom: 1px solid var(--border-light); 
+    padding: 2px 4px;
+    flex-shrink: 0 !important;
+    height: 20px !important;
+}
+
+.doom-container {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    width: 100% !important;
+    height: calc(100% - 20px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    
+    padding: 2px; 
+    box-sizing: border-box;
+}
+
+.doom-viewport {
+    flex: 1 !important;
+    background-color: #000;
+    
+    border-top: 2px solid var(--border-dark);
+    border-left: 2px solid var(--border-dark);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.doom-iframe {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    display: none;
+    background-color: #000;
+    z-index: 5;
+}
+
+.doom-cover {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg, #111, #111 20px, #000 20px, #000 40px);
+    z-index: 10;
+}
+
+.doom-logo {
+    font-family: 'Impact', sans-serif;
+    font-size: 72px;
+    color: #b00;
+    text-shadow: 4px 4px 0 #000, 0 0 20px #f00;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.doom-subtitle {
+    color: #888;
+    font-family: var(--system-font);
+    font-size: 16px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.doom-btn-start {
+    font-weight: bold;
+    font-size: 14px;
+    height: 36px;
+    padding: 0 40px;
+    background-color: var(--win-gray);
+    cursor: pointer;
+    border: 2px outset #fff;
+    z-index: 20;
+}
+.doom-btn-start:active { border: 2px inset #fff; }
+
+.doom-credits {
+    position: absolute;
+    bottom: 20px;
+    color: #444;
+    font-size: 11px;
+    font-family: var(--system-font);
+}
+
+.doom-statusbar {
+    height: 24px !important;
+    flex-shrink: 0 !important;
+    background-color: var(--win-gray);
+    border-top: 1px solid var(--win-white); 
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-top: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    gap: 15px;
+    user-select: none;
+    z-index: 20;
+}
+
+.status-segment {
+    border-right: 1px solid var(--border-dark);
+    padding-right: 15px;
+}

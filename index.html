@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./src/styles/waifuviewer.css">
     <link rel="stylesheet" href="./src/styles/calculator.css">
     <link rel="stylesheet" href="./src/styles/patchnotes.css">
+    <link rel="stylesheet" href="./src/styles/games/doom.css">
 </head>
 
 <body>
@@ -80,6 +81,18 @@
                     <div class="menu-item" onclick="openWindow('window-calculator'); toggleStartMenu()">
                         <img src="./public/icons/calculator.ico" class="menu-icon">
                         <span>Calculadora</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-submenu">
+                <img src="./public/icons/games.ico" class="menu-icon">
+                <span style="flex: 1">Jogos</span>
+                <span class="menu-arrow">▶</span>
+
+                <div class="submenu" style="margin-top: 4px;">
+                    <div class="menu-item" onclick="openWindow('window-doom'); toggleStartMenu()">
+                        <img src="./public/icons/doom.ico" class="menu-icon">
+                        <span>DOOM</span>
                     </div>
                 </div>
             </div>

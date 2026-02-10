@@ -10,7 +10,8 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-wallpaper': './public/icons/wallpaper.ico',
         'window-mediaplayer': './public/icons/mediaplayer.svg',
         'window-waifuviewer': './public/icons/waifuviewer.svg',
-        'window-calculator': './public/icons/calculator.ico'
+        'window-calculator': './public/icons/calculator.ico',
+        'window-doom': './public/icons/doom.ico'
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);

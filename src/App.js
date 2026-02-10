@@ -11,6 +11,7 @@ import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
+import { renderDoom } from './programs/games/doom.js';
 
 // 'Setar' um wallpaper inicial
 setWallpaper('eyes');
@@ -26,6 +27,7 @@ renderWallpaper();
 renderMediaPlayer();
 renderWaifuViewer();
 renderCalculator();
+renderDoom();
 
 // Iniciar Metodos
 startClock();

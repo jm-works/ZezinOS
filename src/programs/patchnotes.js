@@ -3,9 +3,11 @@ import {createWindow} from '../modules/windowFactory.js';
 const updates = [
     {
         version: "v0.8.0",
-        date: "09/02/2026",
+        date: "10/02/2026",
         changes: [
             "Adicionado calculadora.",
+            "Correção visual de algumas janelas.",
+            "Agora roda DOOM!",
             "Correção de pequenos erros."
         ]
     },
