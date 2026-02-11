@@ -15,6 +15,7 @@
     width: 100% !important;
     height: 100% !important;
     overflow: hidden !important;
+    border: 0px;
 }
 
 #window-doom .menu-bar {
