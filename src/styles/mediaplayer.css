@@ -232,8 +232,6 @@
     border-right: 1px solid var(--win-black);
     border-bottom: 1px solid var(--win-black);
     box-shadow: 1px 1px 0 var(--border-dark);
-    
-    cursor: pointer;
 }
 
 .dialog-btn:active {

@@ -27,9 +27,12 @@ export function renderDoom() {
             </div>
             
             <div class="doom-statusbar">
-                <div class="status-segment">CPU: 486DX2-66</div>
-                <div class="status-segment">MEM: 8MB OK</div>
-                <div class="status-segment" style="flex:1; text-align: right;">MODE: SVGA 800x600</div>
+                <div class="status-segment">CTRL: ATIRAR</div>
+                <div class="status-segment">ESPAÇO: ABRIR/USAR</div>
+                <div class="status-segment">SETA: ANDAR</div>
+                <div class="status-segment">CPU: 486DX2-66</div> 
+                <div class="status-segment">MEM: 8MB OK</div> 
+                <div class="status-segment">MODE: SVGA 800x600</div>
             </div>
         </div>
     `;
