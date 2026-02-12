@@ -1,0 +1,76 @@
+.bios-header, 
+.bios-info, 
+.bios-drives, 
+.bios-cursor, 
+.bios-footer {
+    visibility: hidden;
+}
+
+#boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    color: #ccc;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 99999;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    cursor: none;
+}
+
+.bios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #ccc; 
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.bios-text {
+    white-space: pre-wrap;
+}
+
+.bios-logo-img {
+    width: 80px;
+    height: auto;
+    filter: grayscale(100%) brightness(200%) contrast(100%);
+    image-rendering: pixelated;
+}
+
+.bios-info {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.bios-drives {
+    line-height: 1.5;
+}
+
+.bios-cursor {
+    animation: blink 0.5s infinite;
+    width: 10px;
+    height: 20px;
+    background-color: #ccc;
+    display: inline-block;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.boot-fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+}

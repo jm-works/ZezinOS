@@ -15,7 +15,7 @@ export function renderTerminal() {
     const bodyHTML = `
         <div class="terminal-output" id="terminal-output">
             <div>JM-WORKS(R) ZezinOS</div>
-            <div>(C) Copyright JM-WORKS Corp 1981-1998.</div>
+            <div>(C) Copyright JM-WORKS Inc 1981-1998.</div>
             <br>
         </div>
         <div class="input-line">

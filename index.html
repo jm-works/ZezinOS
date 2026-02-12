@@ -7,145 +7,182 @@
     <title>ZezinOS</title>
     <link rel="icon" href="./public/icons/logo.svg">
 
+    <!-- Sistema -->
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/system.css">
     <link rel="stylesheet" href="./src/styles/taskbar.css">
     <link rel="stylesheet" href="./src/styles/desktop.css">
     <link rel="stylesheet" href="./src/styles/window.css">
-    <link rel="stylesheet" href="./src/styles/terminal.css">
     <link rel="stylesheet" href="./src/styles/startmenu.css">
+    <link rel="stylesheet" href="src/styles/boot.css">
+
+    <!-- Programas -->
+    <link rel="stylesheet" href="./src/styles/terminal.css">
     <link rel="stylesheet" href="./src/styles/wallpaper.css">
     <link rel="stylesheet" href="./src/styles/mediaplayer.css">
     <link rel="stylesheet" href="./src/styles/crt.css">
     <link rel="stylesheet" href="./src/styles/waifuviewer.css">
     <link rel="stylesheet" href="./src/styles/calculator.css">
     <link rel="stylesheet" href="./src/styles/patchnotes.css">
+
+    <!-- Jogos -->
     <link rel="stylesheet" href="./src/styles/games/doom.css">
 </head>
 
 <body>
+    <!-- Tela de BOOT -->
 
-    <!-- Desktop Icons -->
-    <div class="desktop-area">
-        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
-            <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
-            <span>Sobre Mim</span>
-        </div>
-
-        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-terminal')">
-            <img src="./public/icons/zenzinDOS.svg" alt="Terminal">
-            <span>ZEZIN-DOS</span>
-        </div>
-
-        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-mediaplayer')">
-            <img src="./public/icons/mediaplayer.svg" alt="Media Player">
-            <span>Media Player</span>
-        </div>
-
-        <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-patchnotes')">
-            <img src="./public/icons/patchnotes.svg" alt="Patch Notes">
-            <span>Patch Notes</span>
-        </div>
-
-    </div>
-
-    <!-- Menu Iniciar -->
-    <div class="start-menu" id="start-menu">
-        <div class="sidebar">
-            <span class="sidebar-text"><strong>ZezinOS</strong> 98 SE</span>
-        </div>
-
-        <div class="menu-items">
-
-            <div class="menu-item has-submenu">
-                <img src="./public/icons/programs.svg" class="menu-icon">
-                <span style="flex: 1;">Programas</span>
-                <span class="menu-arrow">▶</span>
-
-                <div class="submenu">
-                    <div class="menu-item" onclick="openWindow('window-patchnotes'); toggleStartMenu()">
-                        <img src="./public/icons/patchnotes.svg" class="menu-icon">
-                        <span>Patch Notes</span>
-                    </div>
-
-                    <div class="menu-item" onclick="openWindow('window-terminal'); toggleStartMenu()">
-                        <img src="./public/icons/zenzinDOS.svg" class="menu-icon">
-                        <span>ZEZIN-DOS Prompt</span>
-                    </div>
-
-                    <div class="menu-item" onclick="openWindow('window-calculator'); toggleStartMenu()">
-                        <img src="./public/icons/calculator.ico" class="menu-icon">
-                        <span>Calculadora</span>
-                    </div>
+    <body>
+        <div id="boot-screen">
+            <div class="bios-header">
+                <div class="bios-text">
+                    <div>Award Modular BIOS v4.51PG, An Energy Star Ally</div>
+                    <div>Copyright (C) 1984-98, JM-WORKS Inc.</div>
                 </div>
+                <img src="public/icons/logo.svg" class="bios-logo-img" alt="Energy Star">
             </div>
-            <div class="menu-item has-submenu">
-                <img src="./public/icons/games.ico" class="menu-icon">
-                <span style="flex: 1">Jogos</span>
-                <span class="menu-arrow">▶</span>
 
-                <div class="submenu" style="margin-top: 4px;">
-                    <div class="menu-item" onclick="openWindow('window-doom'); toggleStartMenu()">
-                        <img src="./public/icons/doom.ico" class="menu-icon">
-                        <span>DOOM</span>
-                    </div>
-                </div>
+            <div class="bios-info">
+                Main Processor : 486DX2-66<br>
+                Video Adapter : ASCII Graphics Adapter<br>
+                Memory Test: <span id="bios-mem">0</span>K OK
             </div>
-            <div class="menu-separator"></div>
-            <div class="menu-item" onclick="openWindow('window-about'); toggleStartMenu()">
-                <img src="./public/icons/sobreMim.svg" class="menu-icon">
+
+            <div class="bios-drives">
+                Detecting Primary Master ... ZEZIN-HD 20GB<br>
+                Detecting Primary Slave ... None<br>
+                Detecting Secondary Master ... CD-ROM Drive<br>
+                Detecting Secondary Slave ... None
+            </div>
+
+            <div class="bios-footer" id="bios-footer" style="display:none">
+                Starting ZezinOS 98 SE...
+            </div>
+
+            <div class="bios-cursor"></div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-area">
+            <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
+                <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
                 <span>Sobre Mim</span>
             </div>
 
-            <div class="menu-item" onclick="window.open('https://github.com/jm-works/ZezinOS', '_blank')">
-                <img src="./public/icons/github.svg" class="menu-icon">
-                <span>GitHub Repositório</span>
+            <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-terminal')">
+                <img src="./public/icons/zenzinDOS.svg" alt="Terminal">
+                <span>ZEZIN-DOS</span>
             </div>
 
-            <div class="menu-item" onclick="window.open('https://github.com/jm-works', '_blank')">
-                <img src="./public/icons/logo.svg" class="menu-icon">
-                <span>Meu GitHub</span>
-            </div>
-            <div class="menu-separator"></div>
-
-            <div class="menu-item" onclick="openWindow('window-mediaplayer'); toggleStartMenu()">
-                <img src="./public/icons/mediaplayer.svg" class="menu-icon"> <span>Media Player</span>
+            <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-mediaplayer')">
+                <img src="./public/icons/mediaplayer.svg" alt="Media Player">
+                <span>Media Player</span>
             </div>
 
-            <div class="menu-item" onclick="openWindow('window-waifuviewer'); toggleStartMenu()">
-                <img src="./public/icons/waifuviewer.svg" class="menu-icon">
-                <span>Waifu Viewer</span>
+            <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-patchnotes')">
+                <img src="./public/icons/patchnotes.svg" alt="Patch Notes">
+                <span>Patch Notes</span>
             </div>
 
-            <div class="menu-separator"></div>
+        </div>
 
-            <div class="menu-item" onclick="openWindow('window-wallpaper'); toggleStartMenu()">
-                <img src="./public/icons/wallpaper.ico" class="menu-icon"> <span>Propriedades de Vídeo</span>
+        <!-- Menu Iniciar -->
+        <div class="start-menu" id="start-menu">
+            <div class="sidebar">
+                <span class="sidebar-text"><strong>ZezinOS</strong> 98 SE</span>
             </div>
 
-            <div class="menu-item" onclick="location.reload()">
-                <img src="./public/icons/restart.ico" class="menu-icon">
-                <span>Reiniciar Sistema...</span>
+            <div class="menu-items">
+
+                <div class="menu-item has-submenu">
+                    <img src="./public/icons/programs.svg" class="menu-icon">
+                    <span style="flex: 1;">Programas</span>
+                    <span class="menu-arrow">▶</span>
+
+                    <div class="submenu">
+                        <div class="menu-item" onclick="openWindow('window-patchnotes'); toggleStartMenu()">
+                            <img src="./public/icons/patchnotes.svg" class="menu-icon">
+                            <span>Patch Notes</span>
+                        </div>
+
+                        <div class="menu-item" onclick="openWindow('window-terminal'); toggleStartMenu()">
+                            <img src="./public/icons/zenzinDOS.svg" class="menu-icon">
+                            <span>ZEZIN-DOS Prompt</span>
+                        </div>
+
+                        <div class="menu-item" onclick="openWindow('window-calculator'); toggleStartMenu()">
+                            <img src="./public/icons/calculator.ico" class="menu-icon">
+                            <span>Calculadora</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item has-submenu">
+                    <img src="./public/icons/games.ico" class="menu-icon">
+                    <span style="flex: 1">Jogos</span>
+                    <span class="menu-arrow">▶</span>
+
+                    <div class="submenu" style="margin-top: 4px;">
+                        <div class="menu-item" onclick="openWindow('window-doom'); toggleStartMenu()">
+                            <img src="./public/icons/doom.ico" class="menu-icon">
+                            <span>DOOM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-separator"></div>
+                <div class="menu-item" onclick="openWindow('window-about'); toggleStartMenu()">
+                    <img src="./public/icons/sobreMim.svg" class="menu-icon">
+                    <span>Sobre Mim</span>
+                </div>
+
+                <div class="menu-item" onclick="window.open('https://github.com/jm-works/ZezinOS', '_blank')">
+                    <img src="./public/icons/github.svg" class="menu-icon">
+                    <span>GitHub Repositório</span>
+                </div>
+
+                <div class="menu-item" onclick="window.open('https://github.com/jm-works', '_blank')">
+                    <img src="./public/icons/logo.svg" class="menu-icon">
+                    <span>Meu GitHub</span>
+                </div>
+                <div class="menu-separator"></div>
+
+                <div class="menu-item" onclick="openWindow('window-mediaplayer'); toggleStartMenu()">
+                    <img src="./public/icons/mediaplayer.svg" class="menu-icon"> <span>Media Player</span>
+                </div>
+
+                <div class="menu-item" onclick="openWindow('window-waifuviewer'); toggleStartMenu()">
+                    <img src="./public/icons/waifuviewer.svg" class="menu-icon">
+                    <span>Waifu Viewer</span>
+                </div>
+
+                <div class="menu-separator"></div>
+
+                <div class="menu-item" onclick="openWindow('window-wallpaper'); toggleStartMenu()">
+                    <img src="./public/icons/wallpaper.ico" class="menu-icon"> <span>Propriedades de Vídeo</span>
+                </div>
+
+                <div class="menu-item" onclick="location.reload()">
+                    <img src="./public/icons/restart.ico" class="menu-icon">
+                    <span>Reiniciar Sistema...</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Barra de Tarefa -->
-    <div class="taskbar">
-        <button class="start-button">
-            <img src="./public/icons/logo.svg" alt="" class="start-icon">
-            <span class="start-text">Start</span>
-        </button>
-        <div class="taskbar-divider"></div>
-        <div class="tasks-area"></div>
-        <div class="tray-area">
-            <div class="clock">vasco</div>
+        <!-- Barra de Tarefa -->
+        <div class="taskbar">
+            <button class="start-button">
+                <img src="./public/icons/logo.svg" alt="" class="start-icon">
+                <span class="start-text">Start</span>
+            </button>
+            <div class="taskbar-divider"></div>
+            <div class="tasks-area"></div>
+            <div class="tray-area">
+                <div class="clock">vasco</div>
+            </div>
         </div>
-    </div>
 
-    <div class="crt-overlay"></div>
+        <div class="crt-overlay"></div>
 
-    <script type="module" src="./src/App.js"></script>
-</body>
+        <script type="module" src="./src/App.js"></script>
+    </body>
 
 </html>
