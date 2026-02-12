@@ -25,6 +25,7 @@ const commands = {
     VIDEO  - Abrir 'Propriedades de Video'
     WAIFU  - Abrir 'Waifu Viewer'
     CALC   - Abrir 'Calculadora'
+    DOOM   - Abrir 'DOOM'
         `;
     },
 
@@ -53,6 +54,10 @@ const commands = {
         openWindow('window-calculator');
         return "Abrindo janela 'Calculadora'...";
     },
+    'doom': () => {
+        openWindow('window-doom');
+        return "Abrindo janela 'DOOM'...";
+    },
 
     // Comandos Gerais
     'cls': () => {
@@ -70,12 +75,46 @@ const commands = {
         window.open('https://github.com/jm-works', '_blank');
         return "Abrindo GitHub no navegador...";
     },
+    'sudo': () => {
+        const user = "Zezin";
+        return `
+    ${user} is not in the sudoers file. This incident will be reported.
+        `;
+    },
+    'whoami': () => {
+        return "zezin-os\\zezin";
+    },
+    'ver': () => {
+        return `
+    ZezinOS 98 SE Edition [Version 1.0.0]
+        `;
+    },
+    'ipconfig': async () => {
+        try {
+            const res = await fetch('https://api.ipify.org?format=json');
+            const data = await res.json();
+            const ip = data.ip;
+
+            return `
+    ZezinOS IP Configuration
+
+    Ethernet adapter Local Area Connection:
+
+       Connection-specific DNS Suffix  . : localdomain
+       IPv4 Address. . . . . . . . . . . : ${ip}
+       Subnet Mask . . . . . . . . . . . : 255.255.255.0
+       Default Gateway . . . . . . . . . : 192.168.1.1
+            `;
+        } catch (error) {
+            return "Erro: Não foi possível determinar o endereço IP (Verifique sua conexão).";
+        }
+    },
     'exit': () => {
         closeWindow('window-terminal');
         return null;
     },
 
-    // Segredos
+    // Brincadeiras
     'vasco': () => {
         return `
     Vamos todos cantar de coração
@@ -114,12 +153,6 @@ const commands = {
  ⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   Theme: ZezinOS 98 SE
  ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿   CPU: Intel 486DX2-66
  ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁   GPU: ASCII Graphics Adapter
-        `;
-    },
-    'sudo': () => {
-        const user = "Zezin";
-        return `
-    ${user} is not in the sudoers file. This incident will be reported.
         `;
     },
     'crash': () => {
@@ -177,15 +210,20 @@ export function initTerminal() {
         }
     });
 
-    function processCommand(cmdString) {
+    async function processCommand(cmdString) {
         const args = cmdString.split(' ');
         const cmd = args[0].toLowerCase();
         
         if (commands[cmd]) {
-            const response = commands[cmd](args.slice(1).join(' '));
-            if (response) addLine(response);
+            const response = await commands[cmd](args.slice(1).join(' '));
+            
+            if (response) {
+                addLine(response);
+                scrollToBottom(); 
+            }
         } else {
             addLine(`'${cmd}' não é reconhecido como um comando interno ou externo.`);
+            scrollToBottom();
         }
     }
 
