@@ -2,6 +2,16 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.8.5",
+        date: "12/02/2026",
+        changes: [
+            "Site passado para o GitHub Pages (Facilidade para Deploy).",
+            "Tela de BOOT",
+            "Pequena correção visual",
+            "Adicionado mais comandos no ZEZIN-DOS"
+        ]
+    },
+    {
         version: "v0.8.0",
         date: "10/02/2026",
         changes: [
