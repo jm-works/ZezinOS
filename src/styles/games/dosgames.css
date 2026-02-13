@@ -1,4 +1,4 @@
-#window-doom {
+#window-dosgames {
     width: 800px !important;
     height: 600px !important;
     min-width: 800px !important;
@@ -6,7 +6,7 @@
     background-color: var(--win-gray) !important;
 }
 
-#window-doom .window-body {
+#window-dosgames .window-body {
     background-color: var(--win-gray) !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -18,7 +18,7 @@
     border: 0px;
 }
 
-#window-doom .menu-bar {
+#window-dosgames .menu-bar {
     background-color: var(--win-gray);
     border-bottom: 1px solid var(--border-light);
     padding: 2px 4px;
@@ -26,7 +26,7 @@
     height: 20px !important;
 }
 
-.doom-container {
+.dosgames-container {
     display: flex !important;
     flex-direction: column !important;
     flex: 1 !important;
@@ -38,7 +38,7 @@
     box-sizing: border-box;
 }
 
-.doom-viewport {
+.dosgames-viewport {
     flex: 1 !important;
     background-color: #000;
     
@@ -56,13 +56,13 @@
     justify-content: center !important;
 }
 
-.doom-iframe {
+.dosgames-iframe {
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     
-    aspect-ratio: 4/3 !important;
+    aspect-ratio: 16/9 !important; 
     
     height: 100% !important;
     width: auto !important;
@@ -74,14 +74,7 @@
     z-index: 5;
 }
 
-@media (max-aspect-ratio: 4/3) {
-    .doom-iframe {
-        width: 100% !important;
-        height: auto !important;
-    }
-}
-
-.doom-cover {
+.dosgames-cover {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -91,73 +84,76 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: repeating-linear-gradient(45deg, #111, #111 20px, #000 20px, #000 40px);
+    
+    background-color: #000; 
+    
+    box-shadow: inset 0 0 0 2px #008000; 
     z-index: 10;
+    
+    font-family: 'Courier New', monospace;
+    color: #0f0;
 }
 
-.doom-logo {
-    font-family: 'Impact', sans-serif;
-    font-size: 72px;
-    color: #b00;
-    text-shadow: 4px 4px 0 #000, 0 0 20px #f00;
-    letter-spacing: 6px;
-    margin-bottom: 5px;
+.dosgames-logo {
+    font-family: 'Courier New', monospace; 
+    font-weight: bold;
+    font-size: 48px;
+    color: #0f0;
+    
+    text-shadow: 0 0 5px #0f0, 0 0 10px #008000; 
+    
+    letter-spacing: 2px;
+    margin-bottom: 10px;
     text-transform: uppercase;
+    border-bottom: 2px solid #0f0;
+    padding-bottom: 5px;
 }
 
-.doom-subtitle {
-    color: #888;
-    font-family: var(--system-font);
-    font-size: 16px;
+.dosgames-subtitle {
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
     margin-bottom: 40px;
     letter-spacing: 1px;
+    opacity: 0.8;
 }
 
-.doom-btn-start {
-    font-weight: bold;
-    font-size: 14px;
-    height: 36px;
-    padding: 0 40px;
-    background-color: var(--win-gray);
-    cursor: pointer;
-    border: 2px outset #fff;
-    z-index: 20;
-}
-.doom-btn-start:active { border: 2px inset #fff; }
-
-.doom-credits {
-    position: absolute;
-    bottom: 20px;
-    color: #444;
-    font-size: 11px;
-    font-family: var(--system-font);
-}
-
-.doom-statusbar {
-    height: 24px !important;
-    flex-shrink: 0 !important;
-    background-color: var(--win-gray);
-    border-top: 1px solid var(--win-white);
-    
+.dosgames-loading-box {
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-    padding: 0 8px;
-    margin-top: 2px;
-    font-family: 'Courier New', monospace;
-    font-size: 11px;
-    font-weight: bold;
-    color: #000;
-    gap: 15px;
-    user-select: none;
-    z-index: 20;
+    gap: 10px;
 }
 
-.status-segment {
-    border-right: 1px solid var(--border-dark);
-    padding-right: 15px;
+.dosgames-btn-start {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    height: 30px;
+    padding: 0 20px;
+    
+    background-color: #000;
+    color: #0f0;
+    border: 1px solid #0f0;
+    cursor: pointer;
+    text-transform: uppercase;
+    
+    transition: all 0.2s;
 }
-.status-segment:last-child {
-    border-right: none;
+
+.dosgames-btn-start:hover {
+    background-color: #0f0;
+    color: #000;
+    box-shadow: 0 0 10px #0f0;
+}
+
+.dosgames-btn-start:active {
+    border: 1px inset #0f0;
+}
+
+.dosgames-credits {
+    position: absolute;
+    bottom: 20px;
+    color: #006400;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
 }

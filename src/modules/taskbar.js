@@ -11,7 +11,7 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-mediaplayer': './public/icons/mediaplayer.svg',
         'window-waifuviewer': './public/icons/waifuviewer.svg',
         'window-calculator': './public/icons/calculator.ico',
-        'window-doom': './public/icons/doom.ico'
+        'window-dosgames': './public/icons/dosgames.svg'
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);

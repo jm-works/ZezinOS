@@ -11,7 +11,7 @@ import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
-import { renderDoom } from './programs/games/doom.js';
+import { renderDosGames } from './programs/games/dosgames.js';
 import { runBootSequence } from './modules/boot.js';
 
 // 'Setar' um wallpaper inicial
@@ -28,7 +28,7 @@ renderWallpaper();
 renderMediaPlayer();
 renderWaifuViewer();
 renderCalculator();
-renderDoom();
+renderDosGames();
 
 // Iniciar Metodos
 runBootSequence();
