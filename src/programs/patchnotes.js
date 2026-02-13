@@ -2,6 +2,18 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.9.0",
+        date: "13/02/2026",
+        changes: [
+            "Finalizado a função para jogos.",
+            "Adicionado 'Campo Minado'.",
+            "Adicionado 'GTA Vice City'.",
+            "Adicionado 'MS-DOS Games'.",
+            "Reformulação do funcionamento da tela de boot.",
+            "Melhorias visuais."
+        ]
+    },
+    {
         version: "v0.8.5",
         date: "12/02/2026",
         changes: [

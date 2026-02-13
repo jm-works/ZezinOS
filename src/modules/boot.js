@@ -1,4 +1,4 @@
-export function runBootSequence() {
+export function runBootSequence(onComplete) {
     const screen = document.getElementById('boot-screen');
     const memDisplay = document.getElementById('bios-mem');
     const footer = document.getElementById('bios-footer');
@@ -41,20 +41,18 @@ export function runBootSequence() {
     }
 
     function startMemoryCheck() {
-        const interval = setInterval(() => {
-            currentMem += 400;
-            
+        const memInterval = setInterval(() => {
+            currentMem += 256; 
             if (currentMem >= totalMem) {
                 currentMem = totalMem;
-                memDisplay.innerText = currentMem;
-                clearInterval(interval);
+                memDisplay.innerText = currentMem + "K OK";
+                clearInterval(memInterval);
                 
                 setTimeout(() => {
                     drives.style.visibility = 'visible';
                     
                     setTimeout(() => {
                         if(footer) {
-                            footer.style.display = 'block';
                             footer.style.visibility = 'visible';
                         }
                         cursor.style.visibility = 'visible'; 
@@ -100,6 +98,9 @@ export function runBootSequence() {
         screen.classList.add('boot-fade-out');
         setTimeout(() => {
             screen.remove();
+            if (onComplete) {
+                onComplete();
+            }
         }, 500);
     }
 }

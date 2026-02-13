@@ -11,7 +11,9 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-mediaplayer': './public/icons/mediaplayer.svg',
         'window-waifuviewer': './public/icons/waifuviewer.svg',
         'window-calculator': './public/icons/calculator.ico',
-        'window-dosgames': './public/icons/dosgames.svg'
+        'window-dosgames': './public/icons/dosgames.svg',
+        'window-aracaju': './public/icons/aracaju.ico',
+        'window-minesweeper': './public/icons/minewsweeper.png',
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);
