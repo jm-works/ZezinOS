@@ -1,18 +1,27 @@
-// Imports
+// Sistema
+
 import { startClock } from './modules/clock.js';
 import { initSelectionBox } from './modules/desktop.js';
 import { openWindow, closeWindow, initWindowListener, minimizeWindow } from './modules/windowManager.js';
 import { initDraggableWindows } from './modules/drag.js';
+import { initStartMenu } from './modules/startMenu.js';
+import { runBootSequence } from './modules/boot.js';
+
+// Programas
+
 import { renderAbout } from './programs/about.js';
 import { renderTerminal } from './programs/terminal.js';
 import { renderPatchNotes } from './programs/patchnotes.js';
-import { initStartMenu } from './modules/startMenu.js';
 import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
+
+// Jogos
+
 import { renderDosGames } from './programs/games/dosgames.js';
-import { runBootSequence } from './modules/boot.js';
+import { renderAracaju } from './programs/games/aracaju.js';
+import { renderMinesweeper } from './programs/games/minesweeper.js';
 
 // 'Setar' um wallpaper inicial
 setWallpaper('eyes');
@@ -29,9 +38,14 @@ renderMediaPlayer();
 renderWaifuViewer();
 renderCalculator();
 renderDosGames();
+renderAracaju();
+renderMinesweeper();
 
 // Iniciar Metodos
-runBootSequence();
+runBootSequence(() => {
+        openWindow('window-about');
+    });
+
 startClock();
 initSelectionBox();
 initWindowListener();

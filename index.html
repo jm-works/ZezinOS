@@ -27,6 +27,8 @@
 
     <!-- Jogos -->
     <link rel="stylesheet" href="./src/styles/games/dosgames.css">
+    <link rel="stylesheet" href="./src/styles/games/aracaju.css">
+    <link rel="stylesheet" href="./src/styles/games/minesweeper.css">
 </head>
 
 <body>
@@ -45,7 +47,7 @@
             <div class="bios-info">
                 Main Processor : 486DX2-66<br>
                 Video Adapter : ASCII Graphics Adapter<br>
-                Memory Test: <span id="bios-mem">0</span>K OK
+                Memory Test: <span id="bios-mem">0</span>
             </div>
 
             <div class="bios-drives">
@@ -125,6 +127,14 @@
                         <div class="menu-item" onclick="openWindow('window-dosgames'); toggleStartMenu()">
                             <img src="./public/icons/dosgames.svg" class="menu-icon">
                             <span>MS-DOS GAMES</span>
+                        </div>
+                        <div class="menu-item" onclick="openWindow('window-aracaju'); toggleStartMenu()">
+                            <img src="./public/icons/aracaju.ico" class="menu-icon">
+                            <span>GTA Vice City</span>
+                        </div>
+                        <div class="menu-item" onclick="openWindow('window-minesweeper'); toggleStartMenu()">
+                            <img src="./public/icons/minewsweeper.png" class="menu-icon">
+                            <span>Campo Minado</span>
                         </div>
                     </div>
                 </div>

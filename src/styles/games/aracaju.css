@@ -1,0 +1,157 @@
+#window-aracaju {
+    width: 800px !important;
+    height: 600px !important;
+    min-width: 800px !important;
+    min-height: 600px !important;
+    background-color: var(--win-gray) !important;
+}
+
+#window-aracaju .window-body {
+    background-color: var(--win-gray) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    border: 0px;
+}
+
+#window-aracaju .menu-bar {
+    background-color: var(--win-gray);
+    border-bottom: 1px solid var(--border-light);
+    padding: 2px 4px;
+    flex-shrink: 0 !important;
+    height: 20px !important;
+}
+
+.aracaju-container {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    width: 100% !important;
+    height: calc(100% - 20px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.aracaju-viewport {
+    flex: 1 !important;
+    background-color: #000;
+
+    border-top: 2px solid var(--border-dark);
+    border-left: 2px solid var(--border-dark);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.aracaju-iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    display: none;
+    background-color: #000;
+    z-index: 5;
+}
+
+.aracaju-cover {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background: linear-gradient(135deg, #2b004d 0%, #001f3f 100%);
+    z-index: 10;
+    user-select: none;
+
+    background-image: 
+        linear-gradient(rgba(255, 0, 204, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 204, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.aracaju-top-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: -15px; 
+    text-shadow: 2px 2px 0 #000;
+    z-index: 2;
+}
+
+.aracaju-logo {
+    font-family: 'Brush Script MT', 'Lucida Calligraphy', 'Comic Sans MS', cursive; 
+    font-size: 110px;
+    color: #ff69b4; 
+
+    text-shadow: 
+        3px 3px 0px #000, 
+        0 0 15px #ff00cc,
+        0 0 30px #ff00cc;
+    
+    transform: rotate(-5deg);
+    margin-bottom: 30px;
+    z-index: 2;
+}
+
+.aracaju-loading-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.aracaju-btn-start {
+    font-family: 'Impact', sans-serif;
+    font-size: 24px;
+    color: #00ffff;
+    background: transparent;
+    border: 2px solid #00ffff;
+    padding: 10px 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+    
+    transition: all 0.2s;
+}
+
+.aracaju-btn-start:hover {
+    background-color: #00ffff;
+    color: #000;
+    box-shadow: 0 0 20px #00ffff, inset 0 0 20px #00ffff;
+}
+
+.aracaju-credits {
+    position: absolute;
+    bottom: 20px;
+    color: #ff85cf;
+    font-size: 12px;
+    font-family: var(--system-font);
+    text-shadow: 1px 1px 0 #000;
+}
