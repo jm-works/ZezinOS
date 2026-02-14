@@ -21,6 +21,7 @@ export function renderMinesweeper() {
     let timer = 0;
     let timerInterval = null;
     let isFirstClick = true;
+    let questionMarksEnabled = true;
 
     const content = `
         <div class="mine-menu-bar">
@@ -36,7 +37,15 @@ export function renderMinesweeper() {
                     <div class="mine-dropdown-item" id="diff-expert">
                         <span class="mine-check" id="check-expert"></span> Avançado
                     </div>
-                    <div style="border-top: 1px solid #888; margin: 2px 0;"></div>
+                    
+                    <div class="mine-separator"></div>
+                    
+                    <div class="mine-dropdown-item" id="opt-marks">
+                        <span class="mine-check" id="check-marks">✓</span> Marcas (?)
+                    </div>
+                    
+                    <div class="mine-separator"></div>
+                    
                     <div class="mine-dropdown-item" id="mine-exit"><u>S</u>air</div>
                 </div>
             </div>
@@ -59,8 +68,12 @@ export function renderMinesweeper() {
     createWindow({
         id: winId,
         title: 'Campo Minado',
+        icon: './public/icons/games.ico',
         content: content,
+        width: 200, 
+        height: 300,
         isCentered: true,
+        resizable: false 
     });
 
     const win = document.getElementById(winId);
@@ -70,17 +83,17 @@ export function renderMinesweeper() {
     const minesLeftDisplay = win.querySelector('#mines-left');
     const timerDisplay = win.querySelector('#mine-timer');
     const smileyBtn = win.querySelector('#mine-smiley-btn');
-    
     const menuGame = win.querySelector('#mine-menu-game');
     const dropdownGame = win.querySelector('#mine-dropdown-game');
     const btnBeginner = win.querySelector('#diff-beginner');
     const btnIntermediate = win.querySelector('#diff-intermediate');
     const btnExpert = win.querySelector('#diff-expert');
+    const btnMarks = win.querySelector('#opt-marks');
+    const checkMarks = win.querySelector('#check-marks');
     const btnExit = win.querySelector('#mine-exit');
-    
+
     function resizeAndCenterWindow() {
         const contentWidth = (COLS * CELL_SIZE) + 24; 
-        
         const contentHeight = (ROWS * CELL_SIZE) + 130; 
 
         win.style.width = `${contentWidth}px`;
@@ -111,6 +124,12 @@ export function renderMinesweeper() {
         initGame();
         setTimeout(resizeAndCenterWindow, 10);
     }
+
+    btnMarks.addEventListener('click', () => {
+        questionMarksEnabled = !questionMarksEnabled;
+        checkMarks.innerText = questionMarksEnabled ? '✓' : '';
+        dropdownGame.classList.remove('show');
+    });
 
     menuGame.addEventListener('click', (e) => {
         if (e.target.closest('.mine-dropdown-item')) return;
@@ -164,7 +183,7 @@ export function renderMinesweeper() {
                 cell.addEventListener('contextmenu', e => e.preventDefault());
 
                 gridElement.appendChild(cell);
-                row.push({ element: cell, isMine: false, isRevealed: false, isFlagged: false, neighborCount: 0 });
+                row.push({ element: cell, isMine: false, isRevealed: false, isFlagged: false, isQuestion: false, neighborCount: 0 });
             }
             grid.push(row);
         }
@@ -205,44 +224,107 @@ export function renderMinesweeper() {
         smileyBtn.innerText = "😮";
     }
 
+    window.addEventListener('mouseup', () => {
+        if (!gameOver) smileyBtn.innerText = "😊";
+    });
+
     function handleMouseUp(e) {
         if (gameOver) return;
-        smileyBtn.innerText = "😊";
+
+        smileyBtn.innerText = "😊"; 
+
         const r = parseInt(this.dataset.row);
         const c = parseInt(this.dataset.col);
         const cellData = grid[r][c];
 
-        if (e.button === 0) {
-            if (cellData.isFlagged || cellData.isRevealed) return;
+        if (e.button === 0) { 
+            if (cellData.isFlagged || cellData.isQuestion) return;
+
+            if (cellData.isRevealed && cellData.neighborCount > 0) {
+                attemptChord(r, c);
+                return;
+            }
+
+            if (cellData.isRevealed) return;
+
             if (isFirstClick) {
                 isFirstClick = false;
                 startTimer();
                 placeMines(r, c);
             }
-            if (cellData.isMine) triggerGameOver(r, c);
-            else {
+
+            if (cellData.isMine) {
+                triggerGameOver(r, c);
+            } else {
                 revealCell(r, c);
                 checkWinCondition();
             }
-        } else if (e.button === 2) {
+        } 
+        else if (e.button === 2) { 
             if (cellData.isRevealed) return;
-            if (!cellData.isFlagged && flagsLeft > 0) {
-                cellData.isFlagged = true;
-                this.classList.add('flagged');
-                flagsLeft--;
+
+            if (!cellData.isFlagged && !cellData.isQuestion) {
+                if (flagsLeft > 0) {
+                    cellData.isFlagged = true;
+                    this.classList.add('flagged');
+                    flagsLeft--;
+                }
             } else if (cellData.isFlagged) {
                 cellData.isFlagged = false;
                 this.classList.remove('flagged');
                 flagsLeft++;
+
+                if (questionMarksEnabled) {
+                    cellData.isQuestion = true;
+                    this.classList.add('question');
+                }
+            } else if (cellData.isQuestion) {
+                cellData.isQuestion = false;
+                this.classList.remove('question');
             }
             updateCounters();
+        }
+    }
+
+    function attemptChord(r, c) {
+        const cellData = grid[r][c];
+        let flagCount = 0;
+
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                const nr = r + i;
+                const nc = c + j;
+                if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+                    if (grid[nr][nc].isFlagged) flagCount++;
+                }
+            }
+        }
+
+        if (flagCount === cellData.neighborCount) {
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    const nr = r + i;
+                    const nc = c + j;
+                    if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+                        const neighbor = grid[nr][nc];
+                        if (!neighbor.isRevealed && !neighbor.isFlagged && !neighbor.isQuestion) {
+                            if (neighbor.isMine) {
+                                triggerGameOver(nr, nc);
+                            } else {
+                                revealCell(nr, nc);
+                            }
+                        }
+                    }
+                }
+            }
+            checkWinCondition();
         }
     }
 
     function revealCell(r, c) {
         if (r < 0 || r >= ROWS || c < 0 || c >= COLS) return;
         const cellData = grid[r][c];
-        if (cellData.isRevealed || cellData.isFlagged) return;
+        if (cellData.isRevealed || cellData.isFlagged || cellData.isQuestion) return;
 
         cellData.isRevealed = true;
         cellData.element.classList.add('revealed');
@@ -264,21 +346,29 @@ export function renderMinesweeper() {
         grid[hitR][hitC].element.classList.add('mine-hit');
         grid.forEach(row => {
             row.forEach(cellData => {
-                if (cellData.isMine && !cellData.isFlagged) cellData.element.classList.add('mine-revealed');
-                if (!cellData.isMine && cellData.isFlagged) cellData.element.classList.add('wrong-flag');
+                if (cellData.isMine && !cellData.isFlagged) {
+                    cellData.element.classList.add('mine-revealed');
+                }
+                if (!cellData.isMine && cellData.isFlagged) {
+                    cellData.element.classList.add('wrong-flag');
+                }
             });
         });
     }
 
     function checkWinCondition() {
+        if (gameOver) return;
+        
         let revealedCount = 0;
         grid.forEach(row => row.forEach(c => { if (c.isRevealed) revealedCount++; }));
+        
         if (revealedCount === (ROWS * COLS) - MINES_COUNT) {
             gameOver = true;
             clearInterval(timerInterval);
             smileyBtn.innerText = "😎";
             flagsLeft = 0;
             updateCounters();
+            
             grid.forEach(row => row.forEach(c => {
                 if (c.isMine && !c.isFlagged) {
                     c.isFlagged = true;
