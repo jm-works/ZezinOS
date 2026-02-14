@@ -92,6 +92,14 @@ export function renderMinesweeper() {
     const checkMarks = win.querySelector('#check-marks');
     const btnExit = win.querySelector('#mine-exit');
 
+    const closeBtn = win.querySelector('.title-bar-controls button[aria-label="Close"]');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            smileyBtn.click();
+        });
+    }
+
     function resizeAndCenterWindow() {
         const contentWidth = (COLS * CELL_SIZE) + 24; 
         const contentHeight = (ROWS * CELL_SIZE) + 130; 
