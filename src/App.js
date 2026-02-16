@@ -16,6 +16,7 @@ import { renderWallpaper, setWallpaper } from './programs/wallpaper.js';
 import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
+import { renderNotepad } from './programs/notepad.js';
 
 // Jogos
 
@@ -40,6 +41,7 @@ renderCalculator();
 renderDosGames();
 renderAracaju();
 renderMinesweeper();
+renderNotepad();
 
 // Iniciar Metodos
 runBootSequence(() => {

@@ -9,12 +9,41 @@ export function renderAbout() {
     `;
 
     const bodyHTML = `
-        <h3 style="margin-bottom: 10px;">Quem sou eu?</h3>
-        <p>Olá! Me chamo José Matheus e sou estudante de Ciência da Computação na Universidade Tiradentes - UNIT (4º período).</p>
-        <br>
-        <p><strong>Estudando:</strong> Python, HTML/CSS/JavaScript e Java.</p>
-        <p><strong>Hobbies:</strong> Design e Jogos.</p>
-        <p><strong>Mais projetos & contatos:</strong> <a href="https://github.com/jm-works" target="_blank">jm-works</a></p>
+    <div class="md-content">
+            <h1>Sobre Mim</h1>
+            
+            <h3>Quem sou eu?</h3>
+            <br>
+            <p>Olá, me chamo José Matheus, sou um desenvolvedor apaixonado pela <i>estética retrô</i> e interfaces nostálgicas.</p>
+
+            <hr>
+
+            <h3>Quais as minhas habilidades?</h3>
+            <br>
+            <ul>
+                <li><b>Frontend:</b> HTML5, CSS3, JavaScript (ES6+)</li>
+                <li><b>Backend:</b> Java, Python</li>
+                <li><b>Design:</b> Photoshop</li>
+            </ul>
+
+            <hr>
+
+            <h3>Meus Contatos</h3>
+            <br>
+            <ul>
+                <li>
+                    <a href="mailto:jmatheus_vida@outlook.com">Email</a>
+                </li>
+                <li>
+                    <a href="https://github.com/jm-works" target="_blank">GitHub</a>
+                </li>
+            </ul>
+            
+            <br>
+            <p style="text-align: center; color: #888; font-size: 12px;">
+                <i>Feito com 💙 por JM | José Matheus</i>
+            </p>
+        </div>
     `;
 
     createWindow({

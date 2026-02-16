@@ -2,6 +2,14 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.9.3",
+        date: "15/02/2026",
+        changes: [
+            "Adicionado Bloco de Notas.",
+            "Melhorias visuais."
+        ]
+    },
+    {
         version: "v0.9.0",
         date: "13/02/2026",
         changes: [
