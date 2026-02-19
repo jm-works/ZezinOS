@@ -17,6 +17,7 @@ import { renderMediaPlayer, setMedia } from './programs/mediaplayer.js';
 import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
 import { renderNotepad } from './programs/notepad.js';
+import { renderZezinPaint } from './programs/zezinpaint.js';
 
 // Jogos
 
@@ -42,6 +43,7 @@ renderDosGames();
 renderAracaju();
 renderMinesweeper();
 renderNotepad();
+renderZezinPaint();
 
 // Iniciar Metodos
 runBootSequence(() => {
