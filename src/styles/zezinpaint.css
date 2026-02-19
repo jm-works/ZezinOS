@@ -1,0 +1,226 @@
+#window-zezinpaint {
+    background-color: var(--win-gray);
+    width: 800px !important;
+    height: 600px !important;
+    outline: none !important; 
+}
+
+#window-zezinpaint .window-body {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    background-color: var(--win-gray);
+    overflow: hidden !important;
+    border: 0px !important;
+}
+
+.zp-menubar {
+    display: flex;
+    gap: 12px;
+    padding: 3px 6px;
+    font-family: var(--system-font);
+    font-size: 11px;
+    margin-bottom: 2px;
+    user-select: none;
+}
+.zp-menubar span { cursor: default; }
+.zp-menubar span::first-letter { text-decoration: underline; }
+.zp-menubar span:hover { color: white; background: navy; }
+
+.zp-main {
+    display: flex;
+    flex: 1; 
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+}
+
+.zp-left-panel {
+    width: 54px;
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    background: var(--win-gray);
+    border-right: 1px solid #dfdfdf; 
+}
+
+.zp-toolbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+}
+
+.zp-tool {
+    width: 22px; height: 22px;
+    background: var(--win-gray);
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.zp-tool:active, .zp-tool.active {
+    border-top: 1px solid #404040;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    background: #e0e0e0;
+}
+
+.zp-tool-options {
+    margin-top: 5px;
+    flex: 1;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    display: flex; flex-direction: column; align-items: center; gap:5px; padding:5px;
+}
+
+.zp-canvas-container {
+    flex: 1;
+    background-color: #808080;
+    overflow: auto; 
+    padding: 3px;
+    position: relative;
+    cursor: none;
+}
+
+.canvas-container {
+    background-color: #fff;
+    cursor: none; 
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5); 
+    margin: 0 !important; 
+}
+
+.zp-canvas-container::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background: var(--win-gray);
+}
+
+.zp-canvas-container::-webkit-scrollbar-corner {
+    background: var(--win-gray);
+}
+
+.zp-canvas-container::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='2' height='2' viewBox='0 0 2 2' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23c0c0c0'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23c0c0c0'/%3E%3C/svg%3E");
+}
+
+.zp-canvas-container::-webkit-scrollbar-thumb {
+    background-color: var(--win-gray);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+}
+
+.zp-canvas-container::-webkit-scrollbar-thumb:active {
+    background-color: var(--win-gray);
+}
+
+.zp-canvas-container::-webkit-scrollbar-button {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-color: var(--win-gray);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+    background-position: calc(50% + 1px) calc(50% + 1px);
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 5 L5 8 L11 8 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:vertical:increment {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 11 L5 8 L11 8 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:horizontal:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8 L8 5 L8 11 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:horizontal:increment {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 8 L8 5 L8 11 Z' fill='black'/%3E%3C/svg%3E");
+}
+
+.zp-canvas-container::-webkit-scrollbar-button:vertical:decrement:end,
+.zp-canvas-container::-webkit-scrollbar-button:vertical:increment:start,
+.zp-canvas-container::-webkit-scrollbar-button:horizontal:decrement:end,
+.zp-canvas-container::-webkit-scrollbar-button:horizontal:increment:start {
+    display: none;
+}
+
+.zp-footer {
+    height: 46px;
+    margin-top: 4px;
+    display: flex;
+    padding-top: 4px;
+}
+
+.zp-active-colors {
+    width: 35px; height: 35px;
+    position: relative;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin-right: 6px;
+}
+
+.zp-ac-box {
+    width: 15px; height: 15px;
+    position: absolute;
+    border: 1px solid #808080;
+    cursor: pointer;
+    z-index: 2; /* Garante clique */
+}
+
+.zp-palette {
+    display: flex;
+    flex-wrap: wrap;
+    width: 260px;
+    gap: 1px;
+}
+
+.zp-swatch {
+    width: 15px; height: 15px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
+.zp-swatch:hover { border-color: #fff; }
+
+.zp-statusbar {
+    height: 18px; margin-top: 2px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 10px; padding: 2px 5px;
+    color: #404040; font-family: var(--system-font);
+    display: flex; align-items: center;
+} 

@@ -2,6 +2,14 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.9.5",
+        date: "19/02/2026",
+        changes: [
+            "Adicionado 'ZezinPaint'.",
+            "Correção de bugs."
+        ]
+    },
+    {
         version: "v0.9.3",
         date: "15/02/2026",
         changes: [
