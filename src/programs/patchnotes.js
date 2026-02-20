@@ -2,6 +2,15 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.9.7",
+        date: "20/02/2026",
+        changes: [
+            "Adicionado pseudo tela de login.",
+            "Reformulação do funcionamento da tela de BOOT.",
+            "Atualização visual das janelas."
+        ]
+    },
+    {
         version: "v0.9.5",
         date: "19/02/2026",
         changes: [
