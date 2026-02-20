@@ -55,3 +55,42 @@
     z-index: 50;
     pointer-events: none;
 }
+
+#context-menu {
+    position: absolute;
+    background-color: var(--win-gray);
+    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-darkest);
+    border-bottom: 1px solid var(--border-darkest);
+    box-shadow: inset -1px -1px 0 var(--border-dark), 2px 2px 5px rgba(0,0,0,0.3);
+    
+    display: none;
+    flex-direction: column;
+    padding: 2px;
+    z-index: 100000000;
+    min-width: 150px;
+    font-family: var(--system-font);
+    font-size: 11px;
+    color: var(--text-main);
+}
+
+.context-menu-item {
+    padding: 3px 15px 3px 20px;
+    cursor: default;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+.context-menu-item:hover {
+    background-color: var(--win-blue);
+    color: var(--text-inverted);
+}
+
+.context-menu-separator {
+    height: 1px;
+    background-color: var(--border-dark);
+    border-bottom: 1px solid var(--border-light);
+    margin: 3px 2px;
+}
