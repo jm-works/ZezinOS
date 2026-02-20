@@ -25,7 +25,19 @@ const commands = {
     VIDEO  - Abrir 'Propriedades de Video'
     WAIFU  - Abrir 'Waifu Viewer'
     CALC   - Abrir 'Calculadora'
-    DOOM   - Abrir 'DOOM'
+    NOTEP  - Abrir 'Bloco de Notas'
+    PAINT  - Abrir 'ZezinPaint'
+    ---------------------
+    GAMES  - Mostrar atalhos para jogos
+        `;
+    },
+    'games': () => {
+        return `
+    Comandos disponíveis:
+    ---------------------
+    MSDOS  - Abrir 'MS-DOS GAMES'
+    GTA    - Abrir 'GTA Vice City'
+    MINE   - Abrir 'Campo Minado'
         `;
     },
 
@@ -54,9 +66,27 @@ const commands = {
         openWindow('window-calculator');
         return "Abrindo janela 'Calculadora'...";
     },
-    'doom': () => {
-        openWindow('window-doom');
-        return "Abrindo janela 'DOOM'...";
+    'paint': () => {
+        openWindow('window-zezinpaint');
+        return "Abrindo janela 'ZezinPaint'...";
+    },
+    'notep': () => {
+        openWindow('window-notepad');
+        return "Abrindo janela 'Bloco de Notas'...";
+    },
+
+    // Jogos
+    'msdos': () => {
+        openWindow('window-dosgames');
+        return "Abrindo janela 'MS-DOS GAMES'...";
+    },
+    'gta': () => {
+        openWindow('window-aracaju');
+        return "Abrindo janela 'GTA Vice City'...";
+    },
+    'mine': () => {
+        openWindow('window-minesweeper');
+        return "Abrindo janela 'Campo Minado'...";
     },
 
     // Comandos Gerais
