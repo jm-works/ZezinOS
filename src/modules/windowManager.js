@@ -34,6 +34,7 @@ export function closeWindow(windowId) {
     
     if (windowElement) {
         windowElement.classList.remove('open');
+        windowElement.classList.remove('minimizing');
     
         windowElement.style.top = '';
         windowElement.style.left = '';
@@ -76,7 +77,12 @@ export function minimizeWindow(windowId) {
     const taskButton = document.getElementById(`btn-${windowId}`);
 
     if (windowElement) {
-        windowElement.classList.remove('open');
+        windowElement.classList.add('minimizing');
+        
+        setTimeout(() => {
+            windowElement.classList.remove('open');
+            windowElement.classList.remove('minimizing');
+        }, 150);
     }
 
     if (taskButton) {
@@ -95,7 +101,12 @@ export function initWindowListener() {
             
             openWindows.forEach(win => {
                 if (win.dataset.skipTaskbar !== "true") {
-                    win.classList.remove('open');
+                    win.classList.add('minimizing');
+                    setTimeout(() => {
+                        win.classList.remove('open');
+                        win.classList.remove('minimizing');
+                    }, 150);
+
                     const taskButton = document.getElementById(`btn-${win.id}`);
                     if (taskButton) {
                         taskButton.classList.remove('active');
