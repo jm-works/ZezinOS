@@ -8,7 +8,7 @@ const updates = [
             "Adicionado pseudo tela de login.",
             "Reformulação do funcionamento da tela de BOOT.",
             "Atualização visual das janelas.",
-            "Adicionado soms ao sistema."
+            "Adicionado sons ao sistema."
         ]
     },
     {

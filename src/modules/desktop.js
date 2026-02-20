@@ -61,7 +61,7 @@ export function initSelectionBox() {
         contextMenu.innerHTML = `
             <div class="context-menu-item" id="ctx-refresh">Atualizar</div>
             <div class="context-menu-separator"></div>
-            <div class="context-menu-item" id="ctx-about">Sobre o Zezin</div>
+            <div class="context-menu-item" id="ctx-about">Sobre Mim</div>
             <div class="context-menu-item" id="ctx-github">Meu GitHub</div>
             <div class="context-menu-separator"></div>
             <div class="context-menu-item" id="ctx-properties">Propriedades</div>
