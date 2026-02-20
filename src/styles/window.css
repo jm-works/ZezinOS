@@ -24,7 +24,7 @@
 }
 
 .title-bar {
-    background: var(--win-blue);
+    background: linear-gradient(90deg, var(--win-blue), var(--win-aqua));
     padding: 3px 2px 3px 3px;
     display: flex;
     justify-content: space-between;
@@ -43,26 +43,36 @@
     margin-left: 2px;
 }
 
+.title-bar-controls {
+    display: flex;
+    align-items: center;
+}
+
 .title-bar-controls button {
-    width: 16px;
+    width: 14px;
     height: 14px;
     background-color: var(--win-gray);
     border: none;
     font-size: 9px;
     font-weight: bold;
-    line-height: 10px;
+    
     box-shadow: 
         inset 1px 1px var(--border-light),
         inset -1px -1px var(--border-darkest);
     cursor: pointer;
-    margin-left: 2px;
+    margin-left: 3px;
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 .title-bar-controls button:active {
     box-shadow: 
         inset 1px 1px var(--border-darkest),
         inset -1px -1px var(--border-light);
-    padding-top: 1px;
+    padding-top: 2px;
+    padding-left: 2px; 
 }
 
 .window-body {
