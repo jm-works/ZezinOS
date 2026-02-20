@@ -1,4 +1,5 @@
 import { bringToFront } from './windowManager.js';
+import { playSound } from './audioManager.js'; // <-- Importando do gerenciador de áudio
 
 export function createTaskbarButton(windowId, windowElement) {
     const taskbarArea = document.querySelector('.tasks-area');
@@ -39,12 +40,27 @@ export function createTaskbarButton(windowId, windowElement) {
         const isButtonActive = button.classList.contains('active');
 
         if (isWindowOpen && isButtonActive) {
-            windowElement.classList.remove('open');
+            playSound('window'); 
+            
+            windowElement.classList.add('minimizing'); 
             button.classList.remove('active');
+            
+            setTimeout(() => {
+                windowElement.classList.remove('open');
+                windowElement.classList.remove('minimizing');
+            }, 150); 
+            
         } else {
-            windowElement.classList.add('open');
+            playSound('window');
+            
+            windowElement.classList.add('minimizing');
+            windowElement.classList.add('open'); 
             button.classList.add('active');
             bringToFront(windowElement);
+
+            void windowElement.offsetWidth;
+
+            windowElement.classList.remove('minimizing');
         }
     };
 

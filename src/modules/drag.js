@@ -17,6 +17,8 @@ export function initDraggableWindows() {
             currentWindow = windowEl;
 
             bringToFront(windowEl);
+            windowEl.style.transition = 'none';
+
             const rect = windowEl.getBoundingClientRect();
             
             windowEl.style.left = rect.left + 'px';
@@ -28,6 +30,7 @@ export function initDraggableWindows() {
             offset.y = e.clientY - rect.top;
         }
     });
+
     document.addEventListener('mousemove', (e) => {
         if (!isDragging || !currentWindow) return;
 
@@ -40,6 +43,9 @@ export function initDraggableWindows() {
     });
 
     document.addEventListener('mouseup', () => {
+        if (currentWindow) {
+            currentWindow.style.transition = '';
+        }
         isDragging = false;
         currentWindow = null;
     });

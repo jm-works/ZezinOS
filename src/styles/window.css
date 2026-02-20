@@ -17,6 +17,14 @@
 
     display: none;
     z-index: 100;
+
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+.window.minimizing {
+    transform: translate(-50%, 150%) scale(0) !important;
+    opacity: 0 !important;
+    pointer-events: none;
 }
 
 .window.open {

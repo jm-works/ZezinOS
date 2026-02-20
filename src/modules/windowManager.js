@@ -1,4 +1,5 @@
 import { createTaskbarButton, removeTaskbarButton } from './taskbar.js';
+import { playSound } from './audioManager.js';
 
 let zIndexCounter = 100;
 
@@ -20,6 +21,8 @@ export function openWindow(windowId) {
     const windowElement = document.getElementById(windowId);
 
     if (windowElement) {
+        playSound('window');
+        
         windowElement.classList.add('open');
         if (windowElement.dataset.skipTaskbar !== "true") {
             createTaskbarButton(windowId, windowElement);
@@ -33,7 +36,10 @@ export function closeWindow(windowId) {
     const windowElement = document.getElementById(windowId);
     
     if (windowElement) {
+        playSound('window');
+
         windowElement.classList.remove('open');
+        windowElement.classList.remove('minimizing');
     
         windowElement.style.top = '';
         windowElement.style.left = '';
@@ -76,7 +82,14 @@ export function minimizeWindow(windowId) {
     const taskButton = document.getElementById(`btn-${windowId}`);
 
     if (windowElement) {
-        windowElement.classList.remove('open');
+        playSound('window');
+        
+        windowElement.classList.add('minimizing');
+        
+        setTimeout(() => {
+            windowElement.classList.remove('open');
+            windowElement.classList.remove('minimizing');
+        }, 150);
     }
 
     if (taskButton) {
@@ -89,13 +102,28 @@ export function initWindowListener() {
         const clickedInsideWindow = event.target.closest('.window');
         const clickedOnIcon = event.target.closest('.desktop-icon');
         const clickedOnTaskbar = event.target.closest('.taskbar');
+        const clickedOnStart = event.target.closest('#start-menu') || event.target.closest('.start-button');
+        const clickedOnContext = event.target.closest('#context-menu');
 
-        if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar) {
+        if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext) {
             const openWindows = document.querySelectorAll('.window.open');
             
+            let playedSound = false;
+
             openWindows.forEach(win => {
                 if (win.dataset.skipTaskbar !== "true") {
-                    win.classList.remove('open');
+                    
+                    if (!playedSound) {
+                        playSound('window'); 
+                        playedSound = true;
+                    }
+
+                    win.classList.add('minimizing');
+                    setTimeout(() => {
+                        win.classList.remove('open');
+                        win.classList.remove('minimizing');
+                    }, 150);
+
                     const taskButton = document.getElementById(`btn-${win.id}`);
                     if (taskButton) {
                         taskButton.classList.remove('active');
