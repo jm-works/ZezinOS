@@ -1,4 +1,4 @@
-import { bringToFront } from './windowManager.js';
+import { bringToFront, playWindowSound } from './windowManager.js';
 
 export function createTaskbarButton(windowId, windowElement) {
     const taskbarArea = document.querySelector('.tasks-area');
@@ -39,6 +39,8 @@ export function createTaskbarButton(windowId, windowElement) {
         const isButtonActive = button.classList.contains('active');
 
         if (isWindowOpen && isButtonActive) {
+            playWindowSound(); 
+            
             windowElement.classList.add('minimizing'); 
             button.classList.remove('active');
             
@@ -48,8 +50,10 @@ export function createTaskbarButton(windowId, windowElement) {
             }, 150); 
             
         } else {
+            playWindowSound(); 
+            
             windowElement.classList.add('minimizing');
-            windowElement.classList.add('open');
+            windowElement.classList.add('open'); 
             button.classList.add('active');
             bringToFront(windowElement);
 

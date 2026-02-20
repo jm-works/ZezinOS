@@ -1,6 +1,11 @@
 import { createTaskbarButton, removeTaskbarButton } from './taskbar.js';
 
 let zIndexCounter = 100;
+export function playWindowSound() {
+    const audio = new Audio('src/assets/sounds/window.mp3');
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+}
 
 export function bringToFront(windowElement) {
     zIndexCounter++;
@@ -20,6 +25,8 @@ export function openWindow(windowId) {
     const windowElement = document.getElementById(windowId);
 
     if (windowElement) {
+        playWindowSound();
+        
         windowElement.classList.add('open');
         if (windowElement.dataset.skipTaskbar !== "true") {
             createTaskbarButton(windowId, windowElement);
@@ -33,6 +40,8 @@ export function closeWindow(windowId) {
     const windowElement = document.getElementById(windowId);
     
     if (windowElement) {
+        playWindowSound();
+
         windowElement.classList.remove('open');
         windowElement.classList.remove('minimizing');
     
@@ -77,6 +86,8 @@ export function minimizeWindow(windowId) {
     const taskButton = document.getElementById(`btn-${windowId}`);
 
     if (windowElement) {
+        playWindowSound();
+        
         windowElement.classList.add('minimizing');
         
         setTimeout(() => {
@@ -99,8 +110,16 @@ export function initWindowListener() {
         if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar) {
             const openWindows = document.querySelectorAll('.window.open');
             
+            let playedSound = false;
+
             openWindows.forEach(win => {
                 if (win.dataset.skipTaskbar !== "true") {
+                    
+                    if (!playedSound) {
+                        playWindowSound(); 
+                        playedSound = true;
+                    }
+
                     win.classList.add('minimizing');
                     setTimeout(() => {
                         win.classList.remove('open');
