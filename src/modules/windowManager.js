@@ -1,11 +1,7 @@
 import { createTaskbarButton, removeTaskbarButton } from './taskbar.js';
+import { playSound } from './audioManager.js';
 
 let zIndexCounter = 100;
-export function playWindowSound() {
-    const audio = new Audio('src/assets/sounds/window.mp3');
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-}
 
 export function bringToFront(windowElement) {
     zIndexCounter++;
@@ -25,7 +21,7 @@ export function openWindow(windowId) {
     const windowElement = document.getElementById(windowId);
 
     if (windowElement) {
-        playWindowSound();
+        playSound('window');
         
         windowElement.classList.add('open');
         if (windowElement.dataset.skipTaskbar !== "true") {
@@ -40,7 +36,7 @@ export function closeWindow(windowId) {
     const windowElement = document.getElementById(windowId);
     
     if (windowElement) {
-        playWindowSound();
+        playSound('window');
 
         windowElement.classList.remove('open');
         windowElement.classList.remove('minimizing');
@@ -86,7 +82,7 @@ export function minimizeWindow(windowId) {
     const taskButton = document.getElementById(`btn-${windowId}`);
 
     if (windowElement) {
-        playWindowSound();
+        playSound('window');
         
         windowElement.classList.add('minimizing');
         
@@ -116,7 +112,7 @@ export function initWindowListener() {
                 if (win.dataset.skipTaskbar !== "true") {
                     
                     if (!playedSound) {
-                        playWindowSound(); 
+                        playSound('window'); 
                         playedSound = true;
                     }
 
