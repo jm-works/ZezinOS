@@ -27,6 +27,7 @@ const commands = {
     CALC   - Abrir 'Calculadora'
     NOTEP  - Abrir 'Bloco de Notas'
     PAINT  - Abrir 'ZezinPaint'
+    INTER  - Abrir 'Meus Projeto'
     ---------------------
     GAMES  - Mostrar atalhos para jogos
         `;
@@ -73,6 +74,10 @@ const commands = {
     'notep': () => {
         openWindow('window-notepad');
         return "Abrindo janela 'Bloco de Notas'...";
+    },
+    'inter': () => {
+        openWindow('window-internet');
+        return "Abrindo janela 'Meus Projetos'...";
     },
 
     // Jogos
