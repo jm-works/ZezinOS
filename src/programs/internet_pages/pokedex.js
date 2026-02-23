@@ -4,7 +4,7 @@ export const pokedexPage = {
     theme: "theme-hypnospace",
     content: `
 <center>
-    <a href="https://pokedex-and-arena.onrender.com/" target="_blank" style="text-decoration: none;" alt="Pokédex & Arena">
+    <a href="https://i.postimg.cc/vZ62X4Xw/pokedex.png" target="_blank" style="text-decoration: none;" alt="Pokédex & Arena">
         <img src="https://i.postimg.cc/vZ62X4Xw/pokedex.png" width="300" style="border: 4px solid #FF0000; border-radius: 5px; margin-bottom: 10px; image-rendering: pixelated;">
     </a>
     <h1 style="color: #FFDE00; text-shadow: 2px 2px #3B4CCA;">Pokédex & Arena</h1>

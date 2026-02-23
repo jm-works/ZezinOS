@@ -51,6 +51,33 @@ export const catalogoPage = {
     </div>
 </div>
 
+<div class="hypno-cat-label">DESKTOP</div>
+<div class="hypno-list">
+    <div class="hypno-item">
+        <img src="https://raw.githubusercontent.com/jm-works/Registro-ULTIMATE-de-Jogos/refs/heads/main/assets/icon.ico" class="hypno-icon">
+        <div class="hypno-info">
+            <h3>Registro ULTIMATE de Jogos</h3>
+            <p>Este programa tem como propósito catalogar jogos finalizados.</p>
+            <div class="tech-tags">
+                <span class="tech-tag tag-desktop">Desktop</span>
+            </div>
+        </div>
+        <a href="registroJogos" class="hypno-link">ACESSAR</a>
+    </div>
+</div>
+
+<div class="hypno-cat-label">MISC</div>
+<div class="hypno-list">
+    <div class="hypno-item">
+        <img src="./public/icons/logo.svg" class="hypno-icon">
+        <div class="hypno-info">
+            <h3>Meu GitHub</h3>
+            <p>Todos os projetos citados e não citados estão aqui.</p>
+        </div>
+        <a href="https://github.com/jm-works" class="hypno-link" target="_blank">ACESSAR</a>
+    </div>
+</div>
+
 <center style="margin-top: 20px; opacity: 0.6;">
     <img src="https://cyber.dabamos.de/88x31/blink-0.gif">
     <img src="https://cyber.dabamos.de/88x31/notepad.gif">

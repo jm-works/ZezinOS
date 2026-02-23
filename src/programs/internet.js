@@ -7,6 +7,7 @@ import { zezinosPage } from './internet_pages/zezinos.js';
 import { catalogoPage } from './internet_pages/catalogo.js';
 import { deneasyPage } from './internet_pages/deneasy.js';
 import { pokedexPage } from './internet_pages/pokedex.js';
+import { registroJogosPage } from './internet_pages/registroJogos.js'
 
 const routes = {
     'home': homePage,
@@ -14,6 +15,7 @@ const routes = {
     'catalogo': catalogoPage,
     'deneasy': deneasyPage,
     'pokedex': pokedexPage,
+    'registroJogos': registroJogosPage,
 };
 
 let history = [];
