@@ -1,7 +1,7 @@
 import { createTaskbarButton, removeTaskbarButton } from './taskbar.js';
 import { playSound } from './audioManager.js';
 
-// Importação dos programas para o registro (Lazy Load)
+// Importação dos programas
 import { renderAbout } from '../programs/about.js';
 import { renderTerminal } from '../programs/terminal.js';
 import { renderPatchNotes } from '../programs/patchnotes.js';
@@ -18,7 +18,6 @@ import { renderMinesweeper } from '../programs/games/minesweeper.js';
 
 let zIndexCounter = 100;
 
-// Mapeamento de ID da Janela 
 const windowRegistry = {
     'window-about': renderAbout,
     'window-terminal': renderTerminal,
@@ -35,6 +34,38 @@ const windowRegistry = {
     'window-minesweeper': renderMinesweeper
 };
 
+const hibernationVault = new Map();
+
+function hibernateWindow(windowId) {
+    const win = document.getElementById(windowId);
+    if (!win) return;
+
+    const hasIframe = win.querySelector('iframe');
+    if (hasIframe) return; 
+
+    const body = win.querySelector('.window-body');
+    if (body && body.childNodes.length > 0) {
+        const fragment = document.createDocumentFragment();
+        while (body.firstChild) {
+            fragment.appendChild(body.firstChild);
+        }
+        hibernationVault.set(windowId, fragment);
+        console.log(`[ZezinOS Memory] Janela ${windowId} fechada e hibernada.`);
+    }
+}
+
+function wakeUpWindow(windowId) {
+    const win = document.getElementById(windowId);
+    if (!win) return;
+
+    const body = win.querySelector('.window-body');
+    if (body && hibernationVault.has(windowId)) {
+        body.appendChild(hibernationVault.get(windowId));
+        hibernationVault.delete(windowId);
+        console.log(`[ZezinOS Memory] Janela ${windowId} reaberta e acordada.`);
+    }
+}
+
 export function bringToFront(windowElement) {
     zIndexCounter++;
     windowElement.style.zIndex = zIndexCounter;
@@ -47,6 +78,15 @@ export function bringToFront(windowElement) {
     }
 }
 
+export function preRenderWindow(windowId) {
+    let windowElement = document.getElementById(windowId);
+
+    if (!windowElement && windowRegistry[windowId]) {
+        windowRegistry[windowId]();
+        console.log(`[ZezinOS System] ${windowId} pré-renderizado em background.`);
+    }
+}
+
 export function openWindow(windowId, playAudio = true) {
     let windowElement = document.getElementById(windowId);
 
@@ -56,10 +96,16 @@ export function openWindow(windowId, playAudio = true) {
     }
 
     if (windowElement) {
+        wakeUpWindow(windowId);
+
         if (playAudio) playSound('window');
         windowElement.classList.add('open');
+        windowElement.classList.remove('minimizing');
+        
         if (windowElement.dataset.skipTaskbar !== "true") {
             createTaskbarButton(windowId, windowElement);
+            const taskButton = document.getElementById(`btn-${windowId}`);
+            if (taskButton) taskButton.classList.add('active');
         }
         bringToFront(windowElement);
     }
@@ -101,16 +147,20 @@ export function closeWindow(windowId) {
                 removeTaskbarButton(windowId);
             }
             
+            hibernateWindow(windowId); 
+
         }, closeDelay);
     }
 }
 
-export function minimizeWindow(windowId) {
+export function minimizeWindow(windowId, playAudio = true) {
     const windowElement = document.getElementById(windowId);
     const taskButton = document.getElementById(`btn-${windowId}`);
+    
     if (windowElement) {
-        playSound('window');
+        if (playAudio) playSound('window');
         windowElement.classList.add('minimizing');
+        
         setTimeout(() => {
             windowElement.classList.remove('open');
             windowElement.classList.remove('minimizing');
@@ -130,16 +180,11 @@ export function initWindowListener() {
         if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext) {
             const openWindows = document.querySelectorAll('.window.open');
             let playedSound = false;
+            
             openWindows.forEach(win => {
                 if (win.dataset.skipTaskbar !== "true") {
-                    if (!playedSound) { playSound('window'); playedSound = true; }
-                    win.classList.add('minimizing');
-                    setTimeout(() => {
-                        win.classList.remove('open');
-                        win.classList.remove('minimizing');
-                    }, 150);
-                    const taskButton = document.getElementById(`btn-${win.id}`);
-                    if (taskButton) taskButton.classList.remove('active');
+                    minimizeWindow(win.id, !playedSound);
+                    playedSound = true;
                 }
             });
         }

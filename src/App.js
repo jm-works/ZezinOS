@@ -1,7 +1,7 @@
 // Sistema
 import { startClock } from './modules/clock.js';
 import { initSelectionBox } from './modules/desktop.js';
-import { openWindow, closeWindow, initWindowListener, minimizeWindow } from './modules/windowManager.js';
+import { openWindow, closeWindow, initWindowListener, minimizeWindow, preRenderWindow } from './modules/windowManager.js';
 import { initDraggableWindows } from './modules/drag.js';
 import { initStartMenu } from './modules/startMenu.js';
 import { runBootSequence } from './modules/boot.js';
@@ -34,6 +34,10 @@ async function initSystem() {
     initWindowListener();
     initDraggableWindows();
     initStartMenu();
+
+    // Pré-renderização
+    preRenderWindow('window-mediaplayer');
+    preRenderWindow('window-minesweeper');
 
     openWindow('window-about', false);
 }
