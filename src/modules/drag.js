@@ -3,7 +3,13 @@ import { bringToFront } from './windowManager.js';
 export function initDraggableWindows() {
     let isDragging = false;
     let currentWindow = null;
-    let offset = { x: 0, y: 0 };
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let windowStartX = 0;
+    let windowStartY = 0;
+    let currentDx = 0;
+    let currentDy = 0;
+    let ticking = false;
 
     document.addEventListener('mousedown', (e) => {
         const titleBar = e.target.closest('.title-bar');
@@ -17,17 +23,23 @@ export function initDraggableWindows() {
             currentWindow = windowEl;
 
             bringToFront(windowEl);
+            
             windowEl.style.transition = 'none';
 
             const rect = windowEl.getBoundingClientRect();
             
-            windowEl.style.left = rect.left + 'px';
-            windowEl.style.top = rect.top + 'px';
-            windowEl.style.transform = 'none';
+            windowStartX = rect.left;
+            windowStartY = rect.top;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            currentDx = 0;
+            currentDy = 0;
+            
+            windowEl.style.left = windowStartX + 'px';
+            windowEl.style.top = windowStartY + 'px';
             windowEl.style.margin = '0';
-
-            offset.x = e.clientX - rect.left;
-            offset.y = e.clientY - rect.top;
+            windowEl.style.willChange = 'transform';
+            windowEl.style.transform = 'translate3d(0px, 0px, 0px)';
         }
     });
 
@@ -35,17 +47,39 @@ export function initDraggableWindows() {
         if (!isDragging || !currentWindow) return;
 
         e.preventDefault();
-        const newX = e.clientX - offset.x;
-        const newY = e.clientY - offset.y;
 
-        currentWindow.style.left = newX + 'px';
-        currentWindow.style.top = newY + 'px';
+        const currentX = e.clientX;
+        const currentY = e.clientY;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (isDragging && currentWindow) {
+                    currentDx = currentX - dragStartX;
+                    currentDy = currentY - dragStartY;
+                    
+                    currentWindow.style.transform = `translate3d(${currentDx}px, ${currentDy}px, 0)`;
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
 
     document.addEventListener('mouseup', () => {
-        if (currentWindow) {
-            currentWindow.style.transition = '';
+        if (currentWindow && isDragging) {
+            const win = currentWindow; 
+            
+            win.style.left = (windowStartX + currentDx) + 'px';
+            win.style.top = (windowStartY + currentDy) + 'px';
+            
+            win.style.transform = 'none';
+            win.style.willChange = 'auto';
+            
+            void win.offsetWidth; 
+            
+            win.style.transition = '';
         }
+        
         isDragging = false;
         currentWindow = null;
     });
