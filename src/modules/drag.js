@@ -10,6 +10,7 @@ export function initDraggableWindows() {
     let currentDx = 0;
     let currentDy = 0;
     let ticking = false;
+    let hasDragged = false;
 
     document.addEventListener('mousedown', (e) => {
         const titleBar = e.target.closest('.title-bar');
@@ -20,11 +21,14 @@ export function initDraggableWindows() {
         
         if (windowEl) {
             isDragging = true;
+            hasDragged = false; 
             currentWindow = windowEl;
 
             bringToFront(windowEl);
             
             windowEl.style.transition = 'none';
+
+            document.body.classList.add('is-dragging');
 
             const rect = windowEl.getBoundingClientRect();
             
@@ -50,6 +54,9 @@ export function initDraggableWindows() {
 
         const currentX = e.clientX;
         const currentY = e.clientY;
+        if (Math.abs(currentX - dragStartX) > 2 || Math.abs(currentY - dragStartY) > 2) {
+            hasDragged = true;
+        }
 
         if (!ticking) {
             window.requestAnimationFrame(() => {
@@ -78,9 +85,22 @@ export function initDraggableWindows() {
             void win.offsetWidth; 
             
             win.style.transition = '';
+
+            document.body.classList.remove('is-dragging');
         }
         
         isDragging = false;
         currentWindow = null;
+
+        setTimeout(() => {
+            hasDragged = false;
+        }, 50);
     });
+
+    window.addEventListener('click', (e) => {
+        if (hasDragged) {
+            e.stopPropagation(); 
+            e.preventDefault();
+        }
+    }, true);
 }

@@ -2,6 +2,16 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v1.0.0",
+        date: "23/02/2026",
+        changes: [
+            "Correções de bugs.",
+            "Otmização de janelas.",
+            "Portfolio adicionado.",
+            "Finalmente, depois de quase 70 horas de trabalho, tenho a versão próxima da definitiva, obrigado a todos pelo suporte e apoio até aqui, o projeto continuará a ter atualizações, mas voltados a correção de erros e muito raramente, adição de algo, o ritmo agora será bem menor, se Deus quiser."
+        ]
+    },
+    {
         version: "v0.9.9",
         date: "22/02/2026",
         changes: [
