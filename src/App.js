@@ -5,7 +5,7 @@ import { openWindow, closeWindow, initWindowListener, minimizeWindow } from './m
 import { initDraggableWindows } from './modules/drag.js';
 import { initStartMenu } from './modules/startMenu.js';
 import { runBootSequence } from './modules/boot.js';
-import { initLogin } from './modules/login.js'; // <- Import do Login
+import { initLogin } from './modules/login.js';
 
 // Programas
 import { renderAbout } from './programs/about.js';
@@ -17,6 +17,7 @@ import { renderWaifuViewer } from './programs/waifuviewer.js';
 import { renderCalculator } from './programs/calculator.js';
 import { renderNotepad } from './programs/notepad.js';
 import { renderZezinPaint } from './programs/zezinpaint.js';
+import { renderInternet } from './programs/internet.js';
 
 // Jogos
 import { renderDosGames } from './programs/games/dosgames.js';
@@ -52,6 +53,7 @@ async function initSystem() {
     renderMinesweeper();
     renderNotepad();
     renderZezinPaint();
+    renderInternet();
 
     // Interface
     startClock();
@@ -61,7 +63,7 @@ async function initSystem() {
     initStartMenu();
 
     // Sobre Mim
-    openWindow('window-about');
+    openWindow('window-about', false);
 }
 
 document.addEventListener('DOMContentLoaded', initSystem);

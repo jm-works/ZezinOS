@@ -17,11 +17,13 @@ export function bringToFront(windowElement) {
     }
 }
 
-export function openWindow(windowId) {
+export function openWindow(windowId, playAudio = true) {
     const windowElement = document.getElementById(windowId);
 
     if (windowElement) {
-        playSound('window');
+        if (playAudio) {
+            playSound('window');
+        }
         
         windowElement.classList.add('open');
         if (windowElement.dataset.skipTaskbar !== "true") {
@@ -38,13 +40,23 @@ export function closeWindow(windowId) {
     if (windowElement) {
         playSound('window');
 
-        windowElement.classList.remove('open');
-        windowElement.classList.remove('minimizing');
-    
-        windowElement.style.top = '';
-        windowElement.style.left = '';
-        windowElement.style.margin = '';
-        windowElement.style.transform = '';
+        windowElement.style.transition = 'none';
+        windowElement.style.visibility = 'hidden';
+        windowElement.style.opacity = '0';
+        windowElement.style.pointerEvents = 'none';
+
+        let closeDelay = 50; 
+        if (windowId === 'window-internet') {
+            closeDelay = 400; 
+
+            const addressInput = windowElement.querySelector('#ie-address');
+            const btnGo = windowElement.querySelector('#ie-go');
+            
+            if (addressInput && btnGo) {
+                addressInput.value = 'http://zezin.web/home.htm';
+                btnGo.click(); 
+            }
+        }
 
         if (windowId === 'window-terminal') {
             const output = windowElement.querySelector('#terminal-output');
@@ -69,11 +81,26 @@ export function closeWindow(windowId) {
             if (clearBtn) {
                 clearBtn.click();
             }
-        }        
-
-        if (windowElement.dataset.skipTaskbar !== "true") {
-            removeTaskbarButton(windowId);
         }
+
+        setTimeout(() => {
+            windowElement.classList.remove('open');
+            windowElement.classList.remove('minimizing');
+        
+            windowElement.style.transition = '';
+            windowElement.style.visibility = '';
+            windowElement.style.opacity = '';
+            windowElement.style.pointerEvents = '';
+            
+            windowElement.style.top = '';
+            windowElement.style.left = '';
+            windowElement.style.margin = '';
+            windowElement.style.transform = '';
+
+            if (windowElement.dataset.skipTaskbar !== "true") {
+                removeTaskbarButton(windowId);
+            }
+        }, closeDelay); 
     }
 }
 
