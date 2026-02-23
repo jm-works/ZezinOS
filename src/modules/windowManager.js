@@ -175,7 +175,7 @@ export function initWindowListener() {
         const clickedOnIcon = event.target.closest('.desktop-icon');
         const clickedOnTaskbar = event.target.closest('.taskbar');
         const clickedOnStart = event.target.closest('#start-menu') || event.target.closest('.start-button');
-        const clickedOnContext = event.target.closest('#context-menu');
+        const clickedOnContext = event.target.closest('#context-menu') || event.target.closest('#taskbar-context-menu');
 
         if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext) {
             const openWindows = document.querySelectorAll('.window.open');
