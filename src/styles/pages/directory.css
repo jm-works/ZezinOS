@@ -1,0 +1,169 @@
+.ie-viewport.theme-directory {
+    background-color: #000022;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    padding: 20px;
+    color: #fff;
+}
+
+.theme-directory .blog-layout { 
+    display: flex; 
+    flex-direction: column; 
+    max-width: 650px; 
+    margin: 0 auto; 
+    gap: 20px; 
+}
+
+.theme-directory .blog-sidebar { display: none; } 
+
+.theme-directory .directory-header {
+    text-align: center;
+    border: 4px dashed #00FFFF; 
+    background: linear-gradient(135deg, #000080 0%, #000033 100%);
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 6px 6px 0px #FF00FF; 
+}
+
+.theme-directory h1 {
+    font-family: "Impact", sans-serif;
+    font-size: 32px;
+    color: #FFFF00;
+    text-shadow: 3px 3px 0px #FF0000, -1px -1px 0px #FFF; 
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.hypno-cat-label {
+    background: #00FFFF;
+    color: #000;
+    font-family: "Arial Black", sans-serif;
+    padding: 6px 15px;
+    font-size: 13px;
+    width: fit-content;
+    margin-top: 15px;
+    border: 2px solid #FFF;
+    box-shadow: 3px 3px 0px #FF00FF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hypno-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hypno-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #000000 0%, #0a0a2a 100%); 
+    border: 2px outset #00FF00;
+    padding: 12px;
+    gap: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.hypno-item:hover {
+    border-color: #00FFFF;
+    transform: translateX(4px) translateY(-4px); 
+    box-shadow: -5px 5px 0px #FF00FF; 
+    background: linear-gradient(90deg, #000022 0%, #111144 100%);
+}
+
+.hypno-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+    filter: drop-shadow(2px 2px 0px #FF00FF);
+}
+
+.hypno-info {
+    flex: 1;
+}
+
+.hypno-info h3 {
+    margin: 0;
+    font-family: "Arial Black", sans-serif;
+    font-size: 15px;
+    color: #FFFF00;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hypno-info p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+}
+
+.hypno-link {
+    background: #FF0000;
+    color: #FFFF00 !important;
+    text-decoration: none;
+    font-size: 11px;
+    padding: 6px 12px;
+    font-weight: bold;
+    border: 3px outset #FF0000;
+    font-family: "Impact", sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.1s;
+}
+
+.hypno-link:hover { 
+    background: #FFFF00; 
+    color: #FF0000 !important; 
+    border-color: #FFFF00; 
+}
+
+.hypno-link:active { border-style: inset; }
+
+.windows-95-box { background-color: #c0c0c0; color: #000; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 20px; width: 60%; margin: 20px auto; text-align: center; font-family: Arial, sans-serif; box-shadow: 5px 5px 15px rgba(255, 0, 255, 0.4); }
+.retro-btn { background: #c0c0c0; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 10px 20px; font-weight: bold; cursor: pointer; }
+.retro-btn:active { border-color: #808080 #fff #fff #808080; }
+
+/* tags */
+.tech-tags {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    font-family: "MS Sans Serif", "Courier New", monospace;
+    font-size: 9px;
+    padding: 2px 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-backend {
+    background-color: #000000;
+    color: #00FF41;
+    border: 1px solid #00FF41;
+    box-shadow: 1px 1px 0px #008F11;
+}
+
+.tag-frontend {
+    background-color: #FF00FF;
+    color: #FFFFFF;
+    border: 1px solid #00FFFF;
+    box-shadow: 1px 1px 0px #000080;
+}
+
+.tag-desktop {
+    background-color: #C0C0C0;
+    color: #000000;
+    border: 1px solid #FFFFFF;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+}
+
+.tag-web {
+    background-color: #000080;
+    color: #FFFF00;
+    border: 1px solid #FFFF00;
+}
