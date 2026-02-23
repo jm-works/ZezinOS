@@ -1,6 +1,6 @@
 export const registroJogosPage = {
     title: "Registro ULTIMATE de Jogos",
-    date: "23 de fevereiro de 2026",
+    date: "4 de dezembro de 2025",
     theme: "theme-hypnospace", 
     content: `
 <center>
