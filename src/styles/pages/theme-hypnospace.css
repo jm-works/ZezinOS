@@ -1,0 +1,25 @@
+/* --- TEMA HYPNOSPACE (Blog Padrão) --- */
+.ie-viewport.theme-hypnospace {
+    background-color: #000000;
+    background-image: url('https://img.itch.zone/aW1hZ2UvODYxOTMzLzQ4NDM0MTcuZ2lm/original/S83jYa.gif');
+    padding: 20px;
+    font-family: "Comic Sans MS", cursive;
+    color: #00FF00;
+}
+@keyframes hypnoBlink { 50% { opacity: 0; } }
+.theme-hypnospace .blink { animation: hypnoBlink 1s step-start infinite; }
+.theme-hypnospace .blog-layout { display: flex; gap: 20px; max-width: 800px; margin: 0 auto; }
+.theme-hypnospace .blog-sidebar {
+    width: 180px;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png'), #000080;
+    border: 5px ridge #FF00FF; box-shadow: 4px 4px 0px #00FFFF; color: #FFFFFF; padding: 10px; height: fit-content; text-align: center;
+}
+.theme-hypnospace .blog-sidebar h3 { color: #FFFF00; text-shadow: 1px 1px #000; border-bottom: 1px dashed #fff; padding-bottom: 5px;}
+.theme-hypnospace .blog-sidebar a { color: #00FFFF; font-weight: bold; margin: 8px 0; display: block; text-decoration: none; border: 1px solid transparent;}
+.theme-hypnospace .blog-sidebar a:hover { color: #FF0000; background: #FFFF00; border: 1px dotted #FF0000;}
+.theme-hypnospace .blog-post-card { background-color: rgba(0, 0, 0, 0.85); border: 3px dashed #FFFF00; padding: 20px; }
+.theme-hypnospace .markdown-body h1 { color: #FF00FF; text-align: center; text-shadow: 2px 2px #0000FF, -1px -1px 0 #FFF; font-size: 28px;}
+.theme-hypnospace .markdown-body h2 { color: #00FFFF; border-bottom: 2px solid #00FF00;}
+.theme-hypnospace .markdown-body a { color: #FF00FF; text-decoration: underline; background: #000;}
+.theme-hypnospace .markdown-body a:hover { color: #FFFFFF; background: #FF00FF; }
+.theme-hypnospace .markdown-body hr { border: 0; height: 3px; background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red); }

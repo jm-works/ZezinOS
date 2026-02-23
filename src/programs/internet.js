@@ -5,11 +5,17 @@ import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 import { homePage } from './internet_pages/home.js';
 import { zezinosPage } from './internet_pages/zezinos.js';
 import { catalogoPage } from './internet_pages/catalogo.js';
+import { deneasyPage } from './internet_pages/deneasy.js';
+import { pokedexPage } from './internet_pages/pokedex.js';
+import { registroJogosPage } from './internet_pages/registroJogos.js'
 
 const routes = {
     'home': homePage,
     'zezinos': zezinosPage,
     'catalogo': catalogoPage,
+    'deneasy': deneasyPage,
+    'pokedex': pokedexPage,
+    'registroJogos': registroJogosPage,
 };
 
 let history = [];
@@ -75,6 +81,18 @@ const loadPage = (pageId, isHistoryNav = false) => {
         const pageData = routes[pageId] || routes['home'];
         
         viewport.className = `ie-viewport ${pageData.theme}`;
+
+        let existingTheme = document.getElementById('dynamic-page-theme');
+        if (existingTheme) existingTheme.remove();
+
+        if (pageData.theme && pageData.theme !== '') {
+            const link = document.createElement('link');
+            link.id = 'dynamic-page-theme';
+            link.rel = 'stylesheet';
+            link.href = `./src/styles/pages/${pageData.theme}.css`; 
+            document.head.appendChild(link);
+        }
+
         viewport.innerHTML = renderLayout(pageData);
 
         setTimeout(() => {

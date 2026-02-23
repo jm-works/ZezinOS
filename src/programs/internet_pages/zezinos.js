@@ -1,6 +1,6 @@
 export const zezinosPage = {
     title: "Sobre o ZezinOS",
-    date: "14 de Julho de 1998",
+    date: "22 de fevereiro de 2026",
     theme: "theme-hypnospace", 
     content: `
 <center>

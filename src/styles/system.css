@@ -125,3 +125,7 @@
     outline: none;
 }
 .os-select:active { background-color: #f0f0f0; }
+
+body.is-dragging iframe {
+    pointer-events: none !important;
+}

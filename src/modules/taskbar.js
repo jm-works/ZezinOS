@@ -1,7 +1,45 @@
-import { bringToFront } from './windowManager.js';
+import { bringToFront, closeWindow, minimizeWindow } from './windowManager.js';
 import { playSound } from './audioManager.js';
 
+let activeContextWindowId = null;
+
+function initTaskbarContextMenu() {
+    if (document.getElementById('taskbar-context-menu')) return;
+
+    const menu = document.createElement('div');
+    menu.id = 'taskbar-context-menu';
+    
+    menu.innerHTML = `
+        <div class="context-menu-item" id="tb-ctx-minimize">Minimizar</div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" id="tb-ctx-close">Fechar</div>
+    `;
+    document.body.appendChild(menu);
+
+    document.getElementById('tb-ctx-minimize').addEventListener('click', () => {
+        if (activeContextWindowId) {
+            minimizeWindow(activeContextWindowId);
+        }
+        menu.style.display = 'none';
+    });
+
+    document.getElementById('tb-ctx-close').addEventListener('click', () => {
+        if (activeContextWindowId) {
+            closeWindow(activeContextWindowId);
+        }
+        menu.style.display = 'none';
+    });
+
+    document.addEventListener('mousedown', (e) => {
+        if (e.button === 0 && !e.target.closest('#taskbar-context-menu')) {
+            menu.style.display = 'none';
+        }
+    });
+}
+
 export function createTaskbarButton(windowId, windowElement) {
+    initTaskbarContextMenu();
+
     const taskbarArea = document.querySelector('.tasks-area');
     const titleText = windowElement.querySelector('.title-bar-text').textContent;
     const appIcons = {
@@ -41,29 +79,39 @@ export function createTaskbarButton(windowId, windowElement) {
         const isButtonActive = button.classList.contains('active');
 
         if (isWindowOpen && isButtonActive) {
-            playSound('window'); 
-            
-            windowElement.classList.add('minimizing'); 
-            button.classList.remove('active');
-            
-            setTimeout(() => {
-                windowElement.classList.remove('open');
-                windowElement.classList.remove('minimizing');
-            }, 150); 
-            
+            minimizeWindow(windowId);
         } else {
             playSound('window');
-            
             windowElement.classList.add('minimizing');
             windowElement.classList.add('open'); 
             button.classList.add('active');
             bringToFront(windowElement);
 
             void windowElement.offsetWidth;
-
             windowElement.classList.remove('minimizing');
         }
     };
+
+    button.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        playSound('menu');
+
+        activeContextWindowId = windowId;
+        const menu = document.getElementById('taskbar-context-menu');
+        menu.style.display = 'flex';
+
+        let x = e.clientX;
+        let y = e.clientY;
+
+        if (x + menu.offsetWidth > window.innerWidth) {
+            x = window.innerWidth - menu.offsetWidth - 2;
+        }
+        
+        y = y - menu.offsetHeight;
+
+        menu.style.left = `${x}px`;
+        menu.style.top = `${y}px`;
+    });
 
     taskbarArea.appendChild(button);
 }

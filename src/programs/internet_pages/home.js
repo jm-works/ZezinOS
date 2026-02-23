@@ -1,6 +1,6 @@
 export const homePage = {
     title: "Home Page",
-    date: "22 de Fevereiro de 1998",
+    date: "22 de Fevereiro de 2026",
     theme: "theme-hypnospace", 
     content: `
 
