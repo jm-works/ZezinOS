@@ -1,5 +1,5 @@
 import { bringToFront } from './windowManager.js';
-import { playSound } from './audioManager.js'; // <-- Importando do gerenciador de áudio
+import { playSound } from './audioManager.js';
 
 export function createTaskbarButton(windowId, windowElement) {
     const taskbarArea = document.querySelector('.tasks-area');
@@ -17,6 +17,7 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-minesweeper': './public/icons/minewsweeper.png',
         'window-notepad': './public/icons/notepad.ico',
         'window-zezinpaint': './public/icons/zezinpaint.webp',
+        'window-internet': './public/icons/internet.png',
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);

@@ -2,6 +2,15 @@ import {createWindow} from '../modules/windowFactory.js';
 
 const updates = [
     {
+        version: "v0.9.9",
+        date: "22/02/2026",
+        changes: [
+            "Correções visual e sonoras.",
+            "Adicionado 'Meus Projetos'.",
+            "Adicionado conversão para HTML e markdown."
+        ]
+    },
+    {
         version: "v0.9.7",
         date: "20/02/2026",
         changes: [
