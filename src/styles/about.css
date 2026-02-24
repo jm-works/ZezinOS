@@ -89,18 +89,70 @@
 .md-content img { max-width: 100%; border: 1px solid #000; margin: 10px 0; }
 .md-content hr { border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #fff; margin: 20px 0; }
 
-.md-content::-webkit-scrollbar { width: 16px; height: 16px; background-color: var(--win-gray); }
-.md-content::-webkit-scrollbar-button { display: none; }
-.md-content::-webkit-scrollbar-track {
-    background-color: var(--win-white);
-    background-image: linear-gradient(45deg, var(--win-gray-light) 25%, transparent 25%, transparent 75%, var(--win-gray-light) 75%), linear-gradient(45deg, var(--win-gray-light) 25%, transparent 25%, transparent 75%, var(--win-gray-light) 75%);
-    background-size: 2px 2px;
+.md-content::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background: var(--win-gray);
 }
+
+.md-content::-webkit-scrollbar-corner {
+    background: var(--win-gray);
+}
+
+.md-content::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='2' height='2' viewBox='0 0 2 2' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23c0c0c0'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23c0c0c0'/%3E%3C/svg%3E");
+}
+
 .md-content::-webkit-scrollbar-thumb {
     background-color: var(--win-gray);
-    border-top: 1px solid var(--win-white);
-    border-left: 1px solid var(--win-white);
-    border-right: 1px solid var(--border-dark);
-    border-bottom: 1px solid var(--border-darkest);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
 }
-.md-content::-webkit-scrollbar-thumb:active { background-color: var(--win-gray); }
+
+.md-content::-webkit-scrollbar-thumb:active {
+    background-color: var(--win-gray);
+}
+
+.md-content::-webkit-scrollbar-button {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-color: var(--win-gray);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.md-content::-webkit-scrollbar-button:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+    background-position: calc(50% + 1px) calc(50% + 1px);
+}
+
+.md-content::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 5 L5 8 L11 8 Z' fill='black'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.md-content::-webkit-scrollbar-button:vertical:increment {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 11 L5 8 L11 8 Z' fill='black'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.md-content::-webkit-scrollbar-button:vertical:decrement:end,
+.md-content::-webkit-scrollbar-button:vertical:increment:start {
+    display: none;
+}
