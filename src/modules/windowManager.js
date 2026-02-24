@@ -131,6 +131,19 @@ export function closeWindow(windowId) {
             }
         }
 
+        if (windowId === 'window-terminal') {
+            const output = windowElement.querySelector('#terminal-output');
+            const input = windowElement.querySelector('#cmd-input');
+            if (output && input) {
+                output.innerHTML = `
+                    <div>JM-WORKS(R) ZezinOS</div>
+                    <div>(C) Copyright JM-WORKS Inc 1981-1998.</div>
+                    <br>
+                `;
+                input.value = '';
+            }
+        }
+
         setTimeout(() => {
             windowElement.classList.remove('open');
             windowElement.classList.remove('minimizing');
