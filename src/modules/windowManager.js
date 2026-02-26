@@ -171,7 +171,7 @@ export function minimizeWindow(windowId, playAudio = true) {
     const taskButton = document.getElementById(`btn-${windowId}`);
     
     if (windowElement) {
-        if (playAudio) playSound('window');
+        if (playAudio) playSound('minimize');
         windowElement.classList.add('minimizing');
         
         setTimeout(() => {
