@@ -18,6 +18,9 @@ window.minimizeWindow = minimizeWindow;
 
 async function initSystem() {
 
+    // Iniciar relógio
+    startClock();
+
     // Sequência de Boot (BIOS)
     await runBootSequence();
 
@@ -29,7 +32,6 @@ async function initSystem() {
     await initLogin();
 
     // Inicialização de Módulos da Interface
-    startClock();
     initSelectionBox();
     initWindowListener();
     initDraggableWindows();
