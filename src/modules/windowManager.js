@@ -189,8 +189,9 @@ export function initWindowListener() {
         const clickedOnTaskbar = event.target.closest('.taskbar');
         const clickedOnStart = event.target.closest('#start-menu') || event.target.closest('.start-button');
         const clickedOnContext = event.target.closest('#context-menu') || event.target.closest('#taskbar-context-menu');
+        const clickedOnClippy = event.target.closest('#clippy-container');
 
-        if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext) {
+    if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext && !clickedOnClippy) {
             const openWindows = document.querySelectorAll('.window.open');
             let playedSound = false;
             

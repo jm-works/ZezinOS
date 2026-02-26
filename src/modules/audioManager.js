@@ -1,7 +1,8 @@
 const sounds = {
     click: new Audio('src/assets/sounds/click.mp3'),
     window: new Audio('src/assets/sounds/window.mp3'),
-    menu: new Audio('src/assets/sounds/menuDesk.mp3')
+    menu: new Audio('src/assets/sounds/menuDesk.mp3'),
+    clippy: new Audio('src/assets/sounds/clippy.mp3')
 };
 
 Object.values(sounds).forEach(audio => audio.volume = 0.5);
