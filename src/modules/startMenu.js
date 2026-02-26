@@ -23,4 +23,11 @@ export function initStartMenu() {
         startMenu.classList.remove('active');
         startButton.classList.remove('active');
     });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Control') {
+            playSound('click'); 
+            window.toggleStartMenu();
+        }
+    });
 }

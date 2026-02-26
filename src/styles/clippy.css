@@ -1,0 +1,86 @@
+#clippy-container {
+    position: fixed;
+    bottom: 38px; 
+    right: 10px; 
+    z-index: 9999999;
+    display: flex;
+    align-items: flex-end;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.clippy-img {
+    width: 100px; 
+    height: auto;
+    pointer-events: auto;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.6)); 
+}
+
+.clippy-bubble {
+    background-color: #FFFFE1;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 12px 18px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.5); 
+    margin-right: 10px;
+    font-family: var(--system-font), sans-serif;
+    font-size: 11px;
+    color: #000;
+    width: 190px;
+    position: relative;
+    pointer-events: auto;
+}
+
+.clippy-bubble::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid black;
+    transform: translateY(-50%);
+}
+
+.clippy-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -8px; 
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 9px solid #FFFFE1; 
+    transform: translateY(-50%);
+}
+
+.clippy-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--win-gray);
+    border-top: 1px solid var(--border-lightest);
+    border-left: 1px solid var(--border-lightest);
+    border-right: 1px solid var(--border-darkest);
+    border-bottom: 1px solid var(--border-darkest);
+    box-shadow: inset -1px -1px 0 var(--border-dark), inset 1px 1px 0 var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8px;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.clippy-close:active {
+    border-top: 1px solid var(--border-darkest);
+    border-left: 1px solid var(--border-darkest);
+    border-right: 1px solid var(--border-lightest);
+    border-bottom: 1px solid var(--border-lightest);
+    box-shadow: inset 1px 1px 0 var(--border-dark);
+    padding-top: 1px;
+    padding-left: 1px;
+}

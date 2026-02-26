@@ -6,6 +6,7 @@ import { initDraggableWindows } from './modules/drag.js';
 import { initStartMenu } from './modules/startMenu.js';
 import { runBootSequence } from './modules/boot.js';
 import { initLogin } from './modules/login.js';
+import { initClippy } from './modules/clippy.js';
 
 // Wallpaper e Media
 import { setWallpaper } from './programs/wallpaper.js';
@@ -18,6 +19,9 @@ window.minimizeWindow = minimizeWindow;
 
 async function initSystem() {
 
+    // Iniciar relógio
+    startClock();
+
     // Sequência de Boot (BIOS)
     await runBootSequence();
 
@@ -28,8 +32,10 @@ async function initSystem() {
     // Tela de Login
     await initLogin();
 
+    // Clippy
+    initClippy();
+
     // Inicialização de Módulos da Interface
-    startClock();
     initSelectionBox();
     initWindowListener();
     initDraggableWindows();
