@@ -25,8 +25,9 @@ export function initStartMenu() {
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Control') {
-            playSound('click'); 
+        if (event.key === 'Alt') {
+            event.preventDefault();
+            playSound('click');
             window.toggleStartMenu();
         }
     });
