@@ -101,7 +101,7 @@ const commands = {
     },
     'clear': () => {
         document.getElementById('terminal-output').innerHTML = '';
-        return null; 
+        return null;
     },
     'date': () => {
         return new Date().toString();
@@ -169,7 +169,7 @@ const commands = {
         `;
     },
     'surprise': () => {
-        window.open('https://shattereddisk.github.io/rickroll/rickroll.mp4', '_blank');
+        window.open('https://taromati2.github.io/rickroll/', '_blank');
         return "Abrindo a sua surpresa no navegador...";
     },
     'neofetch': () => {
@@ -216,7 +216,7 @@ const commands = {
             document.removeEventListener('keydown', removeBsod);
             document.removeEventListener('click', removeBsod);
         };
-        
+
         setTimeout(() => {
             document.addEventListener('keydown', removeBsod);
             document.addEventListener('click', removeBsod);
@@ -230,10 +230,10 @@ export function initTerminal() {
     const input = document.getElementById('cmd-input');
     const output = document.getElementById('terminal-output');
 
-    input.addEventListener('keydown', function(event) {
+    input.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             const fullCommand = input.value.trim();
-            
+
             if (fullCommand) {
                 addLine(`C:\\Users\\Zezin> ${fullCommand}`);
                 processCommand(fullCommand);
@@ -248,13 +248,13 @@ export function initTerminal() {
     async function processCommand(cmdString) {
         const args = cmdString.split(' ');
         const cmd = args[0].toLowerCase();
-        
+
         if (commands[cmd]) {
             const response = await commands[cmd](args.slice(1).join(' '));
-            
+
             if (response) {
                 addLine(response);
-                scrollToBottom(); 
+                scrollToBottom();
             }
         } else {
             addLine(`'${cmd}' não é reconhecido como um comando interno ou externo.`);
@@ -264,7 +264,7 @@ export function initTerminal() {
 
     function addLine(text) {
         const div = document.createElement('div');
-        div.style.whiteSpace = 'pre-wrap'; 
+        div.style.whiteSpace = 'pre-wrap';
         div.textContent = text;
         output.appendChild(div);
     }
