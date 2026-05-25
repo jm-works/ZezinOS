@@ -4,94 +4,94 @@ const commands = {
     // Atalhos
     'help': () => {
         return `
-    Comandos disponíveis:
+    Available commands:
     ---------------------
-    PROGRAMS  - Abre a lista de programas
-    CLS       - Limpa a tela
-    DATE      - Mostra a data atual
-    GITHUB    - Abre meu GitHub
-    SURPRISE  - Digite e descubra
-    EXIT      - Fecha o terminal
-    HELP      - Mostra essa lista
+    PROGRAMS  - Open programs list
+    CLS       - Clear the screen
+    DATE      - Show current date
+    GITHUB    - Open my GitHub
+    SURPRISE  - Type and discover
+    EXIT      - Close the terminal
+    HELP      - Show this list
         `;
     },
     'programs': () => {
         return `
-    Comandos disponíveis:
+    Available commands:
     ---------------------
-    ABOUT  - Abrir 'Sobre Mim'
-    NOTES  - Abrir 'Patch Notes'
-    MEDIA  - Abrir 'Media Player'
-    VIDEO  - Abrir 'Propriedades de Video'
-    WAIFU  - Abrir 'Waifu Viewer'
-    CALC   - Abrir 'Calculadora'
-    NOTEP  - Abrir 'Bloco de Notas'
-    PAINT  - Abrir 'ZezinPaint'
-    INTER  - Abrir 'Meus Projeto'
+    ABOUT  - Open 'About Me'
+    NOTES  - Open 'Patch Notes'
+    MEDIA  - Open 'Media Player'
+    VIDEO  - Open 'Display Properties'
+    WAIFU  - Open 'Waifu Viewer'
+    CALC   - Open 'Calculator'
+    NOTEP  - Open 'Notepad'
+    PAINT  - Open 'ZezinPaint'
+    INTER  - Open 'My Projects'
     ---------------------
-    GAMES  - Mostrar atalhos para jogos
+    GAMES  - Show game shortcuts
         `;
     },
     'games': () => {
         return `
-    Comandos disponíveis:
+    Available commands:
     ---------------------
-    MSDOS  - Abrir 'MS-DOS GAMES'
-    GTA    - Abrir 'GTA Vice City'
-    MINE   - Abrir 'Campo Minado'
+    MSDOS  - Open 'MS-DOS GAMES'
+    GTA    - Open 'GTA Vice City'
+    MINE   - Open 'Minesweeper'
         `;
     },
 
     // Programas
     'about': () => {
         openWindow('window-about');
-        return "Abrindo janela 'Sobre Mim'...";
+        return "Opening 'About Me' window...";
     },
     'notes': () => {
         openWindow('window-patchnotes');
-        return "Abrindo janela 'Patch Notes'...";
+        return "Opening 'Patch Notes' window...";
     },
     'media': () => {
         openWindow('window-mediaplayer');
-        return "Abrindo janela 'Media Player'...";
+        return "Opening 'Media Player' window...";
     },
     'video': () => {
         openWindow('window-wallpaper');
-        return "Abrindo janela 'Propriedades de Video'...";
+        return "Opening 'Display Properties' window...";
     },
     'waifu': () => {
         openWindow('window-waifuviewer');
-        return "Abrindo janela 'Waifu Viewer'...";
+        return "Opening 'Waifu Viewer' window...";
     },
     'calc': () => {
         openWindow('window-calculator');
-        return "Abrindo janela 'Calculadora'...";
+        return "Opening 'Calculator' window...";
     },
     'paint': () => {
         openWindow('window-zezinpaint');
-        return "Abrindo janela 'ZezinPaint'...";
+        return "Opening 'ZezinPaint' window...";
     },
     'notep': () => {
         openWindow('window-notepad');
-        return "Abrindo janela 'Bloco de Notas'...";
+        return "Opening 'Notepad' window...";
     },
     'inter': () => {
         openWindow('window-internet');
-        return "Abrindo janela 'Meus Projetos'...";
+        return "Opening 'My Projects' window...";
     },
 
     // Jogos
     'msdos': () => {
         openWindow('window-dosgames');
-        return "Abrindo janela 'MS-DOS GAMES'...";
+        return "Opening 'MS-DOS GAMES' window...";
     },
     'gta': () => {
         openWindow('window-aracaju');
-        return "Abrindo janela 'GTA Vice City'...";
+        return "Opening 'GTA Vice City' window...";
     },
     'mine': () => {
         openWindow('window-minesweeper');
-        return "Abrindo janela 'Campo Minado'...";
+        return "Opening 'Minesweeper' window...";
     },
 
     // Comandos Gerais
@@ -108,7 +108,7 @@ const commands = {
     },
     'github': () => {
         window.open('https://github.com/jm-works', '_blank');
-        return "Abrindo GitHub no navegador...";
+        return "Opening GitHub in browser...";
     },
     'sudo': () => {
         const user = "Zezin";
@@ -141,7 +141,7 @@ const commands = {
        Default Gateway . . . . . . . . . : 192.168.1.1
             `;
         } catch (error) {
-            return "Erro: Não foi possível determinar o endereço IP (Verifique sua conexão).";
+            return "Error: Could not determine IP address (Check your connection).";
         }
     },
     'exit': () => {
@@ -170,7 +170,7 @@ const commands = {
     },
     'surprise': () => {
         window.open('https://taromati2.github.io/rickroll/', '_blank');
-        return "Abrindo a sua surpresa no navegador...";
+        return "Opening your surprise in the browser...";
     },
     'neofetch': () => {
         const width = window.screen.width;
@@ -202,11 +202,11 @@ const commands = {
         bsod.innerHTML = `
             <div style="text-align: center; max-width: 800px;">
                 <p style="background: white; color: #0000AA; display: inline-block; padding: 2px; margin-bottom: 20px;">ZezinOS</p>
-                <p>Ocorreu um erro fatal 0E em 0028:C0011E36 no VXD VMM(01) + 00010E36.</p>
-                <p>O aplicativo atual será encerrado.</p>
+                <p>A fatal exception 0E has occurred at 0028:C0011E36 in VXD VMM(01) + 00010E36.</p>
+                <p>The current application will be terminated.</p>
                 <br>
-                <p>* Pressione qualquer tecla para retornar ao ZezinOS.</p>
-                <p>* Pressione ALT+F4 para reiniciar o computador.</p>
+                <p>* Press any key to return to ZezinOS.</p>
+                <p>* Press ALT+F4 to restart your computer.</p>
             </div>
         `;
         document.body.appendChild(bsod);
@@ -257,7 +257,7 @@ export function initTerminal() {
                 scrollToBottom();
             }
         } else {
-            addLine(`'${cmd}' não é reconhecido como um comando interno ou externo.`);
+            addLine(`'${cmd}' is not recognized as an internal or external command.`);
             scrollToBottom();
         }
     }

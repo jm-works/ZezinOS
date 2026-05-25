@@ -23,7 +23,7 @@ let currentIndex = -1;
 
 const renderLayout = (pageData) => {
     let rawContent = pageData.content || '';
-    
+
     let cleanContent = rawContent.replace(/^[ \t]+/gm, '');
 
     cleanContent = cleanContent.replace(/(>)\n+(?=[^<\n])/g, '$1\n\n');
@@ -36,9 +36,9 @@ const renderLayout = (pageData) => {
                     <br><br><b>${pageData.theme === 'theme-hypnospace' ? '<span class="blink">X_Zezin_X</span>' : 'José Matheus'}</b>
                 </center>
                 <br>
-                <h3>Navegação</h3>
+                <h3>Navigation</h3>
                 <a href="home">Home</a>
-                <a href="catalogo">Catálogo</a>
+                <a href="catalogo">Catalog</a>
                 <a href="zezinos">ZezinOS</a>
                 <br>
                 <h3>Webring</h3>
@@ -48,11 +48,11 @@ const renderLayout = (pageData) => {
             </div>
             <div class="blog-content">
                 <div class="blog-post-card">
-                    <span class="blog-date">Atualizado em: ${pageData.date}</span>
+                    <span class="blog-date">Updated on: ${pageData.date}</span>
                     <div class="markdown-body">
-                        ${pageData.theme === 'theme-directory' 
-                            ? cleanContent 
-                            : marked.parse(cleanContent, { breaks: true, gfm: true })}
+                        ${pageData.theme === 'theme-directory'
+            ? cleanContent
+            : marked.parse(cleanContent, { breaks: true, gfm: true })}
                     </div>
                 </div>
             </div>
@@ -69,17 +69,17 @@ const loadPage = (pageId, isHistoryNav = false) => {
     const btnBack = document.getElementById('ie-back');
     const btnForward = document.getElementById('ie-forward');
 
-    if (!viewport) return; 
+    if (!viewport) return;
     if (windowElement && windowElement.style.visibility !== 'hidden') {
-        playSound('click'); 
+        playSound('click');
     }
-    
-    statusText.textContent = `Procurando host zezin.web...`;
-    throbber.classList.add('loading'); 
-    
+
+    statusText.textContent = `Looking for host zezin.web...`;
+    throbber.classList.add('loading');
+
     setTimeout(() => {
         const pageData = routes[pageId] || routes['home'];
-        
+
         viewport.className = `ie-viewport ${pageData.theme}`;
 
         let existingTheme = document.getElementById('dynamic-page-theme');
@@ -89,7 +89,7 @@ const loadPage = (pageId, isHistoryNav = false) => {
             const link = document.createElement('link');
             link.id = 'dynamic-page-theme';
             link.rel = 'stylesheet';
-            link.href = `./src/styles/pages/${pageData.theme}.css`; 
+            link.href = `./src/styles/pages/${pageData.theme}.css`;
             document.head.appendChild(link);
         }
 
@@ -112,8 +112,8 @@ const loadPage = (pageId, isHistoryNav = false) => {
         }
 
         addressInput.value = `http://zezin.web/${pageId}.htm`;
-        statusText.textContent = 'Concluído';
-        throbber.classList.remove('loading'); 
+        statusText.textContent = 'Done';
+        throbber.classList.remove('loading');
 
         if (!isHistoryNav) {
             history = history.slice(0, currentIndex + 1);
@@ -127,7 +127,7 @@ const loadPage = (pageId, isHistoryNav = false) => {
         if (currentIndex < history.length - 1) btnForward.removeAttribute('disabled');
         else btnForward.setAttribute('disabled', 'true');
 
-    }, 300); 
+    }, 300);
 };
 
 export function renderInternet() {
@@ -135,16 +135,16 @@ export function renderInternet() {
     if (document.getElementById('window-internet')) {
         history = [];
         currentIndex = -1;
-        
+
         const addressInput = document.getElementById('ie-address');
         const btnGo = document.getElementById('ie-go');
-        
+
         if (addressInput && btnGo) {
             addressInput.value = 'http://zezin.web/home.htm';
-            
+
             setTimeout(() => {
                 btnGo.click();
-            }, 50); 
+            }, 50);
         }
         return;
     }
@@ -157,23 +157,23 @@ export function renderInternet() {
                     <div class="ie-buttons-group">
                         <button class="ie-tool-btn" id="ie-back" disabled>
                             <span class="ie-icon">⬅</span>
-                            <span class="ie-label">Voltar</span>
+                            <span class="ie-label">Back</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-forward" disabled>
                             <span class="ie-icon">➡</span>
-                            <span class="ie-label">Avançar</span>
+                            <span class="ie-label">Forward</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-stop">
                             <span class="ie-icon">❌</span>
-                            <span class="ie-label">Parar</span>
+                            <span class="ie-label">Stop</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-refresh">
                             <span class="ie-icon">🔄</span>
-                            <span class="ie-label">Atualizar</span>
+                            <span class="ie-label">Refresh</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-home">
                             <span class="ie-icon">🏠</span>
-                            <span class="ie-label">Início</span>
+                            <span class="ie-label">Home</span>
                         </button>
                     </div>
                     <div class="ie-throbber" id="ie-throbber"></div>
@@ -181,16 +181,16 @@ export function renderInternet() {
 
                 <div class="ie-address-row">
                     <div class="ie-drag-handle-small"></div>
-                    <div class="ie-address-label">Endereço</div>
+                    <div class="ie-address-label">Address</div>
                     <input type="text" id="ie-address" value="http://zezin.web/home.htm" spellcheck="false">
-                    <button class="os-btn ie-go-btn" id="ie-go">Ir</button>
+                    <button class="os-btn ie-go-btn" id="ie-go">Go</button>
                 </div>
             </div>
 
             <div class="ie-viewport" id="ie-viewport"></div>
 
             <div class="ie-status-bar">
-                 <div class="ie-status-zone" id="ie-status-text" style="flex: 1;">Concluído</div>
+                 <div class="ie-status-zone" id="ie-status-text" style="flex: 1;">Done</div>
                  <div class="ie-status-zone" style="width: 120px; border-left: none;">
                      <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" width="14" style="margin-right: 4px;"> Internet
                  </div>
@@ -200,7 +200,7 @@ export function renderInternet() {
 
     createWindow({
         id: 'window-internet',
-        title: 'Meus Projetos',
+        title: 'My Projects',
         content: contentHTML,
         isCentered: true
     });
@@ -216,18 +216,18 @@ export function renderInternet() {
         if (link) {
             const href = link.getAttribute('href');
             if (href && !href.startsWith('http') && !href.startsWith('#') && link.getAttribute('target') !== '_blank') {
-                e.preventDefault(); 
+                e.preventDefault();
                 loadPage(href);
             }
         }
     });
 
     document.getElementById('ie-home').addEventListener('click', () => loadPage('home'));
-    
+
     document.getElementById('ie-refresh').addEventListener('click', () => {
         if (currentIndex >= 0) loadPage(history[currentIndex], true);
     });
-    
+
     document.getElementById('ie-back').addEventListener('click', () => {
         if (currentIndex > 0) {
             currentIndex--;
@@ -241,16 +241,16 @@ export function renderInternet() {
             loadPage(history[currentIndex], true);
         }
     });
-    
+
     document.getElementById('ie-stop').addEventListener('click', () => {
         playSound('click');
-        statusText.textContent = 'Parado';
+        statusText.textContent = 'Stopped';
         throbber.classList.remove('loading');
     });
 
     btnGo.addEventListener('click', () => {
         let url = addressInput.value.replace('http://zezin.web/', '').replace('.htm', '').trim();
-        if(url) loadPage(url);
+        if (url) loadPage(url);
     });
 
     addressInput.addEventListener('keydown', (e) => {

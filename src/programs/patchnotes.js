@@ -1,127 +1,134 @@
-import {createWindow} from '../modules/windowFactory.js';
+import { createWindow } from '../modules/windowFactory.js';
 
 const updates = [
+    {
+        version: "v1.0.1",
+        date: "25/05/2026",
+        changes: [
+            "Full interface translated to English."
+        ]
+    },
     {
         version: "v1.0.0",
         date: "23/02/2026",
         changes: [
-            "Correções de bugs.",
-            "Otmização de janelas.",
-            "Portfolio adicionado.",
-            "Finalmente, depois de quase 70 horas de trabalho, tenho a versão próxima da definitiva, obrigado a todos pelo suporte e apoio até aqui, o projeto continuará a ter atualizações, mas voltados a correção de erros e muito raramente, adição de algo, o ritmo agora será bem menor, se Deus quiser."
+            "Bug fixes.",
+            "Window optimization.",
+            "Portfolio added.",
+            "Finally, after almost 70 hours of work, I have the near-definitive version, thank you all for the support so far, the project will continue to have updates, but focused on bug fixes and very rarely, adding something, the pace will now be much slower, God willing."
         ]
     },
     {
         version: "v0.9.9",
         date: "22/02/2026",
         changes: [
-            "Correções visual e sonoras.",
-            "Adicionado 'Meus Projetos'.",
-            "Adicionado conversão para HTML e markdown."
+            "Visual and audio fixes.",
+            "Added 'My Projects'.",
+            "Added conversion to HTML and markdown."
         ]
     },
     {
         version: "v0.9.7",
         date: "20/02/2026",
         changes: [
-            "Adicionado pseudo tela de login.",
-            "Reformulação do funcionamento da tela de BOOT.",
-            "Atualização visual das janelas.",
-            "Adicionado sons ao sistema.",
-            "Otimização de janelas"
+            "Added pseudo login screen.",
+            "Reworked boot screen functionality.",
+            "Visual update for windows.",
+            "Added system sounds.",
+            "Window optimization"
         ]
     },
     {
         version: "v0.9.5",
         date: "19/02/2026",
         changes: [
-            "Adicionado 'ZezinPaint'.",
-            "Correção de bugs."
+            "Added 'ZezinPaint'.",
+            "Bug fixes."
         ]
     },
     {
         version: "v0.9.3",
         date: "15/02/2026",
         changes: [
-            "Adicionado Bloco de Notas.",
-            "Melhorias visuais."
+            "Added Notepad.",
+            "Visual improvements."
         ]
     },
     {
         version: "v0.9.0",
         date: "13/02/2026",
         changes: [
-            "Finalizado a função para jogos.",
-            "Adicionado 'Campo Minado'.",
-            "Adicionado 'GTA Vice City'.",
-            "Adicionado 'MS-DOS Games'.",
-            "Reformulação do funcionamento da tela de boot.",
-            "Melhorias visuais."
+            "Finished the games function.",
+            "Added 'Minesweeper'.",
+            "Added 'GTA Vice City'.",
+            "Added 'MS-DOS Games'.",
+            "Reworked boot screen functionality.",
+            "Visual improvements."
         ]
     },
     {
         version: "v0.8.5",
         date: "12/02/2026",
         changes: [
-            "Site passado para o GitHub Pages (Facilidade para Deploy).",
-            "Tela de BOOT",
-            "Pequena correção visual",
-            "Adicionado mais comandos no ZEZIN-DOS"
+            "Site moved to GitHub Pages (Easier deployment).",
+            "BOOT Screen",
+            "Minor visual fix",
+            "Added more commands to ZEZIN-DOS"
         ]
     },
     {
         version: "v0.8.0",
         date: "10/02/2026",
         changes: [
-            "Adicionado calculadora.",
-            "Correção visual de algumas janelas.",
-            "Agora roda DOOM!",
-            "Correção de pequenos erros."
+            "Added calculator.",
+            "Visual fixes for some windows.",
+            "Now it runs DOOM!",
+            "Minor bug fixes."
         ]
     },
     {
         version: "v0.7.0",
         date: "08/02/2026",
         changes: [
-            "Adicionado a feature de filtro na aba de 'Propriedades de Video'.",
-            "Adicionado a feature de 'Waifu Viewer'.",
-            "Atualizado a lógica das janelas.",
-            "Correção de pequenos erros."
+            "Added filter feature in 'Display Properties' tab.",
+            "Added 'Waifu Viewer' feature.",
+            "Updated window logic.",
+            "Minor bug fixes."
         ]
     },
     {
         version: "v0.6.0",
         date: "06/02/2026",
         changes: [
-            "Adicionado a feature de Media Player (Clique em 'Arquivo' e poderá pesquisar alguma música no SoundCloud).",
+            "Added Media Player feature (Click 'File' and you can search for music on SoundCloud).",
         ]
     },
     {
         version: "v0.5.0",
         date: "05/02/2026",
         changes: [
-            "Adicionado a feature do Menu Iniciar (Start Menu).",
-            "Adicionado a feature de selecionar wallpaper",
-            'Corrigido espaçamento do desktop.',
-            'Comando "neofetch" adicionado ao ZEZIN-DOS.'
+            "Added Start Menu feature.",
+            "Added wallpaper selection feature",
+            'Fixed desktop spacing.',
+            'Command "neofetch" added to ZEZIN-DOS.'
         ]
     },
     {
         version: "v0.3.0",
         date: "04/02/2026",
         changes: [
-            "Reformulação do sistema de pastas.",
-            'Hospetagem do projeto em <a href="https://zezinos.site/" target="_blank">ZezinOS site</a>.',
-            'Adicionado o programa "Patch Notes" para facilitar a descrição das atualizações do projeto.',
-            'Primeira versão a ser pública.'
+            "Folder system rework.",
+            'Project hosted at <a href="https://zezinos.site/" target="_blank">ZezinOS site</a>.',
+            'Added "Patch Notes" program to easily describe project updates.',
+            'First public version.'
         ]
     },
     {
         version: "v0.2.0",
         date: "03/02/2026",
         changes: [
-            "Implementado sistema de arrastar janelas (Drag & Drop).",
-            'Adicionado Terminal ZEZIN-DOS funcional com comandos.',
+            "Implemented window Drag & Drop system.",
+            'Added functional ZEZIN-DOS Terminal with commands.',
         ]
     }
 ];
@@ -140,10 +147,10 @@ export function renderPatchNotes() {
     `).join('');
 
     const menuHTML = `
-        <div class="menu-item">Arquivo</div>
-        <div class="menu-item">Editar</div>
-        <div class="menu-item">Pesquisar</div>
-        <div class="menu-item">Ajuda</div>
+        <div class="menu-item">File</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">Search</div>
+        <div class="menu-item">Help</div>
     `;
 
     createWindow({

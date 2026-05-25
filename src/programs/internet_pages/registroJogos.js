@@ -1,7 +1,7 @@
 export const registroJogosPage = {
     title: "Registro ULTIMATE de Jogos",
-    date: "4 de dezembro de 2025",
-    theme: "theme-hypnospace", 
+    date: "December 4, 2025",
+    theme: "theme-hypnospace",
     content: `
 <center>
     <a href="https://i.postimg.cc/BnMXvBdG/registro-Jogos.png" target="_blank" style="text-decoration: none;" alt="Registro ULTIMATE de Jogos">
@@ -10,44 +10,44 @@ export const registroJogosPage = {
     <h1>Registro ULTIMATE de Jogos</h1>
 </center>
 
-Bem-vindo ao **Registro ULTIMATE de Jogos**!
-Se você é como eu e sofre de amnésia *gamer* após zerar 50 RPGs seguidos, este é o seu novo melhor amigo. Um diário digital desenvolvido nativamente para o desktop que cataloga, analisa e imortaliza a sua jornada nos videogames.
+Welcome to the **Registro ULTIMATE de Jogos**!
+If you are like me and suffer from *gamer* amnesia after beating 50 RPGs in a row, this is your new best friend. A digital diary developed natively for the desktop that catalogs, analyzes, and immortalizes your gaming journey.
 <br>
 ---
 
-### Inspirações & Motivações<br>
-A ideia não surgiu do nada, foi uma mistura de necessidade com um <span style="text-decoration: line-through red; text-decoration-thickness: 2px;">leve TOC</span> organizacional:<br><br>
+### Inspirations & Motivations<br>
+The idea didn't come out of nowhere, it was a mix of necessity and a <span style="text-decoration: line-through red; text-decoration-thickness: 2px;">mild organizational OCD</span>:<br><br>
 
-* **Cogumelando Videogame:** A grande inspiração. O projeto nasceu baseado na famosa planilha de jogos do canal do Cogu.
-* **Listas e mais listas:** A satisfação inigualável de marcar um jogo de 100 horas como "Concluído" e ver um gráfico subir.
-* **Desktop Raiz:** Um programa executável que roda direto na sua máquina, com seus arquivos salvos localmente.
+* **Cogumelando Videogame:** The great inspiration. The project was born based on the famous games spreadsheet from Cogu's channel.
+* **Lists and more lists:** The unparalleled satisfaction of marking a 100-hour game as "Completed" and watching a chart go up.
+* **Old-school Desktop:** An executable program that runs directly on your machine, with your files saved locally.
 <br>
 ---
 
-### A Forja (O mar de tecnologias)<br>
-O que usei no projeto:<br><br>
+### The Forge (The sea of technologies)<br>
+What I used in the project:<br><br>
 
-* **Python (3.13+):** A linguagem principal. Simples, direta e perfeita para processar e manipular dados de centenas de horas de jogatina.
-* **Tkinter (GUI):** A biblioteca gráfica do Python. Foi usada para criar toda a interface de janelas e menus do aplicativo.
-* **Manipulação de Dados:** Sistema robusto que permite não só salvar em **JSON**, mas importar e exportar seus relatórios para **Excel (.xlsx)** e gerar **PDFs**. 
+* **Python (3.13+):** The main language. Simple, direct, and perfect for processing and manipulating data from hundreds of hours of gameplay.
+* **Tkinter (GUI):** Python's graphical library. It was used to create the entire window and menu interface of the application.
+* **Data Manipulation:** Robust system that allows you not only to save in **JSON**, but also import and export your reports to **Excel (.xlsx)** and generate **PDFs**. 
 <br>
 ---
 
-### O Que Temos nesse mundinho?
+### What do we have in this little world?
 
-1. **O Cadastro Supremo:** Registre o jogo, informe o gênero, a plataforma, o tempo exato jogado e dê a sua nota implacável.
-2. **Estatísticas e Gráficos:** O menu "Informações" gera relatórios visuais e detalhados do seu desempenho ao longo do tempo.
-3. **Minhas Tarefas (Checklist):** Um sistema integrado para criar missões. Vai platinar? Crie a checklist aqui e acompanhe o progresso.
-4. **Resumo da Jornada:** Uma visão global e detalhada de todos os mundos que você já salvou (ou destruiu).
-5. **Controle Total:** Filtros avançados, edição rápida pelo clique com o botão direito e muito mais.
+1. **The Supreme Registry:** Register the game, inform the genre, platform, exact time played, and give your unforgiving rating.
+2. **Stats and Charts:** The "Information" menu generates visual and detailed reports of your performance over time.
+3. **My Tasks (Checklist):** An integrated system for creating missions. Going for the platinum? Create the checklist here and track your progress.
+4. **Journey Summary:** A global and detailed view of all the worlds you've saved (or destroyed).
+5. **Total Control:** Advanced filters, quick editing via right-click, and much more.
 
 <br>
 <center>
     <a href="https://github.com/jm-works/Registro-ULTIMATE-de-Jogos" target="_blank" style="text-decoration: none;">
-            ACESSAR REPOSITÓRIO GITHUB
+            ACCESS GITHUB REPOSITORY
     </a>
     <br>
-    <i>Copyright © 2026 JM-WORKS Inc. Porque zerar e não mostrar pros amiguinhos, é como não ter zerado.</i>
+    <i>Copyright © 2026 JM-WORKS Inc. Because beating a game and not showing off to your friends is like not beating it at all.</i>
 </center>
     `
 };

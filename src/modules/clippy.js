@@ -9,10 +9,10 @@ export function initClippy() {
 
         clippyContainer.innerHTML = `
             <div class="clippy-bubble">
-                <div class="clippy-close" id="clippy-close" title="Fechar">✕</div>
+                <div class="clippy-close" id="clippy-close" title="Close">✕</div>
                 <div class="clippy-text">
-                    Parece que você quer explorar o sistema!<br><br>
-                    <b>Dica:</b> Pressione a tecla <b>(Alt)</b> no seu teclado para abrir o Menu Iniciar rapidamente.
+                    It looks like you want to explore the system!<br><br>
+                    <b>Tip:</b> Press the <b>(Alt)</b> key on your keyboard to quickly open the Start Menu.
                 </div>
             </div>
             <img src="https://www.spriters-resource.com/media/gifs/7/522060-6876.gif?updated=1771548693" alt="Clippy" class="clippy-img" id="clippy-img">

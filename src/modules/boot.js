@@ -8,7 +8,7 @@ export function runBootSequence() {
         const info = screen.querySelector('.bios-info');
         const drives = screen.querySelector('.bios-drives');
         const cursor = screen.querySelector('.bios-cursor');
-        
+
         const totalMem = 16384;
         let currentMem = 0;
         const warmUpTime = 1000;
@@ -20,7 +20,7 @@ export function runBootSequence() {
 
         if (playPromise !== undefined) {
             playPromise.catch(() => {
-                console.log("Autoplay bloqueado. Aguardando interação...");
+                console.log("Autoplay blocked. Waiting for interaction...");
                 showClickToStart(audio);
             }).then(() => {
                 if (!audio.paused) {
@@ -32,7 +32,7 @@ export function runBootSequence() {
         function startWarmUpSequence() {
             setTimeout(() => {
                 header.style.visibility = 'visible';
-                
+
                 setTimeout(() => {
                     info.style.visibility = 'visible';
                     startMemoryCheck();
@@ -43,23 +43,23 @@ export function runBootSequence() {
 
         function startMemoryCheck() {
             const memInterval = setInterval(() => {
-                currentMem += 256; 
+                currentMem += 256;
                 if (currentMem >= totalMem) {
                     currentMem = totalMem;
                     memDisplay.innerText = currentMem + "K OK";
                     clearInterval(memInterval);
-                    
+
                     setTimeout(() => {
                         drives.style.visibility = 'visible';
-                        
+
                         setTimeout(() => {
-                            if(footer) {
+                            if (footer) {
                                 footer.style.visibility = 'visible';
                             }
-                            cursor.style.visibility = 'visible'; 
-                            
-                            setTimeout(finishBoot, 1500); 
-                        }, 1000); 
+                            cursor.style.visibility = 'visible';
+
+                            setTimeout(finishBoot, 1500);
+                        }, 1000);
                     }, 400);
 
                 } else {
@@ -74,19 +74,19 @@ export function runBootSequence() {
             msg.style.top = '50%';
             msg.style.left = '50%';
             msg.style.transform = 'translate(-50%, -50%)';
-            msg.style.color = '#666'; 
+            msg.style.color = '#666';
             msg.style.fontFamily = "'Courier New', monospace";
             msg.style.fontSize = '14px';
             msg.style.visibility = 'visible';
             msg.style.animation = "blink 1s infinite";
-            msg.innerText = "PRESSIONE QUALQUER BOTÃO...";
+            msg.innerText = "PRESS ANY KEY...";
             screen.appendChild(msg);
 
             const start = () => {
-                msg.remove(); 
+                msg.remove();
                 audioElement.play();
-                startWarmUpSequence(); 
-                
+                startWarmUpSequence();
+
                 window.removeEventListener('keydown', start);
                 window.removeEventListener('click', start);
             };
@@ -99,7 +99,7 @@ export function runBootSequence() {
             screen.classList.add('boot-fade-out');
             setTimeout(() => {
                 screen.remove();
-                resolve(); 
+                resolve();
             }, 500);
         }
     });

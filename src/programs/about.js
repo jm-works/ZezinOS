@@ -2,23 +2,23 @@ import { createWindow } from '../modules/windowFactory.js';
 
 export function renderAbout() {
     const menuHTML = `
-        <div class="menu-item">Arquivo</div>
-        <div class="menu-item">Editar</div>
-        <div class="menu-item">Pesquisar</div>
-        <div class="menu-item">Ajuda</div>
+        <div class="menu-item">File</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">Search</div>
+        <div class="menu-item">Help</div>
     `;
 
     const bodyHTML = `
     <div class="md-content">
-            <h1>Sobre Mim</h1>
+            <h1>About Me</h1>
             
-            <h3>Quem sou eu?</h3>
+            <h3>Who am I?</h3>
             <br>
-            <p>Olá, me chamo José Matheus, sou um desenvolvedor apaixonado pela <i>estética retrô</i> e interfaces nostálgicas.</p>
+            <p>Hello, my name is José Matheus, I am a developer passionate about <i>retro aesthetics</i> and nostalgic interfaces.</p>
 
             <hr>
 
-            <h3>Quais as minhas habilidades?</h3>
+            <h3>What are my skills?</h3>
             <br>
             <ul>
                 <li><b>Frontend:</b> HTML5, CSS3, JavaScript (ES6+)</li>
@@ -28,7 +28,7 @@ export function renderAbout() {
 
             <hr>
 
-            <h3>Meus Contatos</h3>
+            <h3>My Contacts</h3>
             <br>
             <ul>
                 <li>
@@ -41,14 +41,14 @@ export function renderAbout() {
             
             <br>
             <p style="text-align: center; color: #888; font-size: 12px;">
-                <i>Feito com 💙 por JM | José Matheus</i>
+                <i>Made with 💙 by JM | José Matheus</i>
             </p>
         </div>
     `;
 
     createWindow({
         id: 'window-about',
-        title: 'Sobre Mim',
+        title: 'About Me',
         menuBar: menuHTML,
         content: bodyHTML,
         isCentered: false

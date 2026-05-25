@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,6 @@
     <title>ZezinOS</title>
     <link rel="icon" href="./public/icons/logo.svg">
 
-    <!-- Sistema -->
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/system.css">
     <link rel="stylesheet" href="./src/styles/taskbar.css">
@@ -18,7 +17,6 @@
     <link rel="stylesheet" href="./src/styles/login.css">
     <link rel="stylesheet" href="./src/styles/clippy.css">
 
-    <!-- Programas -->
     <link rel="stylesheet" href="./src/styles/about.css">
     <link rel="stylesheet" href="./src/styles/terminal.css">
     <link rel="stylesheet" href="./src/styles/wallpaper.css">
@@ -31,18 +29,15 @@
     <link rel="stylesheet" href="./src/styles/zezinpaint.css">
     <link rel="stylesheet" href="./src/styles/internet.css">
 
-    <!-- Jogos -->
     <link rel="stylesheet" href="./src/styles/games/dosgames.css">
     <link rel="stylesheet" href="./src/styles/games/aracaju.css">
     <link rel="stylesheet" href="./src/styles/games/minesweeper.css">
 
-    <!-- Temas de Pagina-->
     <link rel="stylesheet" href="./src/styles/pages/theme-hypnospace.css">
     <link rel="stylesheet" href="./src/styles/pages/directory.css">
 </head>
 
 <body>
-    <!-- Tela de BOOT -->
 
     <body>
         <div id="boot-screen">
@@ -74,11 +69,10 @@
             <div class="bios-cursor"></div>
         </div>
 
-        <!-- Desktop Icons -->
         <div class="desktop-area">
             <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-about')">
-                <img src="./public/icons/sobreMim.svg" alt="Sobre Mim">
-                <span>Sobre Mim</span>
+                <img src="./public/icons/sobreMim.svg" alt="About Me">
+                <span>About Me</span>
             </div>
 
             <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-mediaplayer')">
@@ -87,8 +81,8 @@
             </div>
 
             <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-internet')">
-                <img src="./public/icons/internet.png" alt="Meus Projetos">
-                <span>Meus Projetos</span>
+                <img src="./public/icons/internet.png" alt="My Projects">
+                <span>My Projects</span>
             </div>
 
             <div class="desktop-icon" tabindex="0" ondblclick="openWindow('window-patchnotes')">
@@ -98,7 +92,6 @@
 
         </div>
 
-        <!-- Menu Iniciar -->
         <div class="start-menu" id="start-menu">
             <div class="sidebar">
                 <span class="sidebar-text"><strong>ZezinOS</strong> 98 SE</span>
@@ -108,7 +101,7 @@
 
                 <div class="menu-item has-submenu">
                     <img src="./public/icons/programs.svg" class="menu-icon">
-                    <span style="flex: 1;">Programas</span>
+                    <span style="flex: 1;">Programs</span>
                     <span class="menu-arrow">▶</span>
 
                     <div class="submenu">
@@ -124,12 +117,12 @@
 
                         <div class="menu-item" onclick="openWindow('window-calculator'); toggleStartMenu()">
                             <img src="./public/icons/calculator.ico" class="menu-icon">
-                            <span>Calculadora</span>
+                            <span>Calculator</span>
                         </div>
 
                         <div class="menu-item" onclick="openWindow('window-notepad'); toggleStartMenu()">
                             <img src="./public/icons/notepad.ico" class="menu-icon">
-                            <span>Bloco de Notas</span>
+                            <span>Notepad</span>
                         </div>
 
                         <div class="menu-item" onclick="openWindow('window-waifuviewer'); toggleStartMenu()">
@@ -145,7 +138,7 @@
                 </div>
                 <div class="menu-item has-submenu">
                     <img src="./public/icons/games.ico" class="menu-icon">
-                    <span style="flex: 1">Jogos</span>
+                    <span style="flex: 1">Games</span>
                     <span class="menu-arrow">▶</span>
 
                     <div class="submenu" style="margin-top: 4px;">
@@ -159,24 +152,24 @@
                         </div>
                         <div class="menu-item" onclick="openWindow('window-minesweeper'); toggleStartMenu()">
                             <img src="./public/icons/minewsweeper.png" class="menu-icon">
-                            <span>Campo Minado</span>
+                            <span>Minesweeper</span>
                         </div>
                     </div>
                 </div>
                 <div class="menu-separator"></div>
                 <div class="menu-item" onclick="openWindow('window-about'); toggleStartMenu()">
                     <img src="./public/icons/sobreMim.svg" class="menu-icon">
-                    <span>Sobre Mim</span>
+                    <span>About Me</span>
                 </div>
 
                 <div class="menu-item" onclick="window.open('https://github.com/jm-works/ZezinOS', '_blank')">
                     <img src="./public/icons/github.svg" class="menu-icon">
-                    <span>GitHub Repositório</span>
+                    <span>GitHub Repository</span>
                 </div>
 
                 <div class="menu-item" onclick="window.open('https://github.com/jm-works', '_blank')">
                     <img src="./public/icons/logo.svg" class="menu-icon">
-                    <span>Meu GitHub</span>
+                    <span>My GitHub</span>
                 </div>
                 <div class="menu-separator"></div>
 
@@ -186,23 +179,22 @@
 
                 <div class="menu-item" onclick="openWindow('window-internet'); toggleStartMenu()">
                     <img src="./public/icons/internet.png" class="menu-icon">
-                    <span>Meus Projetos</span>
+                    <span>My Projects</span>
                 </div>
 
                 <div class="menu-separator"></div>
 
                 <div class="menu-item" onclick="openWindow('window-wallpaper'); toggleStartMenu()">
-                    <img src="./public/icons/wallpaper.ico" class="menu-icon"> <span>Propriedades de Vídeo</span>
+                    <img src="./public/icons/wallpaper.ico" class="menu-icon"> <span>Display Properties</span>
                 </div>
 
                 <div class="menu-item" onclick="location.reload()">
                     <img src="./public/icons/restart.ico" class="menu-icon">
-                    <span>Reiniciar Sistema...</span>
+                    <span>Restart System...</span>
                 </div>
             </div>
         </div>
 
-        <!-- Barra de Tarefa -->
         <div class="taskbar">
             <button class="start-button">
                 <img src="./public/icons/logo.svg" alt="" class="start-icon">

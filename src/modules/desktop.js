@@ -57,14 +57,14 @@ export function initSelectionBox() {
     if (!contextMenu) {
         contextMenu = document.createElement('div');
         contextMenu.id = 'context-menu';
-        
+
         contextMenu.innerHTML = `
-            <div class="context-menu-item" id="ctx-refresh">Atualizar</div>
+            <div class="context-menu-item" id="ctx-refresh">Refresh</div>
             <div class="context-menu-separator"></div>
-            <div class="context-menu-item" id="ctx-about">Sobre Mim</div>
-            <div class="context-menu-item" id="ctx-github">Meu GitHub</div>
+            <div class="context-menu-item" id="ctx-about">About Me</div>
+            <div class="context-menu-item" id="ctx-github">My GitHub</div>
             <div class="context-menu-separator"></div>
-            <div class="context-menu-item" id="ctx-properties">Propriedades</div>
+            <div class="context-menu-item" id="ctx-properties">Properties</div>
         `;
         document.body.appendChild(contextMenu);
 
@@ -81,12 +81,12 @@ export function initSelectionBox() {
         });
 
         document.getElementById('ctx-github').addEventListener('click', () => {
-            window.open('https://github.com/jm-works', '_blank'); 
+            window.open('https://github.com/jm-works', '_blank');
             hideContextMenu();
         });
 
         document.getElementById('ctx-properties').addEventListener('click', () => {
-            openWindow('window-wallpaper'); 
+            openWindow('window-wallpaper');
             hideContextMenu();
         });
     }
@@ -99,7 +99,7 @@ export function initSelectionBox() {
 
     desktop.addEventListener('contextmenu', (e) => {
         if (e.target.closest('.desktop-icon') || e.target.closest('.window') || e.target.closest('.taskbar')) {
-            return; 
+            return;
         }
 
         e.preventDefault();
@@ -110,7 +110,7 @@ export function initSelectionBox() {
         let y = e.clientY;
 
         contextMenu.style.display = 'flex';
-        
+
         if (x + contextMenu.offsetWidth > window.innerWidth) {
             x = window.innerWidth - contextMenu.offsetWidth - 2;
         }
