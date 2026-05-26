@@ -142,17 +142,31 @@ export function renderWaifuViewer() {
             container.style.cursor = 'move';
         });
 
-        window.addEventListener('mousemove', (e) => {
+        const handleMouseMove = (e) => {
             if (!panning) return;
             e.preventDefault();
             pointX = e.clientX - startX;
             pointY = e.clientY - startY;
             updateTransform();
-        });
+        };
 
-        window.addEventListener('mouseup', () => {
+        const handleMouseUp = () => {
             panning = false;
             if (container) container.style.cursor = 'default';
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+
+        win.addEventListener('window-hibernated', () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+            panning = false;
+        });
+
+        win.addEventListener('window-woken', () => {
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
         });
 
         window.wmResetView = () => {

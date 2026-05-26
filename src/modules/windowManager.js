@@ -45,6 +45,8 @@ function hibernateWindow(windowId) {
 
     const body = win.querySelector('.window-body');
     if (body && body.childNodes.length > 0) {
+        win.dispatchEvent(new CustomEvent('window-hibernated'));
+
         const fragment = document.createDocumentFragment();
         while (body.firstChild) {
             fragment.appendChild(body.firstChild);
@@ -63,6 +65,7 @@ function wakeUpWindow(windowId) {
         body.appendChild(hibernationVault.get(windowId));
         hibernationVault.delete(windowId);
         console.log(`[ZezinOS Memory] Window ${windowId} reopened and restored.`);
+        win.dispatchEvent(new CustomEvent('window-woken'));
     }
 }
 
