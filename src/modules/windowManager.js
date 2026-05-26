@@ -41,7 +41,7 @@ function hibernateWindow(windowId) {
     if (!win) return;
 
     const hasIframe = win.querySelector('iframe');
-    if (hasIframe) return; 
+    if (hasIframe) return;
 
     const body = win.querySelector('.window-body');
     if (body && body.childNodes.length > 0) {
@@ -50,7 +50,7 @@ function hibernateWindow(windowId) {
             fragment.appendChild(body.firstChild);
         }
         hibernationVault.set(windowId, fragment);
-        console.log(`[ZezinOS Memory] Janela ${windowId} fechada e hibernada.`);
+        console.log(`[ZezinOS Memory] Window ${windowId} closed and hibernated.`);
     }
 }
 
@@ -62,7 +62,7 @@ function wakeUpWindow(windowId) {
     if (body && hibernationVault.has(windowId)) {
         body.appendChild(hibernationVault.get(windowId));
         hibernationVault.delete(windowId);
-        console.log(`[ZezinOS Memory] Janela ${windowId} reaberta e acordada.`);
+        console.log(`[ZezinOS Memory] Window ${windowId} reopened and restored.`);
     }
 }
 
@@ -83,7 +83,7 @@ export function preRenderWindow(windowId) {
 
     if (!windowElement && windowRegistry[windowId]) {
         windowRegistry[windowId]();
-        console.log(`[ZezinOS System] ${windowId} pré-renderizado em background.`);
+        console.log(`[ZezinOS System] ${windowId} pre-rendered in background.`);
     }
 }
 
@@ -101,7 +101,7 @@ export function openWindow(windowId, playAudio = true) {
         if (playAudio) playSound('window');
         windowElement.classList.add('open');
         windowElement.classList.remove('minimizing');
-        
+
         if (windowElement.dataset.skipTaskbar !== "true") {
             createTaskbarButton(windowId, windowElement);
             const taskButton = document.getElementById(`btn-${windowId}`);
@@ -120,14 +120,14 @@ export function closeWindow(windowId) {
         windowElement.style.opacity = '0';
         windowElement.style.pointerEvents = 'none';
 
-        let closeDelay = 50; 
+        let closeDelay = 50;
         if (windowId === 'window-internet') {
             closeDelay = 400;
             const addressInput = windowElement.querySelector('#ie-address');
             const btnGo = windowElement.querySelector('#ie-go');
             if (addressInput && btnGo) {
                 addressInput.value = 'http://zezin.web/home.htm';
-                btnGo.click(); 
+                btnGo.click();
             }
         }
 
@@ -159,8 +159,8 @@ export function closeWindow(windowId) {
             if (windowElement.dataset.skipTaskbar !== "true") {
                 removeTaskbarButton(windowId);
             }
-            
-            hibernateWindow(windowId); 
+
+            hibernateWindow(windowId);
 
         }, closeDelay);
     }
@@ -169,11 +169,11 @@ export function closeWindow(windowId) {
 export function minimizeWindow(windowId, playAudio = true) {
     const windowElement = document.getElementById(windowId);
     const taskButton = document.getElementById(`btn-${windowId}`);
-    
+
     if (windowElement) {
         if (playAudio) playSound('minimize');
         windowElement.classList.add('minimizing');
-        
+
         setTimeout(() => {
             windowElement.classList.remove('open');
             windowElement.classList.remove('minimizing');
@@ -191,10 +191,10 @@ export function initWindowListener() {
         const clickedOnContext = event.target.closest('#context-menu') || event.target.closest('#taskbar-context-menu');
         const clickedOnClippy = event.target.closest('#clippy-container');
 
-    if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext && !clickedOnClippy) {
+        if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext && !clickedOnClippy) {
             const openWindows = document.querySelectorAll('.window.open');
             let playedSound = false;
-            
+
             openWindows.forEach(win => {
                 if (win.dataset.skipTaskbar !== "true") {
                     minimizeWindow(win.id, !playedSound);

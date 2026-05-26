@@ -8,11 +8,11 @@ function initTaskbarContextMenu() {
 
     const menu = document.createElement('div');
     menu.id = 'taskbar-context-menu';
-    
+
     menu.innerHTML = `
-        <div class="context-menu-item" id="tb-ctx-minimize">Minimizar</div>
+        <div class="context-menu-item" id="tb-ctx-minimize">Minimize</div>
         <div class="context-menu-separator"></div>
-        <div class="context-menu-item" id="tb-ctx-close">Fechar</div>
+        <div class="context-menu-item" id="tb-ctx-close">Close</div>
     `;
     document.body.appendChild(menu);
 
@@ -59,9 +59,9 @@ export function createTaskbarButton(windowId, windowElement) {
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);
-    
+
     if (existingButton) {
-        existingButton.classList.add('active'); 
+        existingButton.classList.add('active');
         return;
     }
 
@@ -83,7 +83,7 @@ export function createTaskbarButton(windowId, windowElement) {
         } else {
             playSound('window');
             windowElement.classList.add('minimizing');
-            windowElement.classList.add('open'); 
+            windowElement.classList.add('open');
             button.classList.add('active');
             bringToFront(windowElement);
 
@@ -106,7 +106,7 @@ export function createTaskbarButton(windowId, windowElement) {
         if (x + menu.offsetWidth > window.innerWidth) {
             x = window.innerWidth - menu.offsetWidth - 2;
         }
-        
+
         y = y - menu.offsetHeight;
 
         menu.style.left = `${x}px`;

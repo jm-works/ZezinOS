@@ -91,7 +91,7 @@ export function initLogin() {
             audio.addEventListener('loadedmetadata', playAndFade, { once: true });
 
             audio.onerror = () => {
-                console.log("Som de login não encontrado.");
+                console.log("Login sound not found.");
                 const bootAudio = new Audio('src/assets/sounds/boot.mp3');
                 bootAudio.volume = 0.5;
                 bootAudio.play().catch(() => { });
