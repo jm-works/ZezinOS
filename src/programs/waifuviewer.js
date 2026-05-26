@@ -2,7 +2,7 @@ import { createWindow } from '../modules/windowFactory.js';
 
 export function renderWaifuViewer() {
     const winId = 'window-waifuviewer';
-    
+
     let scale = 1;
     let panning = false;
     let pointX = 0;
@@ -17,22 +17,52 @@ export function renderWaifuViewer() {
         content: `
             <div class="wf-toolbar">
                 <div class="wf-toolbar-group">
-                    <button class="wf-tool-btn" onclick="wmGenerate('neko')" title="Gerar Neko">
+                    <button class="wf-tool-btn" onclick="wmGenerate('neko')" title="Generate Neko">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px; shape-rendering: crispEdges;">
-                            <path d="M2 2h2v2H2zM12 2h2v2h-2zM1 4h1v2H1zM14 4h1v2h-1zM1 6h2v2H1zM13 6h2v2h-2zM1 8h1v3h1v2h2v1h6v-1h2v-2h1V8h-1V6h-2v2h-2V6H4v2H2V6H1zm3 2h2v2H4zm6 0h2v2h-2z"/>
+                            <!-- Ears -->
+                            <path d="M2 0h3v3H2zM11 0h3v3h-3z"/>
+                            <!-- Head -->
+                            <path d="M2 3h12v8H2z"/>
+                            <!-- Neck -->
+                            <path d="M5 11h6v2H5z"/>
+                            <!-- Eyes -->
+                            <rect x="4" y="5" width="2" height="2" fill="var(--window-bg, white)"/>
+                            <rect x="10" y="5" width="2" height="2" fill="var(--window-bg, white)"/>
+                            <!-- Nose -->
+                            <rect x="7" y="7" width="2" height="1" fill="var(--window-bg, white)"/>
+                            <!-- Whiskers left -->
+                            <rect x="1" y="7" width="3" height="1" fill="var(--window-bg, white)"/>
+                            <!-- Whiskers right -->
+                            <rect x="12" y="7" width="3" height="1" fill="var(--window-bg, white)"/>
                         </svg>
                         Neko
                     </button>
-                    <button class="wf-tool-btn" onclick="wmGenerate('waifu')" title="Gerar Waifu">
+                    <button class="wf-tool-btn" onclick="wmGenerate('waifu')" title="Generate Waifu">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px; shape-rendering: crispEdges;">
-                            <path d="M4 1h8v2H4zM2 3h2v2H2zM12 3h2v2h-2zM1 5h1v3H1zM14 5h1v3h-1zM1 8h2v2H1zM13 8h2v2h-2zM1 10h1v2H1zM14 10h1v2h-1zM2 12h2v2h2v1h4v-1h2v-2h2v-2h-1v2h-2v2h-1v1H6v-1H5v-2H3v-2H2zM5 6h2v2H5zm4 0h2v2H9z"/>
+                            <!-- Hair top -->
+                            <path d="M4 0h8v2H4z"/>
+                            <!-- Hair left -->
+                            <path d="M2 2h2v8H2z"/>
+                            <!-- Hair right -->
+                            <path d="M12 2h2v8h-2z"/>
+                            <!-- Head -->
+                            <path d="M4 2h8v7H4z"/>
+                            <!-- Eyes -->
+                            <rect x="5" y="4" width="2" height="2" fill="var(--window-bg, white)"/>
+                            <rect x="9" y="4" width="2" height="2" fill="var(--window-bg, white)"/>
+                            <!-- Mouth -->
+                            <rect x="6" y="7" width="4" height="1" fill="var(--window-bg, white)"/>
+                            <!-- Body -->
+                            <path d="M5 9h6v5H5z"/>
+                            <!-- Clothes detail -->
+                            <rect x="6" y="10" width="4" height="1" fill="var(--window-bg, white)"/>
                         </svg>
                         Waifu
                     </button>
                 </div>
                 <div class="wf-toolbar-separator"></div>
                 <div class="wf-toolbar-group">
-                    <button class="wf-tool-btn" onclick="wmResetView()" title="Resetar Zoom (1:1)">
+                    <button class="wf-tool-btn" onclick="wmResetView()" title="Reset Zoom (1:1)">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px; shape-rendering: crispEdges;">
                             <path d="M6 1a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 3.535-1.465l3.758 3.758 1.414-1.414-3.758-3.758A5 5 0 0 0 6 1zm0 2a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3zm-1 2h2v1H7v2H5V6H3V5h2Z"/>
                         </svg>
@@ -41,24 +71,24 @@ export function renderWaifuViewer() {
                 </div>
                 <div class="wf-toolbar-separator"></div>
                 <div class="wf-toolbar-group">
-                    <button class="wf-tool-btn" onclick="wmSaveImage()" title="Salvar imagem">
+                    <button class="wf-tool-btn" onclick="wmSaveImage()" title="Save image">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px; shape-rendering: crispEdges;">
                             <path d="M2 1v14h12V4l-3-3H2zm1 1h7v3H3V2zm0 12V9h10v5H3zM5 3h1v1H5V3zm1 7h4v1H6v-1zm0 2h4v1H6v-1z"/>
                         </svg>
-                        Salvar
+                        Save
                     </button>
-                    <button class="wf-tool-btn" onclick="wmClear()" title="Limpar">
+                    <button class="wf-tool-btn" onclick="wmClear()" title="Clear">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px; shape-rendering: crispEdges;">
                             <path d="M5 1h6v1H5zM2 3h12v2H2zM3 6h10v8H3zM5 7h2v6H5zm4 0h2v6H9z"/>
                         </svg>
-                        Limpar
+                        Clear
                     </button>
                 </div>
             </div>
 
             <div class="wf-view-area" id="wf-view-container">
                 <div id="wf-loading-overlay" class="wf-loading" style="display: none;">
-                    <span style="font-style: italic;">Carregando imagem...</span>
+                    <span style="font-style: italic;">Loading image...</span>
                 </div>
                 
                 <div id="wf-transform-layer" style="transform-origin: center center; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
@@ -66,12 +96,12 @@ export function renderWaifuViewer() {
                 </div>
                 
                 <div id="wf-placeholder">
-                    <div>Nenhuma imagem carregada.</div>
+                    <div>No image loaded.</div>
                 </div>
             </div>
 
             <div class="wf-statusbar">
-                <div class="wf-status-panel" id="wf-status-main" style="flex: 2;">Pronto</div>
+                <div class="wf-status-panel" id="wf-status-main" style="flex: 2;">Ready</div>
                 <div class="wf-status-panel" id="wf-status-dim" style="width: 100px;"></div>
                 <div class="wf-status-panel" id="wf-status-zoom" style="width: 60px;">100%</div>
             </div>
@@ -82,7 +112,7 @@ export function renderWaifuViewer() {
     if (win) {
         win.style.width = '800px';
         win.style.height = '600px';
-        
+
         const container = win.querySelector('#wf-view-container');
         const layer = win.querySelector('#wf-transform-layer');
         const img = win.querySelector('#wf-current-image');
@@ -122,7 +152,7 @@ export function renderWaifuViewer() {
 
         window.addEventListener('mouseup', () => {
             panning = false;
-            if(container) container.style.cursor = 'default';
+            if (container) container.style.cursor = 'default';
         });
 
         window.wmResetView = () => {
@@ -135,7 +165,7 @@ export function renderWaifuViewer() {
         const status = document.getElementById('wf-status-main');
         if (status) {
             status.innerText = msg;
-            status.style.color = 'red'; 
+            status.style.color = 'red';
             setTimeout(() => { status.style.color = 'black'; }, 3000);
         }
         console.error(msg);
@@ -153,8 +183,8 @@ export function renderWaifuViewer() {
         loader.style.display = 'flex';
         img.style.display = 'none';
         placeholder.style.display = 'none';
-        
-        status.innerText = "Conectando ao servidor...";
+
+        status.innerText = "Connecting to server...";
         status.style.color = 'black';
         dimStatus.innerText = "";
 
@@ -163,57 +193,58 @@ export function renderWaifuViewer() {
         try {
             let url = '';
             if (type === 'neko') {
-                status.innerText = "Solicitando (Nekosia)...";
-                const res = await fetch('https://api.nekosia.cat/api/v1/images/catgirl');
-                const data = await res.json();
-                if (data.image?.original) url = data.image.original.url;
-                else throw new Error("Dados inválidos.");
-            } else {
-                status.innerText = "Solicitando (Waifu.pics)...";
-                const res = await fetch('https://api.waifu.pics/sfw/waifu');
+                status.innerText = "Requesting (nekos.best)...";
+                const res = await fetch('https://nekos.best/api/v2/neko');
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                if (data.url) url = data.url;
-                else throw new Error("Sem imagem.");
+                if (data.results?.[0]?.url) url = data.results[0].url;
+                else throw new Error("Invalid data.");
+            } else {
+                status.innerText = "Requesting (nekos.best)...";
+                const res = await fetch('https://nekos.best/api/v2/waifu');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                if (data.results?.[0]?.url) url = data.results[0].url;
+                else throw new Error("No image.");
             }
 
             img.onload = () => {
                 loader.style.display = 'none';
                 img.style.display = 'block';
-                status.innerText = "Concluído";
+                status.innerText = "Done";
                 dimStatus.innerText = `${img.naturalWidth} x ${img.naturalHeight} px`;
             };
 
             img.onerror = () => {
                 loader.style.display = 'none';
                 placeholder.style.display = 'flex';
-                showStatusError("Erro ao baixar imagem.");
+                showStatusError("Error downloading image.");
             };
 
-            status.innerText = "Baixando imagem...";
-            img.src = url; 
-            
+            status.innerText = "Downloading image...";
+            img.src = url;
+
         } catch (error) {
             loader.style.display = 'none';
             placeholder.style.display = 'flex';
-            showStatusError(`Erro: ${error.message}`);
+            showStatusError(`Error: ${error.message}`);
         }
     };
 
     window.wmClear = () => {
         const img = document.getElementById('wf-current-image');
         const placeholder = document.getElementById('wf-placeholder');
-        if(img) { img.src = ""; img.style.display = 'none'; }
-        if(placeholder) placeholder.style.display = 'flex';
-        
+        if (img) { img.src = ""; img.style.display = 'none'; }
+        if (placeholder) placeholder.style.display = 'flex';
+
         const status = document.getElementById('wf-status-main');
-        if(status) {
-            status.innerText = "Pronto";
+        if (status) {
+            status.innerText = "Ready";
             status.style.color = 'black';
         }
-        
+
         document.getElementById('wf-status-dim').innerText = "";
-        if(window.wmResetView) window.wmResetView();
+        if (window.wmResetView) window.wmResetView();
     };
 
     window.wmSaveImage = () => {
@@ -221,7 +252,7 @@ export function renderWaifuViewer() {
         if (img && img.src && img.style.display !== 'none') {
             window.open(img.src, '_blank');
         } else {
-            showStatusError("Nenhuma imagem para salvar.");
+            showStatusError("No image to save.");
         }
     };
 }

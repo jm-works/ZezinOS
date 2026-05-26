@@ -8,6 +8,7 @@ import { catalogoPage } from './internet_pages/catalogo.js';
 import { deneasyPage } from './internet_pages/deneasy.js';
 import { pokedexPage } from './internet_pages/pokedex.js';
 import { registroJogosPage } from './internet_pages/registroJogos.js'
+import { freehandsPage } from './internet_pages/freehands.js';
 
 const routes = {
     'home': homePage,
@@ -16,6 +17,7 @@ const routes = {
     'deneasy': deneasyPage,
     'pokedex': pokedexPage,
     'registroJogos': registroJogosPage,
+    'freehands': freehandsPage,
 };
 
 let history = [];
@@ -156,23 +158,29 @@ export function renderInternet() {
                     <div class="ie-drag-handle"></div>
                     <div class="ie-buttons-group">
                         <button class="ie-tool-btn" id="ie-back" disabled>
-                            <span class="ie-icon">⬅</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="shape-rendering: crispEdges;">
+                                <path d="M8 2H6L1 8l5 6h2L3 8z"/>
+                                <path d="M3 7h12v2H3z"/>
+                            </svg>
                             <span class="ie-label">Back</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-forward" disabled>
-                            <span class="ie-icon">➡</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="shape-rendering: crispEdges;">
+                                <path d="M8 2h2l5 6-5 6H8l5-6z"/>
+                                <path d="M1 7h12v2H1z"/>
+                            </svg>
                             <span class="ie-label">Forward</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-stop">
-                            <span class="ie-icon">❌</span>
+                            <img src="https://win98icons.alexmeub.com/icons/png/network_drive_unavailable_cool-3.png" width="16" height="16" style="image-rendering: pixelated;">
                             <span class="ie-label">Stop</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-refresh">
-                            <span class="ie-icon">🔄</span>
+                            <img src="https://win98icons.alexmeub.com/icons/png/entire_network_globe-0.png" width="16" height="16" style="image-rendering: pixelated;">
                             <span class="ie-label">Refresh</span>
                         </button>
                         <button class="ie-tool-btn" id="ie-home">
-                            <span class="ie-icon">🏠</span>
+                            <img src="https://win98icons.alexmeub.com/icons/png/internet_connection_wiz-4.png" width="16" height="16" style="image-rendering: pixelated;">
                             <span class="ie-label">Home</span>
                         </button>
                     </div>

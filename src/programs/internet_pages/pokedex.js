@@ -1,6 +1,6 @@
 export const pokedexPage = {
     title: "Pokédex & Arena",
-    date: "9 de Novembro de 2025",
+    date: "November 9, 2025",
     theme: "theme-hypnospace",
     content: `
 <center>
@@ -10,41 +10,41 @@ export const pokedexPage = {
     <h1 style="color: #FFDE00; text-shadow: 2px 2px #3B4CCA;">Pokédex & Arena</h1>
 </center>
 
-Bem-vindo ao **Pokédex & Arena**! Todo o programador tem o seu rito de passagem, e o meu foi construir esta enciclopédia. Desenvolvido para a disciplina de *Lab. de Programação*, este projeto não se limita a ser uma lista passiva: aqui, os monstrinhos vão mesmo à porrada.
+Welcome to **Pokédex & Arena**! Every programmer has their rite of passage, and mine was building this encyclopedia. Developed for the *Programming Lab* course, this project is not just a passive list: here, the little monsters actually beat each other up.
 <br>
 ---
 
-### O Desafio Académico<br>
-A ideia principal era interagir com uma API RESTful e manipular os dados no ecrã. Mas, como fazer apenas o básico é aborrecido, decidi implementar um simulador de batalhas a correr diretamente no servidor.<br><br>
+### The Academic Challenge<br>
+The main idea was to interact with a RESTful API and manipulate the data on the screen. But, since doing just the basics is boring, I decided to implement a battle simulator running directly on the server.<br><br>
 
-* **O Triunfo:** Integrar a clássica <a href="pokeapi.co" target="_blank">PokeAPI</a> para extrair estatísticas, tipos e habilidades em tempo real.
-* **O Caos:** Garantir que a lógica de combate (com cálculo de dano e atributos) funcionasse de forma fiável no *Back-end* sem deitar abaixo o servidor.
+* **The Triumph:** Integrating the classic <a href="pokeapi.co" target="_blank">PokeAPI</a> to extract stats, types, and abilities in real-time.
+* **The Chaos:** Ensuring the combat logic (with damage and attribute calculations) worked reliably on the *Back-end* without taking down the server.
 <br>
 ---
 
-### A Minha Master Ball (Tecnologias)<br>
-Afastando-nos do ideal corporativo, aqui o foco foi a agilidade e a rapidez de desenvolvimento:<br><br>
+### My Master Ball (Technologies)<br>
+Moving away from the corporate ideal, the focus here was agility and rapid development:<br><br>
 
-* **Python (Flask):** O motor de toda a aplicação. Leve, direto ao assunto e perfeito para renderizar os *templates* HTML e calcular quem ganha a batalha.
-* **HTML, CSS & JavaScript:** O *Front-end* clássico. Sem frameworks pesados a atrapalhar, apenas código puro para apresentar os dados ao utilizador.
-* **PokeAPI:** A espinha dorsal dos dados. Onde vamos buscar todas as informações oficiais.
+* **Python (Flask):** The engine of the entire application. Lightweight, straight to the point, and perfect for rendering HTML *templates* and calculating who wins the battle.
+* **HTML, CSS & JavaScript:** The classic *Front-end*. No heavy frameworks in the way, just pure code to present the data to the user.
+* **PokeAPI:** The backbone of the data. Where we get all the official information.
 <br>
 ---
 
-### O Que Temos?
+### What Do We Have?
 
-1. **A Pokédex Clássica:** Pesquisa direta pelo Nome ou ID. Exibe atributos base, tipos, habilidades.
-2. **Arena de Combate:** O verdadeiro trunfo. Escolhes dois Pokémon, e o sistema simula uma batalha turno a turno, gerando um **registo completo (log) do combate** até um deles cair inanimado.
+1. **The Classic Pokédex:** Direct search by Name or ID. Displays base stats, types, abilities.
+2. **Combat Arena:** The real trump card. You choose two Pokémon, and the system simulates a turn-by-turn battle, generating a **complete combat log** until one of them faints.
 
 <br>
 <center>
-    <a href="https://pokedex-and-arena.onrender.com/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #FFF;">ENTRAR NA ARENA (ONRENDER)</a>
+    <a href="https://pokedex-and-arena.onrender.com/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #FFF;">ENTER THE ARENA (ONRENDER)</a>
     <br><br>
     <a href="https://github.com/jm-works/Pokedex-And-Arena" target="_blank" style="text-decoration: none;">
-        ACESSAR CÓDIGO FONTE
+        ACCESS SOURCE CODE
     </a>
     <br><br>
-    <i>Feito por JM | José Matheus e muitas gramas de Café em pó.</i>
+    <i>Made by JM | José Matheus and many grams of coffee powder.</i>
     <br><br>
 </center>
 

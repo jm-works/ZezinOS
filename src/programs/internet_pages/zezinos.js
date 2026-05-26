@@ -1,53 +1,53 @@
 export const zezinosPage = {
-    title: "Sobre o ZezinOS",
-    date: "22 de fevereiro de 2026",
-    theme: "theme-hypnospace", 
+    title: "About ZezinOS",
+    date: "February 22, 2026",
+    theme: "theme-hypnospace",
     content: `
 <center>
     <a href="https://i.postimg.cc/g2Bc6Q5h/Zezin-OS.png" target="_blank" style="text-decoration: none;" alt="ZezinOS"><img src="https://i.postimg.cc/g2Bc6Q5h/Zezin-OS.png" width="350" style="border: 3px ridge #0ff; margin-bottom: 10px;"></a>
-    <h1>ZezinOS 98 SE - Meu portfolio Pessoal</h1>
+    <h1>ZezinOS 98 SE - My Personal Portfolio</h1>
 </center>
 
-Bem-vindo ao **ZezinOS 98 SE**!
-Desenvolvido inteiramente para rodar no navegador, este projeto simula a experiência nostálgica e tátil dos sistemas operacionais do final dos anos 90, mesclada com a ideia caótica e vibrante do início dos anos 2000.
+Welcome to **ZezinOS 98 SE**!
+Developed entirely to run in the browser, this project simulates the nostalgic and tactile experience of late 90s operating systems, blended with the chaotic and vibrant idea of the early 2000s.
 <br>
 ---
 
-### Estética & Inspirações<br>
-A interface nasceu de gostos peculiares da minha pessoa:<br><br>
+### Aesthetics & Inspirations<br>
+The interface was born from my peculiar tastes:<br><br>
 
-* **Windows 98:** A espinha dorsal do design. Caixas em alto-relevo, o cinza corporativo e ícones e imagens pixelados de 16-bits, estética NeoTokyo e RetroFuturista, coisas que nenhum modelo atual de minimalismo consegue copiar.
-* **GeoCities & Web 1.0:** A era de ouro onde a internet era feita de GIFs brilhantes, textos <span class="blink">piscantes</span>, <span style="color:red;">cursores customizados</span> e fundos estrelados.
-* **Progressbar95, STONKS-9800, Hypnospace Outlaw:** Aqui que surgiu minhas principais fontes de inspiração.
-* **Retrofuturismo & Vaporwave:** Melhor estética para coisas Interativas.
-* **Neuromancer:** "O céu sobre o porto tinha a cor de uma televisão sintonizada num canal fora do ar".
+* **Windows 98:** The backbone of the design. Embossed boxes, corporate gray, and pixelated 16-bit icons and images, NeoTokyo and RetroFuturistic aesthetics, things no current minimalist model can copy.
+* **GeoCities & Web 1.0:** The golden era where the internet was made of shiny GIFs, <span class="blink">blinking</span> texts, <span style="color:red;">custom cursors</span>, and starry backgrounds.
+* **Progressbar95, STONKS-9800, Hypnospace Outlaw:** This is where my main sources of inspiration came from.
+* **Retrofuturism & Vaporwave:** Best aesthetic for Interactive things.
+* **Neuromancer:** "The sky above the port was the color of television, tuned to a dead channel."
 <br>
 ---
 
-### O mar de tecnologias<br>
-Ok, chega de anemoia, vamos direto ao ponto, o que usei no projeto:<br><br>
+### The sea of technologies<br>
+Okay, enough anemoia, let's get straight to the point, what I used in the project:<br><br>
 
-* **Javascript (ES6+):** Utilização intensiva de *Vanilla JS* e *ES Modules* (\`import\`/\`export\`). Uso de Classes e manipulação direta do DOM para gerenciar estado, janelas e barra de tarefas.
-* **CSS3:** Emprego de variáveis globais para a troca de temas (*CRT*, *Clean*, *Vaporwave*) e pseudo-elementos para replicar matematicamente as bordas 3D clássicas (\`border: inset/outset\`).
-* **Integração de APIs:** Apesar da "carcaça" velha, aplicativos internos como o *Waifu Viewer*(Tudo pela Ciência...) se comunicam com APIs RESTful atuais.
+* **Javascript (ES6+):** Intensive use of *Vanilla JS* and *ES Modules* (\`import\`/\`export\`). Use of Classes and direct DOM manipulation to manage state, windows, and the taskbar.
+* **CSS3:** Use of global variables for theme switching (*CRT*, *Clean*, *Vaporwave*) and pseudo-elements to mathematically replicate classic 3D borders (\`border: inset/outset\`).
+* **API Integration:** Despite the old "shell", internal applications like the *Waifu Viewer* (All for Science...) communicate with modern RESTful APIs.
 <br>
 ---
 
-### O Que Temos nesse mundinho?
+### What Do We Have in this little world?
 
-1. **Zezin Explorer:** Navegador interno com abas e motor de renderização híbrido (Markdown + HTML).
-2. **ZezinPaint:** Desenhar digitalemte via HTML5 Canvas, suportando pincéis e exportação.
-3. **Mídia & Jogos:** Campo Minado, DOS Games e um Media Player retrô.
-4. **Sistema:** Bloco de Notas, Calculadora e um Terminal de comandos que responde aos seus inputs.
-5. E muito mais...
+1. **Zezin Explorer:** Internal browser with tabs and hybrid rendering engine (Markdown + HTML).
+2. **ZezinPaint:** Draw digitally via HTML5 Canvas, supporting brushes and exporting.
+3. **Media & Games:** Minesweeper, DOS Games, and a retro Media Player.
+4. **System:** Notepad, Calculator, and a Command Terminal that responds to your inputs.
+5. And much more...
 
 <br>
 <center>
     <a href="https://github.com/jm-works/ZezinOS" target="_blank" style="text-decoration: none;">
-            ACESSAR REPOSITÓRIO GITHUB
+            ACCESS GITHUB REPOSITORY
     </a>
     <br>
-    <i>Copyright © 1998-2026 JM-WORKS Inc. A web como ela deveria ser.</i>
+    <i>Copyright © 1998-2026 JM-WORKS Inc. The web as it should be.</i>
 </center>
     `
 };

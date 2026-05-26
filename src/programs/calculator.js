@@ -2,7 +2,7 @@ import { createWindow } from '../modules/windowFactory.js';
 
 export function renderCalculator() {
     const winId = 'window-calculator';
-    
+
     let displayValue = '0';
     let firstOperand = null;
     let waitingForSecondOperand = false;
@@ -12,7 +12,7 @@ export function renderCalculator() {
 
     createWindow({
         id: winId,
-        title: 'Calculadora',
+        title: 'Calculator',
         isCentered: true,
         content: `
             <div class="calc-container">
@@ -67,9 +67,9 @@ export function renderCalculator() {
 
     const win = document.getElementById(winId);
     if (win) {
-        win.style.width = '300px'; 
+        win.style.width = '300px';
         win.style.height = 'auto';
-        win.style.resize = 'none'; 
+        win.style.resize = 'none';
     }
 
     const screen = win.querySelector('#calc-screen');
@@ -152,7 +152,7 @@ export function renderCalculator() {
         if (op === '*') return first * second;
         if (op === '/') {
             if (second === 0) {
-                triggerError("Impossível dividir por 0");
+                triggerError("Cannot divide by zero");
                 return 0;
             }
             return first / second;
@@ -177,17 +177,17 @@ export function renderCalculator() {
                 if (displayValue === '' || displayValue === '-') displayValue = '0';
             }
         } else if (action === 'sqrt') {
-            if (current < 0) triggerError("Entrada inválida");
+            if (current < 0) triggerError("Invalid input");
             else displayValue = Math.sqrt(current).toString();
             waitingForSecondOperand = true; // Reseta para próxima entrada
         } else if (action === 'reciproc') { // 1/x
-            if (current === 0) triggerError("Impossível dividir por 0");
+            if (current === 0) triggerError("Cannot divide by zero");
             else displayValue = (1 / current).toString();
             waitingForSecondOperand = true;
         } else if (action === 'percent') {
             // Lógica simples: valor / 100
             displayValue = (current / 100).toString();
-             waitingForSecondOperand = true;
+            waitingForSecondOperand = true;
         } else if (action === 'negate') { // +/-
             displayValue = (current * -1).toString();
         }

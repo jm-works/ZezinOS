@@ -4,7 +4,7 @@ import { closeWindow, openWindow } from '../modules/windowManager.js';
 let scWidget;
 let isDragging = false;
 let startupUrl = '';
-let closeObserver = null; 
+let closeObserver = null;
 
 export function setMedia(url) {
     startupUrl = url;
@@ -14,12 +14,12 @@ export function renderMediaPlayer() {
     createWindow({
         id: 'window-mediaplayer',
         title: 'Media Player',
-        
+
         menuBar: `
-            <span class="wmp-menu-item" onclick="wmpOpenDialog()">Arquivo...</span>
-            <span class="wmp-menu-item">Exibir</span>
-            <span class="wmp-menu-item">Reproduzir</span>
-            <span class="wmp-menu-item">Ajuda</span>
+            <span class="wmp-menu-item" onclick="wmpOpenDialog()">File...</span>
+            <span class="wmp-menu-item">View</span>
+            <span class="wmp-menu-item">Play</span>
+            <span class="wmp-menu-item">Help</span>
         `,
 
         content: `
@@ -42,14 +42,14 @@ export function renderMediaPlayer() {
 
                 <div class="wmp-controls-row">
                     <div class="wmp-btn-group">
-                        <button class="wmp-btn" title="Reproduzir" onclick="wmpPlay()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-                        <button class="wmp-btn" title="Pausar" onclick="wmpPause()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
-                        <button class="wmp-btn" title="Parar" onclick="wmpStop()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></button>
+                        <button class="wmp-btn" title="Play" onclick="wmpPlay()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+                        <button class="wmp-btn" title="Pause" onclick="wmpPause()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
+                        <button class="wmp-btn" title="Stop" onclick="wmpStop()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></button>
                     </div>
 
                     <div class="wmp-btn-group">
-                        <button class="wmp-btn" title="Anterior" onclick="wmpPrev()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-                        <button class="wmp-btn" title="Próximo" onclick="wmpNext()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+                        <button class="wmp-btn" title="Previous" onclick="wmpPrev()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+                        <button class="wmp-btn" title="Next" onclick="wmpNext()"><svg class="wmp-icon" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
                     </div>
                     
                     <div style="flex:1"></div>
@@ -59,7 +59,7 @@ export function renderMediaPlayer() {
                 </div>
 
                 <div class="wmp-statusbar">
-                    <div id="wmp-status-text" class="wmp-status-panel wmp-status-main">Pronto.</div>
+                    <div id="wmp-status-text" class="wmp-status-panel wmp-status-main">Ready.</div>
                     <div id="wmp-time-text" class="wmp-status-panel wmp-status-time">00:00</div>
                 </div>
             </div>
@@ -68,12 +68,12 @@ export function renderMediaPlayer() {
 
     const win = document.getElementById('window-mediaplayer');
     if (win) {
-        win.style.width = '320px'; 
+        win.style.width = '320px';
         win.style.height = '360px';
     }
 
     initSoundCloudAPI();
-    startCloseObserver(); 
+    startCloseObserver();
 }
 
 function startCloseObserver() {
@@ -90,21 +90,21 @@ function startCloseObserver() {
 
                 if (!isOpen) {
                     const taskbarBtn = document.getElementById(`btn-window-mediaplayer`);
-                    
+
                     if (!taskbarBtn) {
                         if (scWidget) scWidget.pause();
-                        updateStatus("Fechado.");
+                        updateStatus("Closed.");
                         if (dialog) {
                             closeWindow('window-url-dialog');
-                            dialog.dataset.wasOpen = "false"; 
+                            dialog.dataset.wasOpen = "false";
                         }
                     } else {
                         if (dialog) {
                             if (dialog.classList.contains('open')) {
-                                dialog.dataset.wasOpen = "true"; 
-                                dialog.classList.remove('open'); 
+                                dialog.dataset.wasOpen = "true";
+                                dialog.classList.remove('open');
                             } else {
-                                dialog.dataset.wasOpen = "false"; 
+                                dialog.dataset.wasOpen = "false";
                             }
                         }
                     }
@@ -122,28 +122,28 @@ function startCloseObserver() {
 
 window.wmpOpenDialog = () => {
     const dialogId = 'window-url-dialog';
-    
+
     createWindow({
         id: dialogId,
-        title: 'Abrir URL',
+        title: 'Open URL',
         isCentered: true,
         skipTaskbar: true,
         content: `
             <div class="url-dialog-content">
                 <div>
-                    <div class="url-input-label">Digitar URL do SoundCloud:</div>
+                    <div class="url-input-label">Enter SoundCloud URL:</div>
                     <input type="text" id="wmp-url-input" class="url-input" value="https://soundcloud.com/..." onfocus="this.select()">
                 </div>
                 <div class="dialog-buttons">
                     <button class="dialog-btn" onclick="wmpConfirmUrl()">OK</button>
-                    <button class="dialog-btn" onclick="closeWindow('${dialogId}')">Cancelar</button>
+                    <button class="dialog-btn" onclick="closeWindow('${dialogId}')">Cancel</button>
                 </div>
             </div>
         `
     });
-    
+
     const dialogWin = document.getElementById(dialogId);
-    if(dialogWin) {
+    if (dialogWin) {
         dialogWin.style.width = '300px';
         dialogWin.style.height = '140px';
     }
@@ -154,7 +154,7 @@ window.wmpOpenDialog = () => {
 
     setTimeout(() => {
         const input = document.getElementById('wmp-url-input');
-        if(input) input.focus();
+        if (input) input.focus();
     }, 100);
 };
 
@@ -187,25 +187,25 @@ function setupWidget() {
         scWidget = window.SC.Widget(iframe);
 
         scWidget.bind(window.SC.Widget.Events.READY, () => {
-            updateStatus("Pronto.");
+            updateStatus("Ready.");
             if (startupUrl) {
                 loadSoundCloudUrl(startupUrl, false);
             }
         });
 
         scWidget.bind(window.SC.Widget.Events.PLAY, () => {
-            updateStatus("Reproduzindo...");
+            updateStatus("Playing...");
             updateMetadata(0);
         });
 
-        scWidget.bind(window.SC.Widget.Events.PAUSE, () => updateStatus("Pausado"));
-        scWidget.bind(window.SC.Widget.Events.FINISH, () => updateStatus("Fim da faixa."));
+        scWidget.bind(window.SC.Widget.Events.PAUSE, () => updateStatus("Paused"));
+        scWidget.bind(window.SC.Widget.Events.FINISH, () => updateStatus("End of track."));
 
         scWidget.bind(window.SC.Widget.Events.PLAY_PROGRESS, (data) => {
             if (isDragging) return;
             const seek = document.getElementById('wmp-seek');
             const timeText = document.getElementById('wmp-time-text');
-            
+
             if (seek) seek.value = data.relativePosition * 100;
             if (timeText) timeText.innerText = fmtTime(data.currentPosition / 1000);
         });
@@ -216,14 +216,14 @@ function setupWidget() {
 
 function loadSoundCloudUrl(url, autoPlay = true) {
     if (!scWidget) return;
-    updateStatus("Carregando...");
-    
+    updateStatus("Loading...");
+
     scWidget.load(url, {
-        auto_play: autoPlay, 
+        auto_play: autoPlay,
         show_artwork: true,
         callback: () => {
-            updateStatus("Carregado.");
-            scWidget.setVolume(50); 
+            updateStatus("Loaded.");
+            scWidget.setVolume(50);
             updateMetadata(0);
         }
     });
@@ -235,13 +235,13 @@ function updateMetadata(retryCount = 0) {
     scWidget.getCurrentSound((sound) => {
         if (sound && sound.title) {
             updateStatus(sound.title);
-            
+
             const img = document.getElementById('wmp-artwork');
             if (img && sound.artwork_url) {
                 const bigArt = sound.artwork_url.replace('large', 't500x500');
                 img.src = bigArt;
                 img.style.opacity = '1';
-                img.style.filter = 'none'; 
+                img.style.filter = 'none';
                 return;
             }
         }
@@ -249,20 +249,20 @@ function updateMetadata(retryCount = 0) {
         if (retryCount < 30) {
             setTimeout(() => {
                 updateMetadata(retryCount + 1);
-            }, 500); 
+            }, 500);
         }
     });
 }
 
 window.wmpPlay = () => scWidget?.play();
 window.wmpPause = () => scWidget?.pause();
-window.wmpStop = () => { 
-    scWidget?.pause(); 
-    scWidget?.seekTo(0); 
-    updateStatus("Parado"); 
+window.wmpStop = () => {
+    scWidget?.pause();
+    scWidget?.seekTo(0);
+    updateStatus("Stopped");
 };
-window.wmpPrev = () => scWidget?.prev(); 
-window.wmpNext = () => scWidget?.next(); 
+window.wmpPrev = () => scWidget?.prev();
+window.wmpNext = () => scWidget?.next();
 window.wmpSetVolume = (val) => scWidget?.setVolume(val);
 
 window.wmpStartSeek = () => { isDragging = true; };
@@ -282,5 +282,5 @@ function updateStatus(text) {
 function fmtTime(s) {
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
-    return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+    return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
 }
