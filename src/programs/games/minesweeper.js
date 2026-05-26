@@ -10,7 +10,7 @@ export function renderMinesweeper() {
         expert: { rows: 16, cols: 30, mines: 99 }
     };
 
-    let currentLevel = 'beginner'; 
+    let currentLevel = 'beginner';
     let ROWS = DIFFICULTIES[currentLevel].rows;
     let COLS = DIFFICULTIES[currentLevel].cols;
     let MINES_COUNT = DIFFICULTIES[currentLevel].mines;
@@ -26,30 +26,30 @@ export function renderMinesweeper() {
     const content = `
         <div class="mine-menu-bar">
             <div class="mine-menu-item" id="mine-menu-game">
-                <u>J</u>ogo
+                <u>G</u>ame
                 <div class="mine-dropdown" id="mine-dropdown-game">
                     <div class="mine-dropdown-item" id="diff-beginner">
-                        <span class="mine-check" id="check-beginner">✓</span> Iniciante
+                        <span class="mine-check" id="check-beginner">✓</span> Beginner
                     </div>
                     <div class="mine-dropdown-item" id="diff-intermediate">
-                        <span class="mine-check" id="check-intermediate"></span> Intermediário
+                        <span class="mine-check" id="check-intermediate"></span> Intermediate
                     </div>
                     <div class="mine-dropdown-item" id="diff-expert">
-                        <span class="mine-check" id="check-expert"></span> Avançado
+                        <span class="mine-check" id="check-expert"></span> Expert
                     </div>
                     
                     <div class="mine-separator"></div>
                     
                     <div class="mine-dropdown-item" id="opt-marks">
-                        <span class="mine-check" id="check-marks">✓</span> Marcas (?)
+                        <span class="mine-check" id="check-marks">✓</span> Marks (?)
                     </div>
                     
                     <div class="mine-separator"></div>
                     
-                    <div class="mine-dropdown-item" id="mine-exit"><u>S</u>air</div>
+                    <div class="mine-dropdown-item" id="mine-exit"><u>E</u>xit</div>
                 </div>
             </div>
-            <div class="mine-menu-item"><u>A</u>juda</div>
+            <div class="mine-menu-item"><u>H</u>elp</div>
         </div>
 
         <div class="mine-game-area">
@@ -67,13 +67,13 @@ export function renderMinesweeper() {
 
     createWindow({
         id: winId,
-        title: 'Campo Minado',
+        title: 'Minesweeper',
         icon: './public/icons/games.ico',
         content: content,
-        width: 200, 
+        width: 200,
         height: 300,
         isCentered: true,
-        resizable: false 
+        resizable: false
     });
 
     const win = document.getElementById(winId);
@@ -93,7 +93,7 @@ export function renderMinesweeper() {
     const btnExit = win.querySelector('#mine-exit');
 
     const closeBtn = win.querySelector('.title-bar-controls button[aria-label="Close"]');
-    
+
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             smileyBtn.click();
@@ -101,8 +101,8 @@ export function renderMinesweeper() {
     }
 
     function resizeAndCenterWindow() {
-        const contentWidth = (COLS * CELL_SIZE) + 24; 
-        const contentHeight = (ROWS * CELL_SIZE) + 130; 
+        const contentWidth = (COLS * CELL_SIZE) + 24;
+        const contentHeight = (ROWS * CELL_SIZE) + 130;
 
         win.style.width = `${contentWidth}px`;
         win.style.height = `${contentHeight}px`;
@@ -114,7 +114,7 @@ export function renderMinesweeper() {
 
         win.style.left = `${Math.max(0, left)}px`;
         win.style.top = `${Math.max(0, top)}px`;
-        win.style.transform = 'none'; 
+        win.style.transform = 'none';
     }
 
     function setDifficulty(level) {
@@ -153,10 +153,10 @@ export function renderMinesweeper() {
     btnBeginner.addEventListener('click', () => setDifficulty('beginner'));
     btnIntermediate.addEventListener('click', () => setDifficulty('intermediate'));
     btnExpert.addEventListener('click', () => setDifficulty('expert'));
-    
+
     btnExit.addEventListener('click', () => {
         const closeBtn = win.querySelector('.title-bar-controls button[aria-label="Close"]');
-        if(closeBtn) closeBtn.click();
+        if (closeBtn) closeBtn.click();
         else win.remove();
     });
 
@@ -166,11 +166,11 @@ export function renderMinesweeper() {
         timer = 0;
         isFirstClick = true;
         grid = [];
-        
+
         clearInterval(timerInterval);
         updateCounters();
         smileyBtn.innerText = "😊";
-        
+
         createGridUI();
     }
 
@@ -185,7 +185,7 @@ export function renderMinesweeper() {
                 cell.classList.add('mine-cell');
                 cell.dataset.row = r;
                 cell.dataset.col = c;
-                
+
                 cell.addEventListener('mousedown', handleMouseDown);
                 cell.addEventListener('mouseup', handleMouseUp);
                 cell.addEventListener('contextmenu', e => e.preventDefault());
@@ -239,13 +239,13 @@ export function renderMinesweeper() {
     function handleMouseUp(e) {
         if (gameOver) return;
 
-        smileyBtn.innerText = "😊"; 
+        smileyBtn.innerText = "😊";
 
         const r = parseInt(this.dataset.row);
         const c = parseInt(this.dataset.col);
         const cellData = grid[r][c];
 
-        if (e.button === 0) { 
+        if (e.button === 0) {
             if (cellData.isFlagged || cellData.isQuestion) return;
 
             if (cellData.isRevealed && cellData.neighborCount > 0) {
@@ -267,8 +267,8 @@ export function renderMinesweeper() {
                 revealCell(r, c);
                 checkWinCondition();
             }
-        } 
-        else if (e.button === 2) { 
+        }
+        else if (e.button === 2) {
             if (cellData.isRevealed) return;
 
             if (!cellData.isFlagged && !cellData.isQuestion) {
@@ -366,17 +366,17 @@ export function renderMinesweeper() {
 
     function checkWinCondition() {
         if (gameOver) return;
-        
+
         let revealedCount = 0;
         grid.forEach(row => row.forEach(c => { if (c.isRevealed) revealedCount++; }));
-        
+
         if (revealedCount === (ROWS * COLS) - MINES_COUNT) {
             gameOver = true;
             clearInterval(timerInterval);
             smileyBtn.innerText = "😎";
             flagsLeft = 0;
             updateCounters();
-            
+
             grid.forEach(row => row.forEach(c => {
                 if (c.isMine && !c.isFlagged) {
                     c.isFlagged = true;
