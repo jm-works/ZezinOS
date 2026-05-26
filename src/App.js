@@ -7,6 +7,7 @@ import { initStartMenu } from './modules/startMenu.js';
 import { runBootSequence } from './modules/boot.js';
 import { initLogin } from './modules/login.js';
 import { initClippy } from './modules/clippy.js';
+import { showFirefoxWarning } from './modules/firefoxWarning.js';
 
 // Wallpaper e Media
 import { setWallpaper } from './programs/wallpaper.js';
@@ -44,6 +45,9 @@ async function initSystem() {
     // Pré-renderização
     preRenderWindow('window-mediaplayer');
     preRenderWindow('window-minesweeper');
+
+    // Firefox warning
+    await showFirefoxWarning();
 
     openWindow('window-about', false);
 }
