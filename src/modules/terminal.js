@@ -144,6 +144,58 @@ const commands = {
             return "Error: Could not determine IP address (Check your connection).";
         }
     },
+    'dir': () => {
+        return `
+    Volume in drive C is ZEZINOS
+    Volume Serial Number is 1337-BEEF
+
+    Directory of C:\\Users\\Zezin
+
+    05/27/2026  04:31 PM    <DIR>          .
+    05/27/2026  04:31 PM    <DIR>          ..
+    05/27/2026  04:31 PM             4,096 DESKTOP
+    05/27/2026  04:31 PM             1,024 DOCUMENTS
+    05/27/2026  04:31 PM               512 SECRETS.TXT
+                3 File(s)          5,632 bytes
+                2 Dir(s)  2,147,483,648 bytes free
+                `;
+    },
+    'tree': () => {
+        return `
+    Folder PATH listing for volume ZEZINOS
+    Volume serial number is 1337-BEEF
+    C:
+    ├───Desktop
+    │   ├───About Me
+    │   ├───Media Player
+    │   ├───My Projects
+    │   └───Patch Notes
+    ├───Documents
+    │   ├───Programs
+    │   └───Games
+    └───System32
+        └───Drivers
+                `;
+    },
+    'cd': (args) => {
+        if (!args || args.trim() === '') {
+            return "C:\\Users\\Zezin";
+        }
+        return "Access denied.";
+    },
+    'ping': (args) => {
+        if (!args || args.trim() === '') {
+            return "Usage: ping <hostname>";
+        }
+        const target = args.split(' ')[0];
+        let output = `\nPinging ${target} with 32 bytes of data:\n`;
+        for (let i = 0; i < 4; i++) {
+            const ms = Math.floor(Math.random() * 80) + 10;
+            output += `Reply from ${target}: bytes=32 time=${ms}ms TTL=119\n`;
+        }
+        output += `\nPing statistics for ${target}:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)\n`;
+        return output;
+    },
     'exit': () => {
         closeWindow('window-terminal');
         return null;
