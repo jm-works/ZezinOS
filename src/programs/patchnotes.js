@@ -2,7 +2,18 @@ import { createWindow } from '../modules/windowFactory.js';
 
 const updates = [
     {
-        version: "v1.0.1",
+        version: "v1.1.5",
+        date: "xx/xx/2026",
+        changes: [
+            "Desktop icons no longer show during the login screen.",
+            "New commands added to ZEZIN-DOS.",
+            "Updates to Monitor filter (Display Properties).",
+            "Fixed update versioning for the English Patch, 1.0.1 to 1.1.0",
+            "More to be added soon..."
+        ]
+    },
+    {
+        version: "v1.1.0",
         date: "25/05/2026",
         changes: [
             "Full interface translated to English."
