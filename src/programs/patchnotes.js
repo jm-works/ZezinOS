@@ -8,8 +8,7 @@ const updates = [
             "Desktop icons no longer show during the login screen.",
             "New commands added to ZEZIN-DOS.",
             "Updates to Monitor filter (Display Properties).",
-            "Fixed update versioning for the English Patch, 1.0.1 to 1.1.0",
-            "More to be added soon..."
+            "Fixed update versioning for the English Patch, 1.0.1 to 1.1.0"
         ]
     },
     {
