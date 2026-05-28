@@ -20,8 +20,7 @@
     width: 85px;
     cursor: pointer;
     text-align: center;
-    position: relative;
-    isolation: isolate;
+    visibility: hidden;
 }
 
 .desktop-icon img {

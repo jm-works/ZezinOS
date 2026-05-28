@@ -1,6 +1,12 @@
 import { openWindow } from './windowManager.js';
 import { playSound } from './audioManager.js';
 
+export function setupDesktopIcons() {
+    document.querySelectorAll('.desktop-icon').forEach(icon => {
+        icon.style.visibility = 'visible';
+    });
+}
+
 export function initSelectionBox() {
     const desktop = document.querySelector('.desktop-area');
 
@@ -17,6 +23,7 @@ export function initSelectionBox() {
 
     desktop.addEventListener('mousedown', (e) => {
         if (e.button === 2 || e.target.closest('.desktop-icon') || e.target.closest('.taskbar')) return;
+
         document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
 
         isDragging = true;
@@ -118,12 +125,9 @@ export function initSelectionBox() {
     };
 
     desktop.addEventListener('contextmenu', (e) => {
-        if (e.target.closest('.desktop-icon') || e.target.closest('.window') || e.target.closest('.taskbar')) {
-            return;
-        }
+        if (e.target.closest('.desktop-icon') || e.target.closest('.window') || e.target.closest('.taskbar')) return;
 
         e.preventDefault();
-
         playSound('menu');
 
         let x = e.clientX;
@@ -131,12 +135,8 @@ export function initSelectionBox() {
 
         contextMenu.style.display = 'flex';
 
-        if (x + contextMenu.offsetWidth > window.innerWidth) {
-            x = window.innerWidth - contextMenu.offsetWidth - 2;
-        }
-        if (y + contextMenu.offsetHeight > window.innerHeight) {
-            y = window.innerHeight - contextMenu.offsetHeight - 2;
-        }
+        if (x + contextMenu.offsetWidth > window.innerWidth) x = window.innerWidth - contextMenu.offsetWidth - 2;
+        if (y + contextMenu.offsetHeight > window.innerHeight) y = window.innerHeight - contextMenu.offsetHeight - 2;
 
         contextMenu.style.left = `${x}px`;
         contextMenu.style.top = `${y}px`;

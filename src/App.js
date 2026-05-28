@@ -1,6 +1,6 @@
-// Sistema
+// System
 import { startClock } from './modules/clock.js';
-import { initSelectionBox } from './modules/desktop.js';
+import { initSelectionBox, setupDesktopIcons } from './modules/desktop.js';
 import { openWindow, closeWindow, initWindowListener, minimizeWindow, preRenderWindow } from './modules/windowManager.js';
 import { initDraggableWindows } from './modules/drag.js';
 import { initStartMenu } from './modules/startMenu.js';
@@ -9,7 +9,7 @@ import { initLogin } from './modules/login.js';
 import { initClippy } from './modules/clippy.js';
 import { showFirefoxWarning } from './modules/firefoxWarning.js';
 
-// Wallpaper e Media
+// Wallpaper
 import { setWallpaper } from './programs/wallpaper.js';
 import { setMedia } from './programs/mediaplayer.js';
 
@@ -20,29 +20,30 @@ window.minimizeWindow = minimizeWindow;
 
 async function initSystem() {
 
-    // Iniciar relógio
+    // Clock
     startClock();
 
-    // Sequência de Boot (BIOS)
+    // BIOS
     await runBootSequence();
 
-    // Configurações de Estado Inicial
+    // Initial Config
     setWallpaper('eyes');
     setMedia('https://soundcloud.com/cosmicfmoff/sets/nffonptya0ii');
 
-    // Tela de Login
+    // login Screen
     await initLogin();
 
     // Clippy
     initClippy();
 
-    // Inicialização de Módulos da Interface
+    // Interface
     initSelectionBox();
+    setupDesktopIcons();
     initWindowListener();
     initDraggableWindows();
     initStartMenu();
 
-    // Pré-renderização
+    // Render
     preRenderWindow('window-mediaplayer');
     preRenderWindow('window-minesweeper');
 
