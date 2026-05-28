@@ -20,6 +20,8 @@
     width: 85px;
     cursor: pointer;
     text-align: center;
+    position: relative;
+    isolation: isolate;
 }
 
 .desktop-icon img {
@@ -64,8 +66,8 @@
     border-left: 1px solid var(--border-light);
     border-right: 1px solid var(--border-darkest);
     border-bottom: 1px solid var(--border-darkest);
-    box-shadow: inset -1px -1px 0 var(--border-dark), 2px 2px 5px rgba(0,0,0,0.3);
-    
+    box-shadow: inset -1px -1px 0 var(--border-dark), 2px 2px 5px rgba(0, 0, 0, 0.3);
+
     display: none;
     flex-direction: column;
     padding: 2px;

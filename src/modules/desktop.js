@@ -17,6 +17,7 @@ export function initSelectionBox() {
 
     desktop.addEventListener('mousedown', (e) => {
         if (e.button === 2 || e.target.closest('.desktop-icon') || e.target.closest('.taskbar')) return;
+        document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
 
         isDragging = true;
         startX = e.clientX;
@@ -27,6 +28,14 @@ export function initSelectionBox() {
         selectionBox.style.width = '0px';
         selectionBox.style.height = '0px';
         selectionBox.style.display = 'block';
+    });
+
+    desktop.addEventListener('mousedown', (e) => {
+        const icon = e.target.closest('.desktop-icon');
+        if (!icon) return;
+
+        document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
+        icon.classList.add('selection');
     });
 
     document.addEventListener('mousemove', (e) => {
@@ -44,6 +53,17 @@ export function initSelectionBox() {
         selectionBox.style.height = height + 'px';
         selectionBox.style.left = left + 'px';
         selectionBox.style.top = top + 'px';
+
+        const selRect = selectionBox.getBoundingClientRect();
+        document.querySelectorAll('.desktop-icon').forEach(icon => {
+            const iconRect = icon.getBoundingClientRect();
+            const hits =
+                iconRect.left < selRect.right &&
+                iconRect.right > selRect.left &&
+                iconRect.top < selRect.bottom &&
+                iconRect.bottom > selRect.top;
+            icon.classList.toggle('selection', hits);
+        });
     });
 
     document.addEventListener('mouseup', () => {
