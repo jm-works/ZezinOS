@@ -30,7 +30,7 @@ async function initSystem() {
     setWallpaper('eyes');
     setMedia('https://soundcloud.com/cosmicfmoff/sets/nffonptya0ii');
 
-    // login Screen
+    // Login Screen
     await initLogin();
 
     // Clippy
@@ -54,3 +54,9 @@ async function initSystem() {
 }
 
 document.addEventListener('DOMContentLoaded', initSystem);
+
+document.addEventListener('contextmenu', (e) => {
+    if (e.target.closest('.desktop-icon') || !e.target.closest('.desktop-area')) {
+        e.preventDefault();
+    }
+});

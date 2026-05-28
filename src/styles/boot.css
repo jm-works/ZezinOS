@@ -1,7 +1,7 @@
-.bios-header, 
-.bios-info, 
-.bios-drives, 
-.bios-cursor, 
+.bios-header,
+.bios-info,
+.bios-drives,
+.bios-cursor,
 .bios-footer {
     visibility: hidden;
 }
@@ -24,13 +24,15 @@
     flex-direction: column;
     gap: 30px;
     cursor: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .bios-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 2px solid #ccc; 
+    border-bottom: 2px solid #ccc;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
@@ -64,9 +66,17 @@
 }
 
 @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .boot-fade-out {
