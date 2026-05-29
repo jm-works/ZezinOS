@@ -10,6 +10,7 @@ const updates = [
             "Updates to Monitor filter (Display Properties).",
             "Fixed update versioning for the English Patch, 1.0.1 to 1.1.0",
             "There was a change in the media player logic",
+            "Refactoring the calculator logic",
             "DESKTOP update"
         ]
     },
