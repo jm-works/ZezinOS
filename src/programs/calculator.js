@@ -9,6 +9,9 @@ export function renderCalculator() {
     let operator = null;
     let memory = 0;
     let inErrorState = false;
+    let lastOperator = null;
+    let lastOperand = null;
+    let unaryApplied = false;
 
     createWindow({
         id: winId,
@@ -72,9 +75,11 @@ export function renderCalculator() {
         win.style.resize = 'none';
     }
 
-    const screen = win.querySelector('#calc-screen');
-    const keypad = win.querySelector('.calc-container');
-    const memIndicator = win.querySelector('#calc-mem-indicator');
+    const screen = win?.querySelector('#calc-screen');
+    const keypad = win?.querySelector('.calc-container');
+    const memIndicator = win?.querySelector('#calc-mem-indicator');
+
+    if (!screen || !keypad) return;
 
     function updateDisplay() {
         if (inErrorState) {
@@ -97,14 +102,18 @@ export function renderCalculator() {
         firstOperand = null;
         waitingForSecondOperand = false;
         operator = null;
+        lastOperator = null;
+        lastOperand = null;
+        unaryApplied = false;
     }
 
     function inputDigit(digit) {
         if (inErrorState) resetCalculator();
 
-        if (waitingForSecondOperand) {
+        if (waitingForSecondOperand || unaryApplied) {
             displayValue = digit;
             waitingForSecondOperand = false;
+            unaryApplied = false;
         } else {
             displayValue = displayValue === '0' ? digit : displayValue + digit;
         }
@@ -112,9 +121,10 @@ export function renderCalculator() {
 
     function inputDecimal() {
         if (inErrorState) resetCalculator();
-        if (waitingForSecondOperand) {
+        if (waitingForSecondOperand || unaryApplied) {
             displayValue = '0.';
             waitingForSecondOperand = false;
+            unaryApplied = false;
             return;
         }
         if (!displayValue.includes('.')) {
@@ -127,7 +137,7 @@ export function renderCalculator() {
 
         const inputValue = parseFloat(displayValue);
 
-        if (operator && waitingForSecondOperand) {
+        if (operator && waitingForSecondOperand && !unaryApplied) {
             operator = nextOperator;
             return;
         }
@@ -144,6 +154,7 @@ export function renderCalculator() {
 
         waitingForSecondOperand = true;
         operator = nextOperator;
+        unaryApplied = false;
     }
 
     function calculate(first, second, op) {
@@ -160,35 +171,77 @@ export function renderCalculator() {
         return second;
     }
 
+    function handleEquals() {
+        if (inErrorState) return;
+
+        let secondOperand = parseFloat(displayValue);
+
+        if (operator) {
+            lastOperator = operator;
+            if (waitingForSecondOperand && !unaryApplied) {
+                secondOperand = firstOperand;
+            }
+            lastOperand = secondOperand;
+
+            const result = calculate(firstOperand, secondOperand, operator);
+            if (!inErrorState) {
+                displayValue = `${parseFloat(result.toFixed(10))}`;
+                firstOperand = result;
+                operator = null;
+                waitingForSecondOperand = true;
+                unaryApplied = false;
+            }
+        } else if (lastOperator) {
+            const result = calculate(parseFloat(displayValue), lastOperand, lastOperator);
+            if (!inErrorState) {
+                displayValue = `${parseFloat(result.toFixed(10))}`;
+                firstOperand = result;
+                waitingForSecondOperand = true;
+                unaryApplied = false;
+            }
+        }
+    }
+
     function handleFunctions(action) {
-        if (inErrorState && action !== 'clear') return;
-        if (action === 'clear') { // C
+        if (inErrorState && action !== 'clear' && action !== 'ce') return;
+
+        if (action === 'clear') {
             resetCalculator();
             return;
         }
 
-        let current = parseFloat(displayValue);
-
-        if (action === 'ce') { // CE
+        if (action === 'ce') {
             displayValue = '0';
-        } else if (action === 'backspace') { // Backspace
-            if (!waitingForSecondOperand) {
+            inErrorState = false;
+            return;
+        }
+
+        let current = parseFloat(displayValue);
+        if (isNaN(current)) return;
+
+        if (action === 'backspace') {
+            if (!waitingForSecondOperand && !unaryApplied) {
                 displayValue = displayValue.toString().slice(0, -1);
                 if (displayValue === '' || displayValue === '-') displayValue = '0';
             }
         } else if (action === 'sqrt') {
             if (current < 0) triggerError("Invalid input");
-            else displayValue = Math.sqrt(current).toString();
-            waitingForSecondOperand = true; // Reseta para próxima entrada
-        } else if (action === 'reciproc') { // 1/x
+            else {
+                displayValue = Math.sqrt(current).toString();
+                unaryApplied = true;
+            }
+        } else if (action === 'reciproc') {
             if (current === 0) triggerError("Cannot divide by zero");
-            else displayValue = (1 / current).toString();
-            waitingForSecondOperand = true;
+            else {
+                displayValue = (1 / current).toString();
+                unaryApplied = true;
+            }
         } else if (action === 'percent') {
-            // Lógica simples: valor / 100
-            displayValue = (current / 100).toString();
-            waitingForSecondOperand = true;
-        } else if (action === 'negate') { // +/-
+            displayValue = (firstOperand !== null && operator)
+                ? (firstOperand * (current / 100)).toString()
+                : (current / 100).toString();
+            unaryApplied = true;
+        } else if (action === 'negate') {
             displayValue = (current * -1).toString();
         }
     }
@@ -201,7 +254,7 @@ export function renderCalculator() {
         if (op === 'MS') memory = current;
         if (op === 'MR') {
             displayValue = memory.toString();
-            waitingForSecondOperand = true;
+            unaryApplied = true;
         }
         if (op === 'M+') memory += current;
     }
@@ -212,6 +265,9 @@ export function renderCalculator() {
         waitingForSecondOperand = false;
         operator = null;
         inErrorState = false;
+        lastOperator = null;
+        lastOperand = null;
+        unaryApplied = false;
     }
 
     keypad.addEventListener('click', (e) => {
@@ -223,12 +279,7 @@ export function renderCalculator() {
         if (num) inputDigit(num);
         else if (action === 'operator') handleOperator(op);
         else if (action === 'decimal') inputDecimal();
-        else if (action === 'equals') {
-            if (operator && !waitingForSecondOperand && !inErrorState) {
-                handleOperator(operator);
-                operator = null;
-            }
-        }
+        else if (action === 'equals') handleEquals();
         else if (action === 'memory') handleMemory(op);
         else handleFunctions(action);
 
