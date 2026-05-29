@@ -13,11 +13,11 @@
     border-top: 2px solid var(--win-gray-light);
     border-left: 2px solid var(--win-gray-light);
     border-right: 2px solid var(--win-gray-dark);
-    border-bottom: 2px solid var(--win-gray-dark); 
+    border-bottom: 2px solid var(--win-gray-dark);
     border-radius: 15px 15px 5px 5px;
     padding: 10px;
     position: relative;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .monitor-screen {
@@ -50,24 +50,24 @@
 .monitor-stand {
     width: 60px;
     height: 15px;
-    background-color: var(--win-gray); 
+    background-color: var(--win-gray);
     border-left: 1px solid var(--win-white);
-    border-right: 1px solid var(--win-gray-dark); 
+    border-right: 1px solid var(--win-gray-dark);
 }
 
 .monitor-base {
     width: 100px;
     height: 10px;
     background-color: var(--win-gray);
-    border-top: 1px solid var(--win-white); 
-    border-left: 1px solid var(--win-white); 
+    border-top: 1px solid var(--win-white);
+    border-left: 1px solid var(--win-white);
     border-right: 2px solid var(--win-gray-dark);
     border-bottom: 2px solid var(--win-gray-dark);
     border-radius: 4px 4px 0 0;
 }
 
 fieldset {
-    border: 1px solid var(--border-dark); 
+    border: 1px solid var(--border-dark);
     padding: 8px;
     font-size: 11px;
     font-family: var(--system-font);
@@ -116,15 +116,15 @@ legend {
 }
 
 .win-btn {
-font-family: var(--system-font);
+    font-family: var(--system-font);
     font-size: 11px;
     color: #000;
     background-color: var(--win-gray-light);
-    
+
     min-width: 75px;
     height: 23px;
     padding: 0 12px;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,7 +135,7 @@ font-family: var(--system-font);
     border-left: 1px solid var(--win-white);
     border-right: 1px solid var(--win-black);
     border-bottom: 1px solid var(--win-black);
-    
+
     box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #dfdfdf;
 }
 
@@ -144,10 +144,10 @@ font-family: var(--system-font);
     border-left: 1px solid var(--win-black);
     border-right: 1px solid var(--win-white);
     border-bottom: 1px solid var(--win-white);
-    
+
     box-shadow: none;
-    
-    padding-top: 2px; 
+
+    padding-top: 2px;
     padding-left: 2px;
 }
 
@@ -156,35 +156,113 @@ font-family: var(--system-font);
     outline-offset: -4px;
 }
 
-#monitor-effect-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    
-    border-radius: 0;
-    background-color: var(--win-white);
-    
-    border-top: 2px solid var(--border-dark);
-    border-left: 2px solid var(--border-dark);
-    border-right: 2px solid var(--border-light);
-    border-bottom: 2px solid var(--border-light);
-    
-    height: 22px;
+.wp-combobox {
+    position: relative;
+    display: flex;
     width: 100%;
+    height: 20px;
+    box-sizing: border-box;
     font-family: var(--system-font);
     font-size: 11px;
-    padding: 2px 4px;
-    outline: none;
-    cursor: pointer;
-
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-    background-repeat: no-repeat;
-    background-position: right 6px center;
-    background-size: 8px auto;
+    cursor: default;
+    user-select: none;
+    min-width: 0;
 }
 
-#monitor-effect-select:active {
-    background-color: #f0f0f0;
+.wp-combobox-display {
+    flex: 1;
+    min-width: 0;
+    background: var(--win-white);
+    color: var(--text-main);
+    padding: 1px 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 16px;
+
+    border-top: 2px solid var(--border-dark);
+    border-left: 2px solid var(--border-dark);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.wp-combobox-arrow {
+    width: 16px;
+    height: 20px;
+    flex-shrink: 0;
+    background: var(--win-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    line-height: 1;
+    box-sizing: border-box;
+
+    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-darkest);
+    border-bottom: 1px solid var(--border-darkest);
+    box-shadow: inset -1px -1px 0 var(--border-dark), inset 1px 1px 0 #dfdfdf;
+}
+
+.wp-combobox-arrow:active {
+    border-top: 1px solid var(--border-darkest);
+    border-left: 1px solid var(--border-darkest);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: none;
+}
+
+.wp-combobox-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--win-white);
+    z-index: 99999;
+    list-style: none;
+    padding: 2px 0;
+    margin: 0;
+    max-height: 120px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-darkest);
+    border-bottom: 2px solid var(--border-darkest);
+    box-shadow: 1px 1px 0 var(--border-darkest);
+}
+
+.wp-combobox-dropdown.open {
+    display: block;
+}
+
+.wp-combobox-option {
+    padding: 1px 4px;
+    font-family: var(--system-font);
+    font-size: 11px;
+    color: var(--text-main);
+    cursor: default;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-combobox-option:hover {
+    background-color: #316AC5;
+    color: var(--text-inverted);
+}
+
+.wp-combobox-option.selected {
+    background-color: var(--win-blue);
+    color: var(--text-inverted);
+}
+
+#window-wallpaper .window-body {
+    border: none;
+    overflow: visible;
 }
 
 .wp-list::-webkit-scrollbar {

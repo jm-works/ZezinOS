@@ -68,8 +68,18 @@ const wallpapers = [
     }
 ];
 
+const effectOptions = [
+    { value: 'none', label: 'Default Monitor (LCD)' },
+    { value: 'vga', label: 'VGA Monitor (Static)' },
+    { value: 'trinitron', label: 'Trinitron Monitor (Aperture Grille)' },
+    { value: 'tv', label: 'CRT TV (Composite)' },
+    { value: 'green', label: 'Green Phosphor Terminal' },
+    { value: 'amber', label: 'Amber Phosphor Terminal' },
+];
+
 let selectedWallpaperStyle = wallpapers[0].style;
 let currentEffect = 'none';
+
 
 export function setWallpaper(id) {
     const wp = wallpapers.find(w => w.id === id);
@@ -113,18 +123,14 @@ export function renderWallpaper() {
 
                 <fieldset style="margin-top: 6px;">
                     <legend>Monitor Filter</legend>
-                    <div style="display: flex; align-items: center; gap: 6px; padding: 2px;">
+                    <div style="display: flex; align-items: center; gap: 6px; padding: 2px 0;">
                         <img src="./public/icons/logo.svg" style="width:16px; opacity:0.5;">
-                        
-                        <select id="monitor-effect-select" onchange="updatePreviewEffect(this.value)" style="width: 100%;">
-                            <option value="none">Default Monitor (LCD)</option>
-                            <option value="vga">VGA Monitor (Static)</option>
-                            <option value="trinitron">Trinitron Monitor (Aperture Grille)</option>
-                            <option value="tv">CRT TV (Composite)</option>
-                            <option value="green">Green Phosphor Terminal</option>
-                            <option value="amber">Amber Phosphor Terminal</option>
-                        </select>
 
+                        <div class="wp-combobox" id="monitor-effect-combobox">
+                            <div class="wp-combobox-display" id="monitor-effect-label">Default Monitor (LCD)</div>
+                            <div class="wp-combobox-arrow" id="monitor-effect-arrow">▼</div>
+                            <ul class="wp-combobox-dropdown" id="monitor-effect-dropdown"></ul>
+                        </div>
                     </div>
                 </fieldset>
             </div>
@@ -142,22 +148,70 @@ export function renderWallpaper() {
 
     const listElement = document.getElementById('wallpaper-list');
     const previewScreen = document.getElementById('wallpaper-preview-screen');
-    const effectSelect = document.getElementById('monitor-effect-select');
+    const combobox = document.getElementById('monitor-effect-combobox');
+    const comboLabel = document.getElementById('monitor-effect-label');
+    const comboArrow = document.getElementById('monitor-effect-arrow');
+    const comboDropdown = document.getElementById('monitor-effect-dropdown');
 
     const globalOverlay = document.querySelector('.crt-overlay');
     let activeEffect = 'none';
     if (globalOverlay && globalOverlay.classList.contains('active')) {
-        if (globalOverlay.classList.contains('effect-vga')) activeEffect = 'vga';
-        else if (globalOverlay.classList.contains('effect-trinitron')) activeEffect = 'trinitron';
-        else if (globalOverlay.classList.contains('effect-green')) activeEffect = 'green';
-        else if (globalOverlay.classList.contains('effect-amber')) activeEffect = 'amber';
-        else if (globalOverlay.classList.contains('effect-tv')) activeEffect = 'tv';
+        ['vga', 'trinitron', 'green', 'amber', 'tv'].forEach(fx => {
+            if (globalOverlay.classList.contains(`effect-${fx}`)) activeEffect = fx;
+        });
     }
+    currentEffect = activeEffect;
 
-    if (effectSelect) {
-        effectSelect.value = activeEffect;
-        currentEffect = activeEffect;
-    }
+    effectOptions.forEach(opt => {
+        const li = document.createElement('li');
+        li.className = 'wp-combobox-option';
+        li.dataset.value = opt.value;
+        li.textContent = opt.label;
+        if (opt.value === activeEffect) {
+            li.classList.add('selected');
+            comboLabel.textContent = opt.label;
+        }
+
+        li.addEventListener('click', () => {
+            comboDropdown.querySelectorAll('.wp-combobox-option').forEach(o => o.classList.remove('selected'));
+            li.classList.add('selected');
+            comboLabel.textContent = opt.label;
+            comboDropdown.classList.remove('open');
+
+            currentEffect = opt.value;
+            const preview = document.getElementById('wallpaper-preview-screen');
+            if (preview) applyEffectToPreview(preview, opt.value);
+        });
+
+        comboDropdown.appendChild(li);
+    });
+
+    const toggleDropdown = () => {
+        const isOpen = comboDropdown.classList.contains('open');
+
+        if (isOpen) {
+            comboDropdown.classList.remove('open');
+            return;
+        }
+
+        comboDropdown.style.top = '100%';
+        comboDropdown.style.bottom = 'auto';
+        comboDropdown.classList.add('open');
+
+        const rect = comboDropdown.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight - 4) {
+            comboDropdown.style.top = 'auto';
+            comboDropdown.style.bottom = '100%';
+        }
+    };
+    comboLabel.addEventListener('click', toggleDropdown);
+    comboArrow.addEventListener('click', toggleDropdown);
+
+    document.addEventListener('mousedown', (e) => {
+        if (!combobox.contains(e.target)) {
+            comboDropdown.classList.remove('open');
+        }
+    }, { once: false });
 
     if (previewScreen) {
         updatePreview(previewScreen, selectedWallpaperStyle);
@@ -179,14 +233,6 @@ export function renderWallpaper() {
         };
         listElement.appendChild(li);
     });
-
-    window.updatePreviewEffect = (effectValue) => {
-        currentEffect = effectValue;
-        const preview = document.getElementById('wallpaper-preview-screen');
-        if (preview) {
-            applyEffectToPreview(preview, effectValue);
-        }
-    };
 
     window.applyWallpaper = () => {
         const desktop = document.querySelector('.desktop-area');
@@ -214,7 +260,6 @@ function updatePreview(element, styleString) {
 
 function applyEffectToPreview(element, effect) {
     element.classList.remove('crt-active', 'effect-vga', 'effect-trinitron', 'effect-green', 'effect-amber', 'effect-tv');
-
     if (effect !== 'none') {
         element.classList.add('crt-active');
         element.classList.add(`effect-${effect}`);

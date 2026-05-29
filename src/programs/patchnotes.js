@@ -3,14 +3,14 @@ import { createWindow } from '../modules/windowFactory.js';
 const updates = [
     {
         version: "v1.1.5",
-        date: "28/05/2026",
+        date: "29/05/2026",
         changes: [
             "Desktop icons no longer show during the login screen.",
             "New commands added to ZEZIN-DOS.",
             "Updates to Monitor filter (Display Properties).",
             "Fixed update versioning for the English Patch, 1.0.1 to 1.1.0",
             "There was a change in the media player logic",
-            "DESKTOP.js update"
+            "DESKTOP update"
         ]
     },
     {
