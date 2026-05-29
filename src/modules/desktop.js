@@ -37,12 +37,45 @@ export function initSelectionBox() {
         selectionBox.style.display = 'block';
     });
 
-    desktop.addEventListener('mousedown', (e) => {
-        const icon = e.target.closest('.desktop-icon');
-        if (!icon) return;
+    let clickTimer = null;
+    let lastClickedIcon = null;
+    let justFinishedDragging = false;
 
-        document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
-        icon.classList.add('selection');
+    desktop.addEventListener('click', (e) => {
+        if (justFinishedDragging) {
+            justFinishedDragging = false;
+            return;
+        }
+
+        const icon = e.target.closest('.desktop-icon');
+
+        if (!icon) {
+            document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
+            return;
+        }
+
+        if (lastClickedIcon === icon && clickTimer !== null) {
+            clearTimeout(clickTimer);
+            clickTimer = null;
+            lastClickedIcon = null;
+
+            icon.classList.remove('selection');
+            icon.blur();
+
+            if (icon.dataset.window) {
+                openWindow(icon.dataset.window);
+            }
+        } else {
+            document.querySelectorAll('.desktop-icon.selection').forEach(i => i.classList.remove('selection'));
+            icon.classList.add('selection');
+
+            lastClickedIcon = icon;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => {
+                clickTimer = null;
+                lastClickedIcon = null;
+            }, 250);
+        }
     });
 
     document.addEventListener('mousemove', (e) => {
@@ -76,6 +109,7 @@ export function initSelectionBox() {
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
+            justFinishedDragging = true;
             selectionBox.style.display = 'none';
         }
     });

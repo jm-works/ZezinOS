@@ -1,4 +1,4 @@
-import { bringToFront, closeWindow, minimizeWindow } from './windowManager.js';
+import { bringToFront, closeWindow, minimizeWindow, openWindow } from './windowManager.js';
 import { playSound } from './audioManager.js';
 
 let activeContextWindowId = null;
@@ -17,9 +17,17 @@ function initTaskbarContextMenu() {
     document.body.appendChild(menu);
 
     document.getElementById('tb-ctx-minimize').addEventListener('click', () => {
-        if (activeContextWindowId) {
+        if (!activeContextWindowId) return;
+
+        const win = document.getElementById(activeContextWindowId);
+        const isOpen = win && win.classList.contains('open');
+
+        if (isOpen) {
             minimizeWindow(activeContextWindowId);
+        } else {
+            openWindow(activeContextWindowId);
         }
+
         menu.style.display = 'none';
     });
 
@@ -98,6 +106,10 @@ export function createTaskbarButton(windowId, windowElement) {
 
         activeContextWindowId = windowId;
         const menu = document.getElementById('taskbar-context-menu');
+        const win = document.getElementById(windowId);
+        const isOpen = win && win.classList.contains('open');
+        document.getElementById('tb-ctx-minimize').textContent = isOpen ? 'Minimize' : 'Open';
+
         menu.style.display = 'flex';
 
         let x = e.clientX;

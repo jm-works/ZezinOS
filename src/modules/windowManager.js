@@ -186,27 +186,6 @@ export function minimizeWindow(windowId, playAudio = true) {
 }
 
 export function initWindowListener() {
-    document.addEventListener('click', (event) => {
-        const clickedInsideWindow = event.target.closest('.window');
-        const clickedOnIcon = event.target.closest('.desktop-icon');
-        const clickedOnTaskbar = event.target.closest('.taskbar');
-        const clickedOnStart = event.target.closest('#start-menu') || event.target.closest('.start-button');
-        const clickedOnContext = event.target.closest('#context-menu') || event.target.closest('#taskbar-context-menu');
-        const clickedOnClippy = event.target.closest('#clippy-container');
-
-        if (!clickedInsideWindow && !clickedOnIcon && !clickedOnTaskbar && !clickedOnStart && !clickedOnContext && !clickedOnClippy) {
-            const openWindows = document.querySelectorAll('.window.open');
-            let playedSound = false;
-
-            openWindows.forEach(win => {
-                if (win.dataset.skipTaskbar !== "true") {
-                    minimizeWindow(win.id, !playedSound);
-                    playedSound = true;
-                }
-            });
-        }
-    });
-
     document.addEventListener('mousedown', (e) => {
         const clickedWindow = e.target.closest('.window');
         if (clickedWindow) bringToFront(clickedWindow);
