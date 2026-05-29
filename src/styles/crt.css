@@ -32,7 +32,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 99999;
+    z-index: 100000001;
     pointer-events: none;
     overflow: hidden;
 }

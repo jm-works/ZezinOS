@@ -110,6 +110,8 @@ export function createTaskbarButton(windowId, windowElement) {
         const isOpen = win && win.classList.contains('open');
         document.getElementById('tb-ctx-minimize').textContent = isOpen ? 'Minimize' : 'Open';
 
+        const deskMenu = document.getElementById('context-menu');
+        if (deskMenu) deskMenu.style.display = 'none';
         menu.style.display = 'flex';
 
         let x = e.clientX;

@@ -167,6 +167,8 @@ export function initSelectionBox() {
         let x = e.clientX;
         let y = e.clientY;
 
+        const tbMenu = document.getElementById('taskbar-context-menu');
+        if (tbMenu) tbMenu.style.display = 'none';
         contextMenu.style.display = 'flex';
 
         if (x + contextMenu.offsetWidth > window.innerWidth) x = window.innerWidth - contextMenu.offsetWidth - 2;
