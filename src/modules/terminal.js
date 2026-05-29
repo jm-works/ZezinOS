@@ -221,7 +221,7 @@ const commands = {
         `;
     },
     'surprise': () => {
-        window.open('https://taromati2.github.io/rickroll/', '_blank');
+        window.open('https://youtu.be/dQw4w9WgXcQ', '_blank');
         return "Opening your surprise in the browser...";
     },
     'neofetch': () => {

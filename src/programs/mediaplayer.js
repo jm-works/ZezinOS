@@ -5,6 +5,7 @@ let scWidget;
 let isDragging = false;
 let startupUrl = '';
 let closeObserver = null;
+let resetOnNextProgress = false;
 
 export function setMedia(url) {
     startupUrl = url;
@@ -199,13 +200,30 @@ function setupWidget() {
         });
 
         scWidget.bind(window.SC.Widget.Events.PAUSE, () => updateStatus("Paused"));
-        scWidget.bind(window.SC.Widget.Events.FINISH, () => updateStatus("End of track."));
+
+        scWidget.bind(window.SC.Widget.Events.FINISH, () => {
+            updateStatus("End of track.");
+            scWidget.getSounds((sounds) => {
+                if (!sounds || sounds.length <= 1) return;
+                scWidget.getCurrentSoundIndex((index) => {
+                    resetOnNextProgress = true;
+                    if (index === sounds.length - 1) {
+                        scWidget.skip(0);
+                        scWidget.play();
+                    }
+                });
+            });
+        });
 
         scWidget.bind(window.SC.Widget.Events.PLAY_PROGRESS, (data) => {
+            if (resetOnNextProgress) {
+                resetOnNextProgress = false;
+                scWidget.seekTo(0);
+                return;
+            }
             if (isDragging) return;
             const seek = document.getElementById('wmp-seek');
             const timeText = document.getElementById('wmp-time-text');
-
             if (seek) seek.value = data.relativePosition * 100;
             if (timeText) timeText.innerText = fmtTime(data.currentPosition / 1000);
         });
@@ -247,10 +265,29 @@ function updateMetadata(retryCount = 0) {
         }
 
         if (retryCount < 30) {
-            setTimeout(() => {
-                updateMetadata(retryCount + 1);
-            }, 500);
+            setTimeout(() => updateMetadata(retryCount + 1), 500);
         }
+    });
+}
+
+function skipAndReset(direction) {
+    scWidget.getCurrentSoundIndex((fromIndex) => {
+        scWidget.pause();
+        direction === 'prev' ? scWidget.prev() : scWidget.next();
+
+        let attempts = 0;
+        const check = () => {
+            scWidget.getCurrentSoundIndex((newIndex) => {
+                if (newIndex !== fromIndex || attempts > 20) {
+                    scWidget.seekTo(0);
+                    scWidget.play();
+                } else {
+                    attempts++;
+                    setTimeout(check, 100);
+                }
+            });
+        };
+        setTimeout(check, 100);
     });
 }
 
@@ -261,8 +298,8 @@ window.wmpStop = () => {
     scWidget?.seekTo(0);
     updateStatus("Stopped");
 };
-window.wmpPrev = () => scWidget?.prev();
-window.wmpNext = () => scWidget?.next();
+window.wmpPrev = () => skipAndReset('prev');
+window.wmpNext = () => skipAndReset('next');
 window.wmpSetVolume = (val) => scWidget?.setVolume(val);
 
 window.wmpStartSeek = () => { isDragging = true; };
