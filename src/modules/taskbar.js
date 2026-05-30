@@ -64,6 +64,7 @@ export function createTaskbarButton(windowId, windowElement) {
         'window-notepad': './public/icons/notepad.ico',
         'window-zezinpaint': './public/icons/zezinpaint.webp',
         'window-internet': './public/icons/internet.png',
+        'window-pinball': './public/icons/pinball.svg',
     };
     const iconPath = appIcons[windowId] || './public/icons/logo.svg';
     const existingButton = document.getElementById(`btn-${windowId}`);

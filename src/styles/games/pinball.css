@@ -1,12 +1,12 @@
-#window-dosgames {
+#window-pinball {
     width: 800px !important;
-    height: 600px !important;
-    min-width: 800px !important;
-    min-height: 600px !important;
+    height: 620px !important;
+    min-width: 600px !important;
+    min-height: 460px !important;
     background-color: var(--win-gray) !important;
 }
 
-#window-dosgames .window-body {
+#window-pinball .window-body {
     background-color: var(--win-gray) !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -15,18 +15,10 @@
     width: 100% !important;
     height: 100% !important;
     overflow: hidden !important;
-    border: 0px;
+    border: 0;
 }
 
-#window-dosgames .menu-bar {
-    background-color: var(--win-gray);
-    border-bottom: 1px solid var(--border-light);
-    padding: 2px 4px;
-    flex-shrink: 0 !important;
-    height: 20px !important;
-}
-
-.dosgames-container {
+.pinball-container {
     display: flex !important;
     flex-direction: column !important;
     flex: 1 !important;
@@ -38,7 +30,7 @@
     box-sizing: border-box;
 }
 
-.dosgames-viewport {
+.pinball-viewport {
     flex: 1 !important;
     background-color: #000;
 
@@ -56,25 +48,18 @@
     justify-content: center !important;
 }
 
-.dosgames-iframe {
+.pinball-iframe {
     position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-
-    aspect-ratio: 16/9 !important;
-
+    inset: 0 !important;
+    width: 100% !important;
     height: 100% !important;
-    width: auto !important;
-    max-width: 100% !important;
-
     border: none !important;
     display: none;
     background-color: #000;
     z-index: 5;
 }
 
-.dosgames-cover {
+.pinball-cover {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -86,7 +71,6 @@
     justify-content: center;
 
     background-color: #000;
-
     box-shadow: inset 0 0 0 2px #008000;
     z-index: 10;
 
@@ -94,14 +78,12 @@
     color: #0f0;
 }
 
-.dosgames-logo {
+.pinball-logo {
     font-family: 'Courier New', monospace;
     font-weight: bold;
     font-size: 48px;
     color: #0f0;
-
     text-shadow: 0 0 5px #0f0, 0 0 10px #008000;
-
     letter-spacing: 2px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -109,7 +91,7 @@
     padding-bottom: 5px;
 }
 
-.dosgames-subtitle {
+.pinball-subtitle {
     color: #0f0;
     font-family: 'Courier New', monospace;
     font-size: 14px;
@@ -118,13 +100,13 @@
     opacity: 0.8;
 }
 
-.dosgames-loading-box {
+.pinball-loading-box {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.dosgames-btn-start {
+.pinball-btn-launch {
     font-family: 'Courier New', monospace;
     font-weight: bold;
     font-size: 14px;
@@ -140,40 +122,20 @@
     transition: all 0.2s;
 }
 
-.dosgames-btn-start:hover {
+.pinball-btn-launch:hover {
     background-color: #0f0;
     color: #000;
     box-shadow: 0 0 10px #0f0;
 }
 
-.dosgames-btn-start:active {
+.pinball-btn-launch:active {
     border: 1px inset #0f0;
 }
 
-.dosgames-credits {
+.pinball-credits {
     position: absolute;
     bottom: 20px;
     color: #006400;
     font-size: 12px;
     font-family: 'Courier New', monospace;
-}
-
-#window-pinball {
-    width: 800px !important;
-    height: 600px !important;
-    min-width: 800px !important;
-    min-height: 600px !important;
-    background-color: var(--win-gray) !important;
-}
-
-#window-pinball .window-body {
-    background-color: var(--win-gray) !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    height: 100% !important;
-    overflow: hidden !important;
-    border: 0px;
 }

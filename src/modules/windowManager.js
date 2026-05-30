@@ -15,6 +15,7 @@ import { renderInternet } from '../programs/internet.js';
 import { renderDosGames } from '../programs/games/dosgames.js';
 import { renderAracaju } from '../programs/games/aracaju.js';
 import { renderMinesweeper } from '../programs/games/minesweeper.js';
+import { renderPinball } from '../programs/games/pinball.js';
 
 let zIndexCounter = 100;
 
@@ -31,7 +32,8 @@ const windowRegistry = {
     'window-internet': renderInternet,
     'window-dosgames': renderDosGames,
     'window-aracaju': renderAracaju,
-    'window-minesweeper': renderMinesweeper
+    'window-minesweeper': renderMinesweeper,
+    'window-pinball': renderPinball
 };
 
 const hibernationVault = new Map();
