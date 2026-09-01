@@ -15,7 +15,7 @@ export function initClippy() {
                     <b>Tip:</b> Press the <b>(Alt)</b> key on your keyboard to quickly open the Start Menu.
                 </div>
             </div>
-            <img src="https://www.spriters-resource.com/media/gifs/7/522060-6876.gif?updated=1771548693" alt="Clippy" class="clippy-img" id="clippy-img">
+            <img src="./public/animations/clippy.gif" alt="Clippy" class="clippy-img" id="clippy-img">
         `;
 
         document.body.appendChild(clippyContainer);
