@@ -219,8 +219,10 @@ function initNativeEngine(winId) {
         if (e.clipboardData && e.clipboardData.items) {
             const items = e.clipboardData.items;
             for (let i = 0; i < items.length; i++) {
-                if (items[i].type.indexOf('image') !== -1) {
+                const itemType = items[i].type;
+                if (itemType.indexOf('image') !== -1 && itemType !== 'image/svg+xml') {
                     const blob = items[i].getAsFile();
+                    if (!blob) continue;
                     const url = URL.createObjectURL(blob);
                     loadImageAsSelection(url);
                     break;
