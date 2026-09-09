@@ -221,6 +221,7 @@ function initNativeEngine(winId) {
             for (let i = 0; i < items.length; i++) {
                 if (items[i].type.indexOf('image') !== -1) {
                     const blob = items[i].getAsFile();
+                    if (!blob) continue;
                     const url = URL.createObjectURL(blob);
                     loadImageAsSelection(url);
                     break;
